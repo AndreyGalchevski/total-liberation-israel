@@ -11,7 +11,20 @@
               <br><br>
               <h5 class="card-title">{{ author }}</h5>
               <p class="card-text">{{ getDate(date) }}</p>
-              <b><p class="card-text">{{ lead }}</p></b><br>
+              <p class="card-text"><b>{{ lead }}</b></p>
+              <br>
+              <p class="card-text">
+                <a href="#">
+                  <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-envelope-o my-icon" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-whatsapp my-icon" aria-hidden="true"></i>
+                </a>
+              </p>
+              <br>
               <p class="card-text">{{ content }}</p>
             </div>
           </div>
@@ -62,5 +75,13 @@ export default {
 .my-card-img {
    width: 300px; 
    height: 200px;
+}
+.my-icon {
+  font-size: 35px;
+  color: #4d4d4d;
+}
+.fa-envelope-o {
+  padding-right: 50px;
+  padding-left: 50px;
 }
 </style>
