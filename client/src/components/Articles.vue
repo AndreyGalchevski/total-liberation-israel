@@ -1,0 +1,54 @@
+<template>
+  <div class="container">
+    <div class="articles">
+      <br>
+      <div class="row">
+        <div class="col-md-6" v-for="(article, index) in articles">
+          <div class="card">
+            <img class="card-img-top" :src="article.image" alt="Card image">
+            <div class="card-body">
+              <h3 class="card-title">{{ article.title }}</h3>
+              <h5 class="card-title">{{ article.author }}</h5>
+              <p class="card-text">{{ getDate(article.date) }}</p>
+              <b><p class="card-text">{{ article.lead }}</p></b>
+              <br>
+              <!--p class="card-text">
+                <button type="button" class="btn btn-primary" data-toggle="collapse" :data-target="'#articleContent' + index">קרא עוד</button>
+                <p :id="'articleContent' + index" class="collapse">{{ article.content }}</p>
+              </p-->
+              <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import ArticlesService from '@/services/ArticlesService'
+var moment = require('moment')
+export default {
+  name: 'articles',
+  data () {
+    return {
+      articles: []
+    }
+  },
+  mounted () {
+    this.getArticles()
+  },
+  methods: {
+    async getArticles () {
+      const response = await ArticlesService.fetchArticles()
+      this.articles = response.data.articles
+    },
+    getDate: function (date) {
+      return moment(date).format('DD-MM-YYYY')
+    }
+  }
+}
+</script>
+
+<style>
+</style>
