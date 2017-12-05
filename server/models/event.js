@@ -26,10 +26,10 @@ module.exports.getAllEvents = function() {
   return EventModel.find().sort({_id:-1})
 }
 
-module.exports.getEventById = function(eventIdToGet, callback) {
-  EventModel.findById(eventIdToGet, callback)
+module.exports.getEventById = function(eventIdToGet) {
+  return EventModel.findById(eventIdToGet)
 }
 
-module.exports.deleteEvent = function(query, callback) {
-  EventModel.remove(query, callback)
+module.exports.deleteEvent = function(query) {
+  return EventModel.remove(query)
 }

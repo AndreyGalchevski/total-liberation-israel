@@ -15,7 +15,7 @@ module.exports = function(app, db) {
       res.status(500).send({ error: 'Error while fetching events' })
     }
   })
-
+  
   // Create new event
   app.post('/api/events', async (req, res) => {
     var newEvent = {
@@ -35,38 +35,36 @@ module.exports = function(app, db) {
       res.status(500).send({ error: 'Error while saving event' })
     }
   })
-
+  
   // Upload a picture
   app.patch('/api/events/:id/image', upload.fields([{ name: 'eventImg', maxCount: 1 }]), async (req, res) => {
     try {
       let result = await cloudinary.v2.uploader.upload(req.files.eventImg[0].path, {
         folder: 'alf-israel/events'
       })
-
+      
       fs.unlink(req.files.eventImg[0].path)
-
+      
       let updatedFields = {
         image: result.secure_url
       }
-
+      
       let updatedEvent = await EventModel.findByIdAndUpdate(req.params.id, updatedFields, { new: true })
-
+      
       res.json({ success: true, updatedEvent })
     } catch (e) {
       res.status(500).send({ error: 'Image upload failed.' })
       return
     }
   })
-
   // Fetch single event
-  app.get('/api/event/:id', (req, res) => {
-    var db = req.db;
-    EventModel.getEventById(req.params.id, function (error, event) {
-      if (error) { 
-        console.error(error); 
-      }
+  app.get('/api/event/:id', async (req, res) => {
+    try {
+      let event = await EventModel.getEventById(req.params.id)
       res.send(event)
-    })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while fetching an event' })
+    }
   })
   
   // Update an event
@@ -74,7 +72,7 @@ module.exports = function(app, db) {
     var db = req.db;
     EventModel.findById(req.params.id, 'title date description fbPage', function (error, event) {
       if (error) { console.error(error); }
-  
+      
       event.title = req.body.title
       event.date = req.body.date
       event.description = req.body.description
@@ -86,19 +84,17 @@ module.exports = function(app, db) {
         res.send({
           success: true
         })
-       })
-    })
-  })
-  
-  // Delete an event
-  app.delete('/api/events/:id', (req, res) => {
-    var db = req.db;
-    EventModel.deleteEvent({_id: req.params.id}, function(err, event) {
-      if (err)
-        res.send(err)
-      res.send({
-        success: true
       })
     })
-  })  
+  })
+
+  // Delete an event
+  app.delete('/api/events/:id', async (req, res) => {
+    try {
+      let event = await EventModel.deleteEvent({_id: req.params.id})
+      res.send({ success: true })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while deleting an event' })
+    }
+  })    
 };
