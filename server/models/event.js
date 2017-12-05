@@ -22,8 +22,8 @@ module.exports.addEvent = function(newEvent, callback) {
   new_event.save(callback);
 }
 
-module.exports.getAllEvents = function(callback) {
-  EventModel.find(callback).sort({_id:-1});
+module.exports.getAllEvents = function() {
+  return EventModel.find().sort({_id:-1});
 }
 
 module.exports.getEventById = function(eventIdToGet, callback) {

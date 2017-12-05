@@ -3,18 +3,25 @@ const multer = require('multer')
 const upload = multer({ dest: 'tmp/' })
 const cloudinary = require('cloudinary')
 const fs = require('fs')
+const passport = require('passport')
 
 module.exports = function(app, db) {
   // Fetch all events
-  app.get('/api/events', (req, res) => {
-    EventModel.getAllEvents(function (error, events) {
-        if (error) { 
-          console.error(error); 
-        }
-        res.send({
-          events: events
-        })
-      })
+  app.get('/api/events', async (req, res) => {
+    try {
+      let events = await EventModel.getAllEvents()
+      res.send({events: events})
+    } catch (e) {
+      res.status(500).send({ error: 'Error occured while fetching events' })
+    }
+    // EventModel.getAllEvents(function (error, events) {
+    //     if (error) { 
+    //       console.error(error); 
+    //     }
+    //     res.send({
+    //       events: events
+    //     })
+    //   })
     })
 
   // Create new event
@@ -95,7 +102,7 @@ module.exports = function(app, db) {
   })
   
   // Delete an event
-  app.delete('/api/events/:id', (req, res) => {
+  app.delete('/api/events/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
     var db = req.db;
     EventModel.deleteEvent({_id: req.params.id}, function(err, event) {
       if (err)
