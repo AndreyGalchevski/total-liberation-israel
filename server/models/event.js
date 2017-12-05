@@ -19,17 +19,17 @@ module.exports.addEvent = function(newEvent, callback) {
     description: newEvent.description,
     fbPage: newEvent.fbPage
   })
-  new_event.save(callback);
+  return new_event.save()
 }
 
 module.exports.getAllEvents = function() {
-  return EventModel.find().sort({_id:-1});
+  return EventModel.find().sort({_id:-1})
 }
 
 module.exports.getEventById = function(eventIdToGet, callback) {
-  EventModel.findById(eventIdToGet, callback);
+  EventModel.findById(eventIdToGet, callback)
 }
 
 module.exports.deleteEvent = function(query, callback) {
-  EventModel.remove(query, callback);
+  EventModel.remove(query, callback)
 }

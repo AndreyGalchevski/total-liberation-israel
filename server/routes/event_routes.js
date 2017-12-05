@@ -12,39 +12,28 @@ module.exports = function(app, db) {
       let events = await EventModel.getAllEvents()
       res.send({events: events})
     } catch (e) {
-      res.status(500).send({ error: 'Error occured while fetching events' })
+      res.status(500).send({ error: 'Error while fetching events' })
     }
-    // EventModel.getAllEvents(function (error, events) {
-    //     if (error) { 
-    //       console.error(error); 
-    //     }
-    //     res.send({
-    //       events: events
-    //     })
-    //   })
-    })
+  })
 
   // Create new event
-  app.post('/api/events', (req, res) => {
-    var db = req.db;
+  app.post('/api/events', async (req, res) => {
     var newEvent = {
       title: req.body.title,
       date: req.body.date,
       description: req.body.description,
       fbPage: req.body.fbPage
     }
-  
-    EventModel.addEvent(newEvent, function (error, event) {
-      if (error) {
-        res.status(500).send({ error: 'Error while saving event' })
-        return
-      }
+    try {
+      let event = await EventModel.addEvent(newEvent)
       res.send({
         success: true,
         event,
         message: 'Event saved successfully!'
       })
-    })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while saving event' })
+    }
   })
 
   // Upload a picture
@@ -102,7 +91,7 @@ module.exports = function(app, db) {
   })
   
   // Delete an event
-  app.delete('/api/events/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  app.delete('/api/events/:id', (req, res) => {
     var db = req.db;
     EventModel.deleteEvent({_id: req.params.id}, function(err, event) {
       if (err)
