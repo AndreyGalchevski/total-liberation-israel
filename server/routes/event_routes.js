@@ -68,24 +68,18 @@ module.exports = function(app, db) {
   })
   
   // Update an event
-  app.put('/api/events/:id', (req, res) => {
-    var db = req.db;
-    EventModel.findById(req.params.id, 'title date description fbPage', function (error, event) {
-      if (error) { console.error(error); }
-      
+  app.put('/api/events/:id', async (req, res) => {
+    try {
+      let event = await EventModel.getEventById(req.params.id)
       event.title = req.body.title
       event.date = req.body.date
       event.description = req.body.description
       event.fbPage = req.body.fbPage
-      event.save(function (error) {
-        if (error) {
-          console.log(error)
-        }
-        res.send({
-          success: true
-        })
-      })
-    })
+      event.save()
+      res.send({ success: true })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while updating an event' })
+    } 
   })
 
   // Delete an event

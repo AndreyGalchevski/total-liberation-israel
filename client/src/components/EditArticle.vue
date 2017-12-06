@@ -41,7 +41,8 @@ export default {
       author: '',
       date: '',
       lead: '',
-      content: ''
+      content: '',
+      newImage: ''
     }
   },
   mounted () {
@@ -68,16 +69,19 @@ export default {
         lead: this.lead,
         content: this.content
       })
-      if (response.data.success && response.data.image === '') {
+      if (response.data.success && this.newImage) {
         await ArticlesService.uploadArticleImage({
           id: this.$route.params.id,
-          image: this.image
+          image: this.newImage
         })
       }
       this.$router.push({ name: 'ManageArticles' })
     },
-    changeImage (article) {
-      this.image = article.target.files[0]
+    changeImage (event) {
+      if (event.target.files[0]) {
+        this.newImage = event.target.files[0]
+        this.image = this.newImage
+      }
     }
   }
 }

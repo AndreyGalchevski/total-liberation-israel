@@ -12,7 +12,7 @@ var EventSchema = new Schema({
 var EventModel = mongoose.model("Event", EventSchema);
 module.exports = EventModel;
 
-module.exports.addEvent = function(newEvent, callback) {
+module.exports.addEvent = function(newEvent) {
   var new_event = new EventModel({
     title: newEvent.title,
     date: newEvent.date,

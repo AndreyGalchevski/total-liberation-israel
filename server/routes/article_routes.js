@@ -6,20 +6,17 @@ const fs = require('fs')
 
 module.exports = function(app, db) {
   // Fetch all articles
-  app.get('/api/articles', (req, res) => {
-    ArticleModel.getAllArticles(function (error, articles) {
-        if (error) { 
-          console.error(error); 
-        }
-        res.send({
-          articles: articles
-        })
-      })
+  app.get('/api/articles', async (req, res) => {
+    try {
+      let articles = await ArticleModel.getAllArticles()
+      res.send({ articles: articles })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while fetching events' })
+    }
     })
 
   // Create new article
-  app.post('/api/articles', (req, res) => {
-    var db = req.db;
+  app.post('/api/articles', async (req, res) => {
     var newArticle = {
       title: req.body.title,
       author: req.body.author,
@@ -27,18 +24,16 @@ module.exports = function(app, db) {
       lead: req.body.lead,
       content: req.body.content
     }
-  
-    ArticleModel.addArticle(newArticle, function (error, article) {
-      if (error) {
-        res.status(500).send({ error: 'Error while saving article' })
-        return
-      }
+    try {
+      let article = await ArticleModel.addArticle(newArticle)
       res.send({
         success: true,
         article,
         message: 'Article saved successfully!'
       })
-    })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while saving article' })
+    }
   })
 
   // Upload a picture
@@ -64,47 +59,39 @@ module.exports = function(app, db) {
   })
 
   // Fetch single article
-  app.get('/api/article/:id', (req, res) => {
-    var db = req.db;
-    ArticleModel.getArticleById(req.params.id, function (error, article) {
-      if (error) { 
-        console.error(error); 
-      }
+  app.get('/api/article/:id', async (req, res) => {
+    try {
+      let article = await ArticleModel.getArticleById(req.params.id)
       res.send(article)
-    })
+
+    } catch (e) {
+      res.status(500).send({ error: 'Error while fetching an article' })
+    }
   })
   
   // Update an article
-  app.put('/api/articles/:id', (req, res) => {
-    var db = req.db;
-    ArticleModel.findById(req.params.id, 'title date description fbPage', function (error, article) {
-      if (error) { console.error(error); }
-  
+  app.put('/api/articles/:id', async (req, res) => {
+    try {
+      let article = await ArticleModel.findById(req.params.id)
       article.title = req.body.title
       article.author = req.body.author
       article.date = req.body.date
       article.lead = req.body.lead
       article.content = req.body.content
-      article.save(function (error) {
-        if (error) {
-          console.log(error)
-        }
-        res.send({
-          success: true
-        })
-       })
-    })
+      article.save()
+      res.send({ success: true })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while updating an article' })
+    }
   })
   
   // Delete an article
-  app.delete('/api/articles/:id', (req, res) => {
-    var db = req.db;
-    ArticleModel.deleteArticle({_id: req.params.id}, function(err, article) {
-      if (err)
-        res.send(err)
-      res.send({
-        success: true
-      })
-    })
+  app.delete('/api/articles/:id', async (req, res) => {
+    try {
+      let article = await ArticleModel.deleteArticle({_id: req.params.id})
+      res.send({ success: true })
+    } catch (e) {
+      res.status(500).send({ error: 'Error while deleting an article' })
+    }
   })  
 };

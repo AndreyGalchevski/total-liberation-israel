@@ -37,7 +37,8 @@ export default {
       title: '',
       date: '',
       description: '',
-      fbPage: ''
+      fbPage: '',
+      newImage: ''
     }
   },
   mounted () {
@@ -62,16 +63,19 @@ export default {
         description: this.description,
         fbPage: this.fbPage
       })
-      if (response.data.success && response.data.image === '') {
+      if (response.data.success && this.newImage) {
         await EventsService.uploadEventImage({
           id: this.$route.params.id,
-          image: this.image
+          image: this.newImage
         })
       }
       this.$router.push({ name: 'ManageEvents' })
     },
     changeImage (event) {
-      this.image = event.target.files[0]
+      if (event.target.files[0]) {
+        this.newImage = event.target.files[0]
+        this.image = this.newImage
+      }
     }
   }
 }

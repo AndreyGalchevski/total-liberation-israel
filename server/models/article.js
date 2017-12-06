@@ -13,7 +13,7 @@ var ArticleSchema = new Schema({
 var ArticleModel = mongoose.model("Article", ArticleSchema);
 module.exports = ArticleModel;
 
-module.exports.addArticle = function(newArticle, callback) {
+module.exports.addArticle = function(newArticle) {
   var new_article = new ArticleModel({
     title: newArticle.title,
     author: newArticle.author,
@@ -21,17 +21,17 @@ module.exports.addArticle = function(newArticle, callback) {
     lead: newArticle.lead,
     content: newArticle.content
   })
-  new_article.save(callback);
+  return new_article.save();
 }
 
-module.exports.getAllArticles = function(callback) {
-  ArticleModel.find(callback).sort({_id:-1});
+module.exports.getAllArticles = function() {
+  return ArticleModel.find().sort({_id:-1});
 }
 
-module.exports.getArticleById = function(articleIdToGet, callback) {
-  ArticleModel.findById(articleIdToGet, callback);
+module.exports.getArticleById = function(articleIdToGet) {
+  return ArticleModel.findById(articleIdToGet);
 }
 
-module.exports.deleteArticle = function(query, callback) {
-  ArticleModel.remove(query, callback);
+module.exports.deleteArticle = function(query) {
+  return ArticleModel.remove(query);
 }
