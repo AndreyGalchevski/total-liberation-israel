@@ -72,11 +72,11 @@ export default {
 }
 .social-links-icon {
   padding-top: 2px; 
-  padding-left: 15px;
+  padding-left: 5px;
 }
 .fb-share-btn {
   padding-top: 10px; 
-  padding-left: 15px;
+  padding-left: 30px;
 }
 .my-icon {
   font-size: 35px;

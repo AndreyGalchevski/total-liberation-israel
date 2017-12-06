@@ -11,6 +11,7 @@ import ManageArticles from '@/components/ManageArticles'
 import NewArticle from '@/components/NewArticle'
 import EditArticle from '@/components/EditArticle'
 import Article from '@/components/Article'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
       path: '/article/:id',
       name: 'Acticle',
       component: Article
+    },
+    {
+      path: '/login/',
+      name: 'Login',
+      component: Login
     }
   ]
 })

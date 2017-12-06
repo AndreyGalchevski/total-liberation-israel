@@ -12,10 +12,6 @@
               <p class="card-text">{{ getDate(article.date) }}</p>
               <b><p class="card-text">{{ article.lead }}</p></b>
               <br>
-              <!--p class="card-text">
-                <button type="button" class="btn btn-primary" data-toggle="collapse" :data-target="'#articleContent' + index">קרא עוד</button>
-                <p :id="'articleContent' + index" class="collapse">{{ article.content }}</p>
-              </p-->
               <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
             </div>
           </div>
