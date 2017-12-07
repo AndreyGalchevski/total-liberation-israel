@@ -22,6 +22,12 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/glasswalls">קירות שקופים</router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/login" v-if="!isLoggedIn">Login</router-link>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" v-if="isLoggedIn" @click="logout">Logout</a> 
+        </li>
       </ul>
         <!--Social links-->
       <ul class="navbar-nav mr-auto">
@@ -54,9 +60,14 @@
 <script>
 export default {
   name: 'navbar',
-  data () {
-    return {
-      msg: 'This is navbar'
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
+    }
+  },
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters.isLoggedIn
     }
   }
 }

@@ -10,6 +10,7 @@ import Walls from './components/Walls'
 import ManageEvents from './components/ManageEvents'
 import EditEvent from './components/EditEvent'
 import NewEvent from './components/NewEvent'
+import { store } from './store/index'
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {
     App,
