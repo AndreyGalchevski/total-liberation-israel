@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="articles">
-      <h1>ניהול מאמרים</h1>
+      <br>
       <div v-if="articles.length > 0">
         <div>
           <router-link v-bind:to="{ name: 'NewArticle' }" class="btn btn-danger">מאמר חדש</router-link>
@@ -9,7 +9,7 @@
         <br>
         <div class="table-responsive">
           <table class="table table-striped">
-            <thead class="bg-primary">
+            <thead class="bg-secondary">
               <tr>
                 <td>כותרת</td>
                 <td>תאריך</td>

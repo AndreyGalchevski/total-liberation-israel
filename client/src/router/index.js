@@ -12,6 +12,8 @@ import NewArticle from '@/components/NewArticle'
 import EditArticle from '@/components/EditArticle'
 import Article from '@/components/Article'
 import Login from '@/components/Login'
+import Admin from '@/components/Admin'
+import {store} from '@/store'
 
 Vue.use(Router)
 
@@ -34,44 +36,58 @@ export default new Router({
       component: Articles
     },
     {
+      path: '/article/:id',
+      name: 'Acticle',
+      component: Article
+    },
+    {
       path: '/glasswalls',
       name: 'Walls',
       component: Walls
     },
     {
-      path: '/admin/events',
-      name: 'ManageEvents',
-      component: ManageEvents
-    },
-    {
-      path: '/admin/events/new',
-      name: 'NewEvent',
-      component: NewEvent
-    },
-    {
-      path: '/admin/events/:id',
-      name: 'EditEvent',
-      component: EditEvent
-    },
-    {
-      path: '/admin/articles',
-      name: 'ManageArticles',
-      component: ManageArticles
-    },
-    {
-      path: '/admin/articles/new',
-      name: 'NewArticle',
-      component: NewArticle
-    },
-    {
-      path: '/admin/articles/:id',
-      name: 'EditArticle',
-      component: EditArticle
-    },
-    {
-      path: '/article/:id',
-      name: 'Acticle',
-      component: Article
+      path: '/admin',
+      name: 'Admin',
+      component: Admin,
+      beforeEnter: (to, from, next) => {
+        if (store.getters.isLoggedIn) {
+          next()
+        } else {
+          next({ name: 'Login' })
+        }
+      },
+      children: [
+        {
+          path: 'events',
+          name: 'ManageEvents',
+          component: ManageEvents
+        },
+        {
+          path: 'events/new',
+          name: 'NewEvent',
+          component: NewEvent
+        },
+        {
+          path: 'events/:id',
+          name: 'EditEvent',
+          component: EditEvent
+        },
+        {
+          path: 'articles',
+          name: 'ManageArticles',
+          component: ManageArticles
+        },
+        {
+          path: 'articles/new',
+          name: 'NewArticle',
+          component: NewArticle
+        },
+        {
+          path: 'articles/:id',
+          name: 'EditArticle',
+          component: EditArticle
+        }
+      ]
     },
     {
       path: '/login/',

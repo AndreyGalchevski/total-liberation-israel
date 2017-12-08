@@ -22,16 +22,10 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/glasswalls">קירות שקופים</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/login" v-if="!isLoggedIn">Login</router-link>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" v-if="isLoggedIn" @click="logout">Logout</a> 
-        </li>
       </ul>
         <!--Social links-->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item social-links-icon" >
+        <li class="nav-item social-links-icon">
           <a href="https://www.facebook.com/Alfront">
             <i class="fa fa-facebook my-icon"></i>
           </a>
@@ -50,7 +44,13 @@
           <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FAlfront&width=50&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId" 
             width="100" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true">
           </iframe>
-        </li>  
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/login" v-if="!isLoggedIn">התחברות</router-link>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" v-if="isLoggedIn" @click="logout">יציאה</a> 
+        </li>
       </ul>
     </div>
   </nav>
@@ -83,7 +83,8 @@ export default {
 }
 .social-links-icon {
   padding-top: 2px; 
-  padding-left: 5px;
+  padding-left:10px; 
+  padding-right: 10px;
 }
 .fb-share-btn {
   padding-top: 10px; 

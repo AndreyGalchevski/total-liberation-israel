@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="events">
-      <h1>ניהול אירועים</h1>
+      <br>
       <div v-if="events.length > 0">
         <div>
           <router-link v-bind:to="{ name: 'NewEvent' }" class="btn btn-danger">אירוע חדש</router-link>
@@ -9,7 +9,7 @@
         <br>
         <div class="table-responsive">
           <table class="table table-striped">
-            <thead class="bg-primary">
+            <thead class="bg-secondary">
               <tr>
                 <td>כותרת</td>
                 <td>תאריך</td>

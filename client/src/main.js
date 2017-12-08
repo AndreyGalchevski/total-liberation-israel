@@ -10,6 +10,7 @@ import Walls from './components/Walls'
 import ManageEvents from './components/ManageEvents'
 import EditEvent from './components/EditEvent'
 import NewEvent from './components/NewEvent'
+import Admin from '@/components/Admin'
 import { store } from './store/index'
 
 Vue.config.productionTip = false
@@ -28,6 +29,7 @@ new Vue({
     Walls,
     ManageEvents,
     EditEvent,
-    NewEvent
+    NewEvent,
+    Admin
   }
 })

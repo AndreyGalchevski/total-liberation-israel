@@ -83,12 +83,12 @@ module.exports = function(app, db) {
   })
 
   // Delete an event
-  app.delete('/api/events/:id', async (req, res) => {
+  app.delete('/api/events/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let event = await EventModel.deleteEvent({_id: req.params.id})
       res.send({ success: true })
     } catch (e) {
       res.status(500).send({ error: 'Error while deleting an event' })
     }
-  })    
+  })
 };

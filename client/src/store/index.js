@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import AuthService from '../services/AuthService'
 
 const LOGIN = 'LOGIN'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -12,15 +13,17 @@ export const store = new Vuex.Store({
     isLoggedIn: !!localStorage.getItem('token')
   },
   actions: {
-    login ({ commit }, creds) {
-      commit(LOGIN) // show spinner
-      return new Promise(resolve => {
-        setTimeout(() => {
-          localStorage.setItem('token', 'JWT')
+    async login ({ commit }, creds) {
+      try {
+        commit(LOGIN) // show spinner
+        const response = await AuthService.authenticateUser(creds)
+        if (response.data.success) {
+          localStorage.setItem('token', response.data.token)
           commit(LOGIN_SUCCESS)
-          resolve()
-        }, 1000)
-      })
+        }
+      } catch (e) {
+        console.log(`Error while logging in. ${e}`)
+      }
     },
     logout ({ commit }) {
       localStorage.removeItem('token')
