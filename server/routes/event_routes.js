@@ -17,7 +17,7 @@ module.exports = function(app, db) {
   })
   
   // Create new event
-  app.post('/api/events', async (req, res) => {
+  app.post('/api/events', passport.authenticate('jwt', {session: false}), async (req, res) => {
     var newEvent = {
       title: req.body.title,
       date: req.body.date,
@@ -37,7 +37,7 @@ module.exports = function(app, db) {
   })
   
   // Upload a picture
-  app.patch('/api/events/:id/image', upload.fields([{ name: 'eventImg', maxCount: 1 }]), async (req, res) => {
+  app.patch('/api/events/:id/image', upload.fields([{ name: 'eventImg', maxCount: 1 }]), passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let result = await cloudinary.v2.uploader.upload(req.files.eventImg[0].path, {
         folder: 'alf-israel/events'
@@ -58,7 +58,7 @@ module.exports = function(app, db) {
     }
   })
   // Fetch single event
-  app.get('/api/event/:id', async (req, res) => {
+  app.get('/api/event/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let event = await EventModel.getEventById(req.params.id)
       res.send(event)
@@ -68,7 +68,7 @@ module.exports = function(app, db) {
   })
   
   // Update an event
-  app.put('/api/events/:id', async (req, res) => {
+  app.put('/api/events/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let event = await EventModel.getEventById(req.params.id)
       event.title = req.body.title

@@ -6,12 +6,13 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">{{ title }}</h3>
+              <h3 class="card-title"><b>{{ title }}</b></h3>
+              <h6 class="card-text"><b>{{ lead }}</b></h6>
+              <br>
+              <h6 class="card-text">פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
+              <br>
               <img class="rounded my-card-img" :src = "image" alt="Card image">
               <br><br>
-              <h5 class="card-title">{{ author }}</h5>
-              <p class="card-text">{{ getDate(date) }}</p>
-              <p class="card-text"><b>{{ lead }}</b></p>
               <br>
               <p class="card-text">
                 <a href="#">
@@ -25,7 +26,7 @@
                 </a>
               </p>
               <br>
-              <p class="card-text">{{ content }}</p>
+              <p class="card-text myContent">{{ content }}</p>
             </div>
           </div>
         </div>
@@ -65,7 +66,7 @@ export default {
       this.content = response.data.content
     },
     getDate: function (date) {
-      return moment(date).format('DD-MM-YYYY')
+      return moment(date).format('DD.MM.YYYY')
     }
   }
 }
@@ -78,10 +79,13 @@ export default {
 }
 .my-icon {
   font-size: 35px;
-  color: #4d4d4d;
+  color: #007bff;
 }
 .fa-envelope-o {
   padding-right: 50px;
   padding-left: 50px;
+}
+.myContent {
+  white-space:pre-wrap;
 }
 </style>

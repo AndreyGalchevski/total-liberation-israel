@@ -3,6 +3,7 @@ const multer = require('multer')
 const upload = multer({ dest: 'tmp/' })
 const cloudinary = require('cloudinary')
 const fs = require('fs')
+const passport = require('passport')
 
 module.exports = function(app, db) {
   // Fetch all articles
@@ -16,7 +17,7 @@ module.exports = function(app, db) {
     })
 
   // Create new article
-  app.post('/api/articles', async (req, res) => {
+  app.post('/api/articles', passport.authenticate('jwt', {session: false}), async (req, res) => {
     var newArticle = {
       title: req.body.title,
       author: req.body.author,
@@ -37,7 +38,7 @@ module.exports = function(app, db) {
   })
 
   // Upload a picture
-  app.patch('/api/articles/:id/image', upload.fields([{ name: 'articleImg', maxCount: 1 }]), async (req, res) => {
+  app.patch('/api/articles/:id/image', upload.fields([{ name: 'articleImg', maxCount: 1 }]), passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let result = await cloudinary.v2.uploader.upload(req.files.articleImg[0].path, {
         folder: 'alf-israel/articles'
@@ -59,7 +60,7 @@ module.exports = function(app, db) {
   })
 
   // Fetch single article
-  app.get('/api/article/:id', async (req, res) => {
+  app.get('/api/article/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let article = await ArticleModel.getArticleById(req.params.id)
       res.send(article)
@@ -70,7 +71,7 @@ module.exports = function(app, db) {
   })
   
   // Update an article
-  app.put('/api/articles/:id', async (req, res) => {
+  app.put('/api/articles/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let article = await ArticleModel.findById(req.params.id)
       article.title = req.body.title
@@ -86,7 +87,7 @@ module.exports = function(app, db) {
   })
   
   // Delete an article
-  app.delete('/api/articles/:id', async (req, res) => {
+  app.delete('/api/articles/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let article = await ArticleModel.deleteArticle({_id: req.params.id})
       res.send({ success: true })

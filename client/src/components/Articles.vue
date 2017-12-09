@@ -7,10 +7,8 @@
           <div class="card">
             <img class="card-img-top" :src="article.image" alt="Card image">
             <div class="card-body">
-              <h3 class="card-title">{{ article.title }}</h3>
-              <h5 class="card-title">{{ article.author }}</h5>
-              <p class="card-text">{{ getDate(article.date) }}</p>
-              <b><p class="card-text">{{ article.lead }}</p></b>
+              <h4 class="card-title">{{ article.title }}</h4>
+              <p class="card-text">{{ article.lead }}</p>
               <br>
               <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
             </div>

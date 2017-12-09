@@ -4,7 +4,7 @@ const UserModel = require('../models/user')
 
 module.exports = function(app, db) {
 
-  // Fetch single user by Id 
+  /* Fetch single user by Id 
   app.get('/api/user/:id', (req, res) => {
     var db = req.db;
     UserModel.getUserById(req.params.id, function (error, user) {
@@ -13,7 +13,7 @@ module.exports = function(app, db) {
       }
       res.send(user)
     })
-  })
+  })*/
   
   //Authenticate user
   app.post('/api/authenticate', (req, res) => {
@@ -25,9 +25,7 @@ module.exports = function(app, db) {
         return res.json({success: false, msg: 'User not found'})
       }
       if (password === user.password) {
-        const token = jwt.sign(user, dbConfig.secret, {
-          expiresIn: 604800
-        })
+        const token = jwt.sign(user, dbConfig.secret)
 
         res.json({
           success: true,

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <br>
     <h1>עדכון מאמר</h1>
     <div class="form">
       <div class="form-group">
