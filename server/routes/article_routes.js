@@ -60,7 +60,7 @@ module.exports = function(app, db) {
   })
 
   // Fetch single article
-  app.get('/api/article/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.get('/api/article/:id', async (req, res) => {
     try {
       let article = await ArticleModel.getArticleById(req.params.id)
       res.send(article)

@@ -8,8 +8,8 @@
         </div>
         <br>
         <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="bg-secondary">
+          <table class="table table">
+            <thead class="bg-light">
               <tr>
                 <td>כותרת</td>
                 <td>תאריך</td>

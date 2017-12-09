@@ -18,7 +18,7 @@ export default {
     return Api.patch(`api/articles/${params.id}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
   },
   getArticle (params) {
-    return Api.get(`api/article/${params.id}`, { headers: { Authorization: localStorage.getItem('token') } })
+    return Api.get(`api/article/${params.id}`)
   },
   deleteArticle (id) {
     return Api.delete(`api/articles/${id}`, { headers: { Authorization: localStorage.getItem('token') } })

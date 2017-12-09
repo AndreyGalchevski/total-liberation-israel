@@ -13,6 +13,7 @@
               <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
             </div>
           </div>
+          <br>
         </div>
       </div>
     </div>

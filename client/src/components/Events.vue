@@ -10,9 +10,11 @@
               <h4 class="card-title">{{ event.title }}</h4>
               <p class="card-text">{{ getDate(event.date) }}</p>
               <p class="card-text">{{ event.description }}</p>
-              <a :href="event.fbPage" class="card-link">עמוד האירוע בפייסבוק</a>
+              <a :href="event.fbPage" class="card-link">לדף האירוע ב- <i class="fa fa-facebook-official"></i></a>
+                
             </div>
           </div>
+          <br>
         </div>
       </div>
     </div>
