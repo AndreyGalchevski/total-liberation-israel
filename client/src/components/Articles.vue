@@ -3,17 +3,17 @@
     <div class="articles">
       <br>
       <div class="row">
-        <div class="col-md-6" v-for="(article, index) in articles">
+        <div class="col-md-6 card-deck" v-for="(article, index) in articles">
           <div class="card">
             <img class="card-img-top" :src="article.image" alt="Card image">
             <div class="card-body">
               <h4 class="card-title">{{ article.title }}</h4>
               <p class="card-text">{{ article.lead }}</p>
-              <br>
+            </div>
+            <div class="card-footer">
               <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
             </div>
           </div>
-          <br>
         </div>
       </div>
     </div>

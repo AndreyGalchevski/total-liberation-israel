@@ -26,8 +26,9 @@ export default {
 }
 
 body { 
-  padding-top: 90px; 
-}
+  padding-top: 90px;
+  padding-bottom: 30px;
+} 
 
 @media (max-width: 970px) {
     body {
