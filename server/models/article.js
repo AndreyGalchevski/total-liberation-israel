@@ -33,5 +33,5 @@ module.exports.getArticleById = function(articleIdToGet) {
 }
 
 module.exports.deleteArticle = function(query) {
-  return ArticleModel.remove(query);
+  return ArticleModel.findOneAndRemove(query);
 }

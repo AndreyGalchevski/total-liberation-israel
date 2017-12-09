@@ -31,5 +31,5 @@ module.exports.getEventById = function(eventIdToGet) {
 }
 
 module.exports.deleteEvent = function(query) {
-  return EventModel.remove(query)
+  return EventModel.findOneAndRemove(query)
 }

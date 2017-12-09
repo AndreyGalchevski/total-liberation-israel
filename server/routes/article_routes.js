@@ -79,6 +79,8 @@ module.exports = function(app, db) {
       article.date = req.body.date
       article.lead = req.body.lead
       article.content = req.body.content
+      let public_id = 'alf-israel/articles/' + article.image.substr(-24, 20)
+      let result = await cloudinary.v2.uploader.destroy(public_id)
       article.save()
       res.send({ success: true })
     } catch (e) {
@@ -90,6 +92,8 @@ module.exports = function(app, db) {
   app.delete('/api/articles/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let article = await ArticleModel.deleteArticle({_id: req.params.id})
+      let public_id = 'alf-israel/articles/' + article.image.substr(-24, 20)
+      let result = await cloudinary.v2.uploader.destroy(public_id)
       res.send({ success: true })
     } catch (e) {
       res.status(500).send({ error: 'Error while deleting an article' })
