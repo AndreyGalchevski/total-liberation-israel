@@ -78,6 +78,9 @@ export default {
         this.image = this.newImage
       }
     }
+  },
+  metaInfo: {
+    title: 'עריכת אירוע'
   }
 }
 </script>

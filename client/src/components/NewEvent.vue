@@ -60,6 +60,9 @@ export default {
     changeImage (event) {
       this.image = event.target.files[0]
     }
+  },
+  metaInfo: {
+    title: 'אירוע חדש'
   }
 }
 </script>

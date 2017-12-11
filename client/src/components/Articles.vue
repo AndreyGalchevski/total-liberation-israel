@@ -41,6 +41,9 @@ export default {
     getDate: function (date) {
       return moment(date).format('DD-MM-YYYY')
     }
+  },
+  metaInfo: {
+    title: 'מאמרים'
   }
 }
 </script>

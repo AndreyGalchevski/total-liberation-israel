@@ -14,8 +14,10 @@ import Article from '@/components/Article'
 import Login from '@/components/Login'
 import Admin from '@/components/Admin'
 import {store} from '@/store'
+import Meta from 'vue-meta'
 
 Vue.use(Router)
+Vue.use(Meta)
 
 export default new Router({
   mode: 'history',

@@ -71,6 +71,9 @@ export default {
         }
       ]
     }
+  },
+  metaInfo: {
+    title: 'חדשות החזית'
   }
 }
 </script>

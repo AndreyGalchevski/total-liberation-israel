@@ -12,6 +12,9 @@ export default {
     return {
       msg: 'Walls page'
     }
+  },
+  metaInfo: {
+    title: 'קירות שקופים'
   }
 }
 </script>

@@ -65,6 +65,9 @@ export default {
     changeImage (article) {
       this.image = article.target.files[0]
     }
+  },
+  metaInfo: {
+    title: 'מאמר חדש'
   }
 }
 </script>

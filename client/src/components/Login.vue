@@ -31,6 +31,9 @@ export default {
         this.$router.push('/admin')
       })
     }
+  },
+  metaInfo: {
+    title: 'התחברות'
   }
 }
 </script>

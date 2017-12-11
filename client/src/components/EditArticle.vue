@@ -84,6 +84,9 @@ export default {
         this.image = this.newImage
       }
     }
+  },
+  metaInfo: {
+    title: 'עריכת מאמר'
   }
 }
 </script>
