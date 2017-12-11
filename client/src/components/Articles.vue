@@ -2,6 +2,7 @@
   <div class="container">
     <div class="articles">
       <br>
+      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div class="row">
         <div class="col-md-6 card-deck" v-for="(article, index) in articles">
           <div class="card">
@@ -27,7 +28,8 @@ export default {
   name: 'articles',
   data () {
     return {
-      articles: []
+      articles: [],
+      loading: false
     }
   },
   mounted () {
@@ -35,8 +37,10 @@ export default {
   },
   methods: {
     async getArticles () {
+      this.loading = true
       const response = await ArticlesService.fetchArticles()
       this.articles = response.data.articles
+      this.loading = false
     },
     getDate: function (date) {
       return moment(date).format('DD-MM-YYYY')

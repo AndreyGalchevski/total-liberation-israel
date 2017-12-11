@@ -2,6 +2,7 @@
   <div class="container">
     <div class="articles">
       <br>
+      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div v-if="articles.length > 0">
         <div>
           <router-link v-bind:to="{ name: 'NewArticle' }" class="btn btn-danger">מאמר חדש</router-link>
@@ -48,7 +49,8 @@ export default {
   name: 'ManageArticles',
   data () {
     return {
-      articles: []
+      articles: [],
+      loading: false
     }
   },
   mounted () {
@@ -56,13 +58,17 @@ export default {
   },
   methods: {
     async getArticles () {
+      this.loading = true
       const response = await ArticlesService.fetchArticles()
       this.articles = response.data.articles
+      this.loading = false
     },
     async deleteArticle (id) {
+      this.loading = true
       await ArticlesService.deleteArticle(id)
       this.getArticles()
       this.$router.push({ name: 'ManageArticles' })
+      this.loading = false
     },
     getDate: function (date) {
       return moment(date).format('DD-MM-YYYY')

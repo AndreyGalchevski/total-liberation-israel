@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <br>
+    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
     <h1>מאמר חדש</h1>
     <div class="form">
       <div class="form-group">
@@ -39,11 +40,13 @@ export default {
       date: '',
       lead: '',
       content: '',
-      image: ''
+      image: '',
+      loading: false
     }
   },
   methods: {
     async addArticle () {
+      this.loading = true
       const response = await ArticlesService.addArticle({
         title: this.title,
         author: this.author,
@@ -60,6 +63,7 @@ export default {
       }
 
       this.$router.push({ name: 'ManageArticles' })
+      this.loading = false
     },
 
     changeImage (article) {

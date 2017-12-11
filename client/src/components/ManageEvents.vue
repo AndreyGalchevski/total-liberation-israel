@@ -2,6 +2,7 @@
   <div class="container">
     <div class="events">
       <br>
+      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div v-if="events.length > 0">
         <div>
           <router-link v-bind:to="{ name: 'NewEvent' }" class="btn btn-danger">אירוע חדש</router-link>
@@ -48,7 +49,8 @@ export default {
   name: 'ManageEvents',
   data () {
     return {
-      events: []
+      events: [],
+      loading: false
     }
   },
   mounted () {
@@ -56,13 +58,17 @@ export default {
   },
   methods: {
     async getEvents () {
+      this.loading = true
       const response = await EventsService.fetchEvents()
       this.events = response.data.events
+      this.loading = false
     },
     async deleteEvent (id) {
+      this.loading = true
       await EventsService.deleteEvent(id)
       this.getEvents()
       this.$router.push({ name: 'ManageEvents' })
+      this.loading = true
     },
     getDate: function (date) {
       return moment(date).format('DD-MM-YYYY')

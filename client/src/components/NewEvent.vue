@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <br>
+    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
     <h1>אירוע חדש</h1>
     <div class="form">
       <div class="form-group">
@@ -35,11 +36,13 @@ export default {
       date: '',
       description: '',
       fbPage: '',
-      image: ''
+      image: '',
+      loading: false
     }
   },
   methods: {
     async addEvent () {
+      this.loading = true
       const response = await EventsService.addEvent({
         title: this.title,
         date: this.date,
@@ -55,6 +58,7 @@ export default {
       }
 
       this.$router.push({ name: 'ManageEvents' })
+      this.loading = false
     },
 
     changeImage (event) {

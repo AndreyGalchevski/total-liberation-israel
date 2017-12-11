@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <br>
+    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
     <h1>עריכת אירוע</h1>
     <div class="form">
       <div class="form-group">
@@ -39,7 +40,8 @@ export default {
       date: '',
       description: '',
       fbPage: '',
-      newImage: ''
+      newImage: '',
+      loading: false
     }
   },
   mounted () {
@@ -47,6 +49,7 @@ export default {
   },
   methods: {
     async getEvent () {
+      this.loading = true
       const response = await EventsService.getEvent({
         id: this.$route.params.id
       })
@@ -55,8 +58,10 @@ export default {
       this.date = response.data.date
       this.description = response.data.description
       this.fbPage = response.data.fbPage
+      this.loading = false
     },
     async updateEvent () {
+      this.loading = true
       const response = await EventsService.updateEvent({
         id: this.$route.params.id,
         title: this.title,
@@ -71,6 +76,7 @@ export default {
         })
       }
       this.$router.push({ name: 'ManageEvents' })
+      this.loading = false
     },
     changeImage (event) {
       if (event.target.files[0]) {

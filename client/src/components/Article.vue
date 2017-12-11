@@ -2,6 +2,7 @@
   <div class="container">
     <div class="article">
       <br>
+      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -47,7 +48,8 @@ export default {
       author: '',
       date: '',
       lead: '',
-      content: ''
+      content: '',
+      loading: false
     }
   },
   mounted () {
@@ -55,6 +57,7 @@ export default {
   },
   methods: {
     async getArticle () {
+      this.loading = true
       const response = await ArticlesService.getArticle({
         id: this.$route.params.id
       })
@@ -64,6 +67,7 @@ export default {
       this.date = response.data.date
       this.lead = response.data.lead
       this.content = response.data.content
+      this.loading = false
     },
     getDate: function (date) {
       return moment(date).format('DD.MM.YYYY')

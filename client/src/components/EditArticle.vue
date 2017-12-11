@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <br>
+    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
     <h1>עדכון מאמר</h1>
     <div class="form">
       <div class="form-group">
@@ -43,7 +44,8 @@ export default {
       date: '',
       lead: '',
       content: '',
-      newImage: ''
+      newImage: '',
+      loading: false
     }
   },
   mounted () {
@@ -51,6 +53,7 @@ export default {
   },
   methods: {
     async getArticle () {
+      this.loading = true
       const response = await ArticlesService.getArticle({
         id: this.$route.params.id
       })
@@ -60,8 +63,10 @@ export default {
       this.date = response.data.date
       this.lead = response.data.lead
       this.content = response.data.content
+      this.loading = false
     },
     async updateArticle () {
+      this.loading = true
       const response = await ArticlesService.updateArticle({
         id: this.$route.params.id,
         title: this.title,
@@ -77,6 +82,7 @@ export default {
         })
       }
       this.$router.push({ name: 'ManageArticles' })
+      this.loading = false
     },
     changeImage (event) {
       if (event.target.files[0]) {

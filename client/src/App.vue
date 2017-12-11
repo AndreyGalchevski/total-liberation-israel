@@ -28,6 +28,10 @@ export default {
 body { 
   padding-top: 90px;
   padding-bottom: 30px;
+}
+
+.fa-spinner {
+  font-size:50px;
 } 
 
 @media (max-width: 970px) {

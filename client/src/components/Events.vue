@@ -2,6 +2,7 @@
   <div class="container">
     <div class="events">
       <br>
+      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div class="row">
         <div class="col-md-4 card-deck" v-for="event in events">
           <div class="card">
@@ -29,7 +30,8 @@ export default {
   name: 'events',
   data () {
     return {
-      events: []
+      events: [],
+      loading: false
     }
   },
   mounted () {
@@ -37,8 +39,10 @@ export default {
   },
   methods: {
     async getEvents () {
+      this.loading = true
       const response = await EventsService.fetchEvents()
       this.events = response.data.events
+      this.loading = false
     },
     getDate: function (date) {
       return moment(date).format('DD-MM-YYYY')

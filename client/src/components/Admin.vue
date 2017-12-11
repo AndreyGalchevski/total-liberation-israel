@@ -14,8 +14,6 @@
 <script>
 export default {
   name: 'admin',
-  data () {
-  },
   metaInfo: {
     title: 'ניהול מידע'
   }
