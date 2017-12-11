@@ -6,7 +6,7 @@ import router from './router'
 import Navbar from './components/Navbar'
 import Events from './components/Events'
 import Articles from './components/Articles'
-import Walls from './components/Walls'
+import Contact from './components/Contact'
 import ManageEvents from './components/ManageEvents'
 import EditEvent from './components/EditEvent'
 import NewEvent from './components/NewEvent'
@@ -26,7 +26,7 @@ new Vue({
     Navbar,
     Events,
     Articles,
-    Walls,
+    Contact,
     ManageEvents,
     EditEvent,
     NewEvent,

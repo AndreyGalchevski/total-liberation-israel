@@ -20,7 +20,16 @@
             <router-link class="nav-link" to="/articles">מאמרים</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/glasswalls">קירות שקופים</router-link>
+            <a href="https://www.glass-walls.com/" class="nav-link" target="_blank">קירות שקופים</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" class="nav-link" target="_blank">חנות</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" class="nav-link" target="_blank">תרומה</a>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contact">צור קשר</router-link>
           </li>
         </ul>
         <!--Social links-->

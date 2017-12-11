@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Events from '@/components/Events'
 import Articles from '@/components/Articles'
-import Walls from '@/components/Walls'
+import Contact from '@/components/Contact'
 import ManageEvents from '@/components/ManageEvents'
 import NewEvent from '@/components/NewEvent'
 import EditEvent from '@/components/EditEvent'
@@ -43,9 +43,9 @@ export default new Router({
       component: Article
     },
     {
-      path: '/glasswalls',
-      name: 'Walls',
-      component: Walls
+      path: '/contact',
+      name: 'Contact',
+      component: Contact
     },
     {
       path: '/admin',
