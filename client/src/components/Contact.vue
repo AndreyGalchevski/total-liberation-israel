@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     reversedMessage: function () {
-      return 'mailto:andreygalchevski@gmail.com?subject=' + this.subject + '&body=' + this.body
+      return 'mailto:glasswallsisrael@gmail.com?subject=' + this.subject + '&body=' + this.body
     }
   },
   metaInfo: {
