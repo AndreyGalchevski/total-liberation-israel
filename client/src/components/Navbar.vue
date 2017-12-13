@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-      <a class="navbar-brand" href="#">
+      <router-link class="navbar-brand" to="/">
         <img src="../assets/logo/trans.png">
-      </a>
+      </router-link>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>                        
       </button>

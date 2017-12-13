@@ -4,18 +4,17 @@
       <br>
       <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title"><b>{{ title }}</b></h3>
-              <h6 class="card-text"><b>{{ lead }}</b></h6>
+        <div class=".col-md-6 .offset-md-3 my-card">
+              <h3 ><b>{{ title }}</b></h3>
               <br>
-              <h6 class="card-text">פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
+              <h6 ><b>{{ lead }}</b></h6>
+              <br>
+              <h6 >פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
               <br>
               <img class="rounded my-card-img" :src = "image" alt="Card image">
               <br><br>
               <br>
-              <p class="card-text">
+              <p c>
                 <a href="#">
                   <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
                 </a>
@@ -27,9 +26,7 @@
                 </a>
               </p>
               <br>
-              <p class="card-text myContent">{{ content }}</p>
-            </div>
-          </div>
+              <p class="myContent">{{ content }}</p>
         </div>
       </div>
     </div>
@@ -80,6 +77,9 @@ export default {
 </script>
 
 <style>
+.my-card {
+  padding:15px;
+}
 .my-card-img {
    width: 300px; 
    height: 200px;
