@@ -23,5 +23,8 @@ export default {
   },
   deleteEvent (id) {
     return Api.delete(`api/events/${id}`, { headers: { Authorization: localStorage.getItem('token') } })
+  },
+  deleteImage (id) {
+    return Api.delete(`api/events/${id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
   }
 }

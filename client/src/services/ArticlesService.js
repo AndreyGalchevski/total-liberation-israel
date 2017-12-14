@@ -22,5 +22,8 @@ export default {
   },
   deleteArticle (id) {
     return Api.delete(`api/articles/${id}`, { headers: { Authorization: localStorage.getItem('token') } })
+  },
+  deleteImage (id) {
+    return Api.delete(`api/articles/${id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
   }
 }

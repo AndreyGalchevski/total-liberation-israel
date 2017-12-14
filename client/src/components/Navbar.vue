@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <router-link class="navbar-brand" to="/">
-        <img src="../assets/logo/trans.png">
+        <img src="../assets/logo/logo.png">
       </router-link>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>                        

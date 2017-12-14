@@ -76,6 +76,7 @@ export default {
         content: this.content
       })
       if (response.data.success && this.newImage) {
+        await ArticlesService.deleteImage(this.$route.params.id)
         await ArticlesService.uploadArticleImage({
           id: this.$route.params.id,
           image: this.newImage
@@ -85,10 +86,7 @@ export default {
       this.loading = false
     },
     changeImage (event) {
-      if (event.target.files[0]) {
-        this.newImage = event.target.files[0]
-        this.image = this.newImage
-      }
+      this.newImage = event.target.files[0]
     }
   },
   metaInfo: {

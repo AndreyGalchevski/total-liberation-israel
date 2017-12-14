@@ -75,13 +75,24 @@ module.exports = function(app, db) {
       event.date = req.body.date
       event.description = req.body.description
       event.fbPage = req.body.fbPage
-      let public_id = 'alf-israel/events/' + event.image.substr(-24, 20)
-      let result = await cloudinary.v2.uploader.destroy(public_id)
       event.save()
       res.send({ success: true })
     } catch (e) {
       res.status(500).send({ error: 'Error while updating an event' })
     } 
+  })
+
+    // Delete a picture
+  app.delete('/api/events/:id/image', passport.authenticate('jwt', {session: false}), async (req, res) => {
+    try {
+      let event = await EventModel.getEventById(req.params.id)
+      let public_id = 'alf-israel/events/' + event.image.substr(-24, 20)
+      let result = await cloudinary.v2.uploader.destroy(public_id)
+      res.send({ success: true })
+    } catch (e) {
+      res.status(500).send({ error: 'Image delete failed.' })
+      return
+    }
   })
 
   // Delete an event
