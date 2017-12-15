@@ -1,19 +1,22 @@
 <template>
   <div class="container">
-    <div class="articles">
-      <br>
-      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-      <div class="row">
-        <div class="col-md-6 card-deck" v-for="(article, index) in articles">
-          <div class="card">
-            <img class="card-img-top" :src="article.image" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">{{ article.title }}</h4>
-              <p class="card-text">{{ article.lead }}</p>
-            </div>
-            <div class="card-footer">
-              <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
-            </div>
+    <br>
+    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
+    <div class="row">
+      <div class="col-md-6 card-deck" v-for="(article, index) in articles">
+        <div class="card">
+          <div class="view overlay hm-white-slight">
+            <img class="img-fluid" :src="article.image" alt="Card image">
+            <router-link :to="'/article/' + article._id">
+              <div class="mask"></div>
+            </router-link>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ article.title }}</h4>
+            <p class="card-text">{{ article.lead }}</p>
+          </div>
+          <div class="card-footer">
+            <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
           </div>
         </div>
       </div>
@@ -53,4 +56,7 @@ export default {
 </script>
 
 <style>
+.card-footer {
+  background-color: #ffffff;
+}
 </style>

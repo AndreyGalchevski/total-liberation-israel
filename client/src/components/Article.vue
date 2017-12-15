@@ -5,11 +5,11 @@
       <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
       <div class="row">
         <div class=".col-md-6 .offset-md-3 my-card">
-              <h3 ><b>{{ title }}</b></h3>
+              <h2><b>{{ title }}</b></h2>
               <br>
-              <h6 ><b>{{ lead }}</b></h6>
+              <h6 class="lead"><b>{{ lead }}</b></h6>
               <br>
-              <h6 >פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
+              <h6 class="text-primary">פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
               <br>
               <img class="rounded my-card-img" :src = "image" alt="Card image">
               <br><br>

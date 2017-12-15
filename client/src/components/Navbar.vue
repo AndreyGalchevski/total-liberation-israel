@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark elegant-color fixed-top">
       <router-link class="navbar-brand" to="/">
         <img src="../assets/logo/logo.png">
       </router-link>
@@ -11,42 +11,42 @@
         <ul class="navbar-nav">
           <!--Tabs-->
           <li class="nav-item">
-            <router-link class="nav-link" to="/">ראשי</router-link>
+            <router-link class="nav-link grey-text" to="/">ראשי</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/events">אירועים קרובים</router-link>
+            <router-link class="nav-link grey-text" to="/events">אירועים קרובים</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/articles">מאמרים</router-link>
+            <router-link class="nav-link grey-text" to="/articles">מאמרים</router-link>
           </li>
           <li class="nav-item">
-            <a href="https://www.glass-walls.com/" class="nav-link" target="_blank">קירות שקופים</a>
+            <a class="nav-link grey-text" href="https://www.glass-walls.com/" target="_blank">קירות שקופים</a>
           </li>
           <li class="nav-item">
-            <a href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" class="nav-link" target="_blank">חנות</a>
+            <a class="nav-link grey-text" href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" target="_blank">חנות</a>
           </li>
           <li class="nav-item">
-            <a href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" class="nav-link" target="_blank">תרומה</a>
+            <a class="nav-link grey-text" href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/"target="_blank">תרומה</a>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/contact">צור קשר</router-link>
+            <router-link class="nav-link grey-text" to="/contact">צור קשר</router-link>
           </li>
         </ul>
         <!--Social links-->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item social-links-icon">
             <a href="https://www.facebook.com/Alfront">
-              <i class="fa fa-facebook my-icon"></i>
+              <i class="fa fa-facebook my-icon grey-text"></i>
             </a>
           </li>          
           <li class="nav-item social-links-icon">
             <a href="https://www.instagram.com/alf_israel">
-              <i class="fa fa fa-instagram my-icon"></i>
+              <i class="fa fa fa-instagram my-icon grey-text"></i>
             </a>
           </li>
           <li class="nav-item social-links-icon">
             <a href="https://www.youtube.com/user/GlassWallsIsrael">
-              <i class="fa fa-youtube-square my-icon"></i>
+              <i class="fa fa-youtube-square my-icon grey-text"></i>
             </a>
           </li>
           <li class="nav-item fb-share-btn">
@@ -58,7 +58,7 @@
       </div>
     </nav>
     <!--Footer-->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+    <nav class="navbar navbar-expand-sm navbar-dark elegant-color fixed-bottom">
       <ul class="navbar-nav" style="padding-right: 0px">
         <li class="nav-item">
           <a class="nav-link">&#169; 2017 החזית לשחרור בעלי חיים ישראל</a>
@@ -95,7 +95,6 @@ export default {
 .navbar-brand img {
   height: 80px;
 }
-
 .navbar {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -111,7 +110,6 @@ export default {
 }
 .my-icon {
   font-size: 30px;
-  color: #b3b3b3;
 }
 .fixed-bottom {
   font-size: 12px;

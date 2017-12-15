@@ -1,22 +1,24 @@
 <template>
   <div class="container">
-    <div class="events">
-      <br>
-      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-      <div class="row">
-        <div class="col-md-4 card-deck" v-for="event in events">
-          <div class="card">
+    <br>
+    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
+    <div class="row">
+      <div class="col-md-4 card-deck" v-for="event in events">
+        <div class="card">
+          <div class="view overlay hm-white-slight">
             <img class="card-img-top" :src="event.image" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">{{ event.title }}</h4>
-              <p class="card-text">{{ getDate(event.date) }}</p>
-              <p class="card-text">{{ event.description }}</p>
-            </div>
-            <div class="card-footer">
-              <a :href="event.fbPage" class="card-link">לדף האירוע ב- <i class="fa fa-facebook-official"></i></a>
-            </div>
+            <a :href="event.fbPage" class="card-link">
+              <div class="mask"></div>
+            </a>
           </div>
-          <br>
+          <div class="card-body">
+            <h4 class="card-title">{{ event.title }}</h4>
+            <p class="card-text text-primary">{{ getDate(event.date) }}</p>
+            <p class="card-text">{{ event.description }}</p>
+          </div>
+          <div class="card-footer">
+            <a :href="event.fbPage" class="card-link">לדף האירוע ב- <i class="fa fa-facebook-official"></i></a>
+          </div>
         </div>
       </div>
     </div>
@@ -55,4 +57,7 @@ export default {
 </script>
 
 <style>
+.card-footer {
+  background-color: #ffffff;
+}
 </style>
