@@ -4,7 +4,7 @@
     <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
     <div class="row">
       <div class="col-md-4 card-deck" v-for="event in events">
-        <div class="card">
+        <div class="card mb-r">
           <div class="view overlay hm-white-slight">
             <img class="card-img-top" :src="event.image" alt="Card image">
             <a :href="event.fbPage" class="card-link">

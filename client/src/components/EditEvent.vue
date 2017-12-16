@@ -11,13 +11,13 @@
         <input type="date" name="תאריך" class="form-control" v-model="date">
       </div>
       <div class="form-group">
-        <textarea rows="5" class="form-control" placeholder="תיאור" v-model="description"></textarea>
+        <textarea rows="6" class="form-control" placeholder="תיאור" v-model="description"></textarea>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="אירוע בפייסבוק" v-model="fbPage"></textarea>
+        <input type="text" class="form-control" placeholder="אירוע בפייסבוק" v-model="fbPage"/>
       </div>
       <div class="form-group">
-        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"></input>
+        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"/>
       </div>
       <div class="form-group">
         <img class="img-thumbnail" :src = "image" width="300" height="200" alt="Card image">
@@ -89,4 +89,7 @@ export default {
 }
 </script>
 <style>
+textarea {
+  height: auto;
+}
 </style>

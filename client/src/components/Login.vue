@@ -1,16 +1,15 @@
 <template>
   <div class="container">
     <form @submit.prevent="login({ username, password })">
-    <p class="h5 text-center mb-4">התחברות</p>
+    <br>
+    <h2>התחברות</h2>
 
-    <div class="md-form">
-        <input type="text" id="defaultForm-email" class="form-control" v-model="username">
-        <label for="defaultForm-email">שם משתמש</label>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="שם משתמש" v-model="username">
     </div>
 
-    <div class="md-form">
-        <input type="password" id="defaultForm-pass" class="form-control" v-model="password">
-        <label for="defaultForm-pass">סיסמה</label>
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="סיסמה" v-model="password">
     </div>
 
     <div class="text-center">

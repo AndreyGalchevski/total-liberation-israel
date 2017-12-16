@@ -1,18 +1,19 @@
 <template>
   <div class="container">
+    <br>
     <h2>צור קשר</h2>
-    <form :action="reversedMessage" method="post" enctype="text/plain">
+    <form :action="sendMessage" method="post" enctype="text/plain">
       <div class="form-group">
         <input type="email" class="form-control" placeholder="כתובת דואר אלקטרוני"  required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="נושא" v-model="subject" required>
+        <input type="text" class="form-control" placeholder="נושא הפנייה" v-model="subject" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="במה נוכל לעזור?" v-model="body" required></input>
+        <input type="text" class="form-control" placeholder="במה נוכל לעזור?" v-model="body" required/>
       </div>
-      <input type="submit" class="btn btn-primary" value="שלח"></input>
-      <input type="reset" class="btn btn-secondary" value="אפס"></input>
+      <input type="submit" class="btn btn-primary" value="שלח"/>
+      <input type="reset" class="btn btn-secondary" value="אפס"/>
     </form>
 	</div> 
 </template>
@@ -27,8 +28,8 @@ export default {
     }
   },
   computed: {
-    reversedMessage: function () {
-      return 'mailto:glasswallsisrael@gmail.com?subject=' + this.subject + '&body=' + this.body
+    sendMessage: function () {
+      return 'mailto:andreygalchevski@gmail.com?subject=' + this.subject + '&body=' + this.body
     }
   },
   metaInfo: {

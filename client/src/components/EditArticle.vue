@@ -8,7 +8,7 @@
         <input type="text" name="title" class="form-control" placeholder="כותרת" v-model="title">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="כתב" v-model="author"></textarea>
+        <input type="text" class="form-control" placeholder="כתב" v-model="author"/>
       </div>
       <div class="form-group">
         <input type="date" name="תאריך" class="form-control" v-model="date">
@@ -20,7 +20,7 @@
         <textarea rows="6" class="form-control" placeholder="תוכן" v-model="content"></textarea>
       </div>
       <div class="form-group">
-        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"></input>
+        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"/>
       </div>
       <div class="form-group">
         <img class="img-thumbnail" :src = "image" width="300" height="200" alt="Card image">
@@ -95,4 +95,7 @@ export default {
 }
 </script>
 <style>
+textarea {
+  height: auto;
+}
 </style>

@@ -14,10 +14,10 @@
         <input type="date" name="תאריך" class="form-control" v-model="date">
       </div>
       <div class="form-group">
-        <textarea rows="2" class="form-control" placeholder="תקציר" v-model="lead"></textarea>
+        <textarea rows="2" class="form-control myTextArea" placeholder="תקציר" v-model="lead"></textarea>
       </div>
       <div class="form-group">
-        <textarea rows="6" class="form-control" placeholder="תוכן" v-model="content"></textarea>
+        <textarea rows="6" class="form-control myTextArea" placeholder="תוכן" v-model="content"></textarea>
       </div>
       <div class="form-group">
         <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"></input>
@@ -76,4 +76,7 @@ export default {
 }
 </script>
 <style>
+textarea {
+  height: auto;
+}
 </style>

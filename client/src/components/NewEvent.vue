@@ -5,19 +5,19 @@
     <h1>אירוע חדש</h1>
     <div class="form">
       <div class="form-group">
-        <input type="text" name="title" class="form-control" placeholder="כותרת" v-model="title"></input>
+        <input type="text" name="title" class="form-control" placeholder="כותרת" v-model="title"/>
       </div>
       <div class="form-group">
         <input type="date" name="תאריך" class="form-control" v-model="date">
       </div>
       <div class="form-group">
-        <textarea rows="5" class="form-control" placeholder="תיאור" v-model="description"></textarea>
+        <textarea rows="6" class="form-control" placeholder="תיאור" v-model="description"></textarea>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="אירוע בפייסבוק" v-model="fbPage"></input>
+        <input type="text" class="form-control" placeholder="אירוע בפייסבוק" v-model="fbPage"/>
       </div>
       <div class="form-group">
-        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"></input>
+        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"/>
       </div>
       <div>
         <button class="btn btn-primary" @click="addEvent">הוספה</button>
@@ -71,4 +71,7 @@ export default {
 }
 </script>
 <style>
+textarea {
+  height: auto;
+}
 </style>

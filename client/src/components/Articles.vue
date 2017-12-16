@@ -4,7 +4,7 @@
     <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
     <div class="row">
       <div class="col-md-6 card-deck" v-for="(article, index) in articles">
-        <div class="card">
+        <div class="card mb-r">
           <div class="view overlay hm-white-slight">
             <img class="img-fluid" :src="article.image" alt="Card image">
             <router-link :to="'/article/' + article._id">
