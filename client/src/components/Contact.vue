@@ -2,6 +2,7 @@
   <div class="container">
     <br>
     <h2>צור קשר</h2>
+    <br>
     <form :action="sendMessage" method="post" enctype="text/plain">
       <div class="form-group">
         <input type="email" class="form-control" placeholder="כתובת דואר אלקטרוני"  required>
@@ -29,7 +30,9 @@ export default {
   },
   computed: {
     sendMessage: function () {
-      return 'mailto:andreygalchevski@gmail.com?subject=' + this.subject + '&body=' + this.body
+      var unicodedSubject = this.subject.replace(/\?/g, '%3F')
+      var unicodedBody = this.body.replace(/\?/g, '%3F')
+      return 'mailto:andreygalchevski@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
     }
   },
   metaInfo: {

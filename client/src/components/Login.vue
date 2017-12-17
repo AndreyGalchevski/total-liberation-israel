@@ -3,7 +3,7 @@
     <form @submit.prevent="login({ username, password })">
     <br>
     <h2>התחברות</h2>
-
+    <br>
     <div class="form-group">
         <input type="text" class="form-control" placeholder="שם משתמש" v-model="username">
     </div>
