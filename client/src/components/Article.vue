@@ -11,15 +11,15 @@
               <br>
               <h6 class="text-primary">פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
               <br>
-              <img class="rounded my-card-img" :src = "image" alt="Card image">
+              <img class="rounded my-card-img img-fluid" :src = "image" alt="Card image">
               <br><br>
               <br>
               <p c>
                 <a href="#">
-                  <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
+                  <i class="fa fa-envelope-o my-icon" aria-hidden="true"></i>
                 </a>
                 <a href="#">
-                  <i class="fa fa-envelope-o my-icon" aria-hidden="true"></i>
+                  <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
                 </a>
                 <a href="#">
                   <i class="fa fa-whatsapp my-icon" aria-hidden="true"></i>
@@ -81,16 +81,22 @@ export default {
   padding:15px;
 }
 .my-card-img {
-   width: 300px; 
-   height: 200px;
+   width: 500px; 
+   height: 300px;
 }
 .my-icon {
   font-size: 35px;
-  color: #007bff;
 }
-.fa-envelope-o {
+.fa-facebook-square {
   padding-right: 50px;
   padding-left: 50px;
+  color: #3b5998;
+}
+.fa-envelope-o {
+  color: #ff3333;
+}
+.fa-whatsapp {
+  color: #25d366;
 }
 .myContent {
   white-space:pre-wrap;
