@@ -13,13 +13,25 @@
       <li data-target="#myCarousel" data-slide-to="8"></li>
     </ul>
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../assets/home/1.jpg" alt='Animal rights activist petting a group of sheep on a sheep farm' >
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/1.jpg')">
       </div>
-      <div class="carousel-item" v-for="pic in pics">
-        <img :src="pic.url" :alt="pic.alt">
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/2.jpg')">
       </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/3.jpg')">
+      </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/4.jpg')">
+      </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/5.jpg')">
+      </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/6.jpg')">
+      </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/7.jpg')">
+      </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/8.jpg')">
+      </div>
+      <div class="carousel-item" style="background-image: url('http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/9.jpg')">
+      </div>    
     </div>
     <!-- Left and right controls -->
     <a class="carousel-control-prev" href="#myCarousel" data-slide="next">
@@ -34,44 +46,6 @@
 <script>
 export default {
   name: 'home',
-  data () {
-    return {
-      pics: [
-        {
-          url: require('../assets/home/2.jpg'),
-          alt: 'Animal rights activist waving an ALF flag in front of a slaughterhouse gates'
-        },
-        {
-          url: require('../assets/home/3.jpg'),
-          alt: 'Animal rights activist in tears protesting animal abuse by chaining herself to a a fence'
-        },
-        {
-          url: require('../assets/home/4.jpg'),
-          alt: 'Animal rights activist giving water to turkeys being moved to a slaughterhouse on a truck'
-        },
-        {
-          url: require('../assets/home/5.jpg'),
-          alt: 'Animal rights activist holding a sign againt the dairy industry'
-        },
-        {
-          url: require('../assets/home/6.jpg'),
-          alt: 'Animal rights activist blocking an entrance to the slaughterhouse'
-        },
-        {
-          url: require('../assets/home/7.jpg'),
-          alt: 'Animal rights activist and a child petting a tiny chick'
-        },
-        {
-          url: require('../assets/home/8.jpg'),
-          alt: 'Animal rights activist holding a sign againt the dairy industry'
-        },
-        {
-          url: require('../assets/home/9.jpg'),
-          alt: 'Animal rights activist holding a sign with the quote of Bernard Shaw'
-        }
-      ]
-    }
-  },
   metaInfo: {
     title: 'חדשות החזית'
   }
@@ -79,11 +53,14 @@ export default {
 </script>
 
 <style scoped>
- 
-.carousel-inner img {
-    width: 100%; /* Set width to 100% */
-    margin: auto;
-    min-height:100px;
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* Hide the carousel text when the screen is less than 600 pixels wide */
