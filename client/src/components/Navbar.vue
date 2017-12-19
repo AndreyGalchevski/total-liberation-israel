@@ -66,10 +66,14 @@
       </ul>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/login" v-if="!isLoggedIn">התחברות</router-link>
+          <router-link class="nav-link" to="/login" v-if="!isLoggedIn">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+          </router-link>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" v-if="isLoggedIn" @click="logout">יציאה</a> 
+          <a href="#" class="nav-link" v-if="isLoggedIn" @click="logout">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>  
+          </a> 
         </li>
       </ul>
     </nav>

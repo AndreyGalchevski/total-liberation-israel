@@ -99,6 +99,8 @@ export default {
   color: #25d366;
 }
 .myContent {
+  text-align: right;
+  font-size: 17px;
   white-space:pre-wrap;
 }
 </style>

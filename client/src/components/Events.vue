@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <br>
-    <rotate-square v-show="loading" :background="backgroundColor" :size="size" ></rotate-square>
+    <rotate-square3 v-show="loading" :color="backgroundColor" :size="size" ></rotate-square3>
     <div class="row">
       <div class="col-md-4 card-deck" v-for="event in events">
         <div class="card mb-r">
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import RotateSquare from 'vue-loading-spinner/src/components/RotateSquare'
+import RotateSquare3 from 'vue-loading-spinner/src/components/RotateSquare3'
 import EventsService from '@/services/EventsService'
 var moment = require('moment')
 export default {
@@ -36,11 +36,11 @@ export default {
       events: [],
       loading: false,
       backgroundColor: '#0099ff',
-      size: '80px'
+      size: '100px'
     }
   },
   components: {
-    RotateSquare
+    RotateSquare3
   },
   mounted () {
     this.getEvents()
