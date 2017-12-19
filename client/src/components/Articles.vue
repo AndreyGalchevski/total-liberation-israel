@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <br>
-    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
+    <br> 
+    <rotate-square3 v-show="loading" :color="backgroundColor" :size="size" ></rotate-square3>
     <div class="row">
       <div class="col-md-6 card-deck" v-for="(article, index) in articles">
         <div class="card mb-r">
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import RotateSquare3 from 'vue-loading-spinner/src/components/RotateSquare3'
 import ArticlesService from '@/services/ArticlesService'
 var moment = require('moment')
 export default {
@@ -32,8 +33,13 @@ export default {
   data () {
     return {
       articles: [],
-      loading: false
+      loading: false,
+      backgroundColor: '#0099ff',
+      size: '100px'
     }
+  },
+  components: {
+    RotateSquare3
   },
   mounted () {
     this.getArticles()
