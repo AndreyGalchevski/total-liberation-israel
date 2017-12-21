@@ -3,7 +3,7 @@
     <br> 
     <double-bounce v-show="loading" :background="backgroundColor" :size="size" ></double-bounce>
     <div class="row">
-      <div class="col-md-6 card-deck" v-for="(article, index) in articles">
+      <div class="col-md-6 card-deck" v-for="article in articles" :key="article._id">
         <div class="card mb-r">
           <div class="view overlay hm-white-slight">
             <img class="img-fluid" :src="article.image" alt="Card image">
@@ -26,13 +26,11 @@
 
 <script>
 import DoubleBounce from 'vue-loading-spinner/src/components/DoubleBounce'
-import ArticlesService from '@/services/ArticlesService'
 var moment = require('moment')
 export default {
   name: 'articles',
   data () {
     return {
-      articles: [],
       loading: false,
       backgroundColor: '#0099ff',
       size: '100px'
@@ -47,13 +45,20 @@ export default {
   methods: {
     async getArticles () {
       this.loading = true
-      const response = await ArticlesService.fetchArticles()
-      this.articles = response.data.articles
+      await this.$store.dispatch('getArticles')
       this.loading = false
     },
     getDate: function (date) {
-      return moment(date).format('DD-MM-YYYY')
+      return moment(date).format('DD.MM.YYYY')
     }
+  },
+  computed: {
+    articles () {
+      return this.$store.getters.articles
+    }
+  },
+  destroyed () {
+    this.$store.commit('CLEAR_ARTICLES')
   },
   metaInfo: {
     title: 'מאמרים'

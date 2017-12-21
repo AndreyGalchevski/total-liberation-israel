@@ -5,10 +5,10 @@
     <h1>מאמר חדש</h1>
     <div class="form">
       <div class="form-group">
-        <input type="text" name="title" class="form-control" placeholder="כותרת" v-model="title"></input>
+        <input type="text" name="title" class="form-control" placeholder="כותרת" v-model="title"/>
       </div>
       <div class="form-group">
-        <input type="text" name="title" class="form-control" placeholder="שם הכתב" v-model="author"></input>
+        <input type="text" name="title" class="form-control" placeholder="שם הכתב" v-model="author"/>
       </div>
       <div class="form-group">
         <input type="date" name="תאריך" class="form-control" v-model="date">
@@ -20,7 +20,7 @@
         <textarea rows="6" class="form-control myTextArea" placeholder="תוכן" v-model="content"></textarea>
       </div>
       <div class="form-group">
-        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"></input>
+        <input class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage"/>
       </div>
       <div>
         <button class="btn btn-primary" @click="addArticle">הוספה</button>
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import ArticlesService from '@/services/ArticlesService'
 export default {
   name: 'NewArticle',
   data () {
@@ -47,21 +46,14 @@ export default {
   methods: {
     async addArticle () {
       this.loading = true
-      const response = await ArticlesService.addArticle({
+      await this.$store.dispatch('addArticle', {
         title: this.title,
         author: this.author,
         date: this.date,
         lead: this.lead,
-        content: this.content
+        content: this.content,
+        image: this.image
       })
-
-      if (response.data.success) {
-        await ArticlesService.uploadArticleImage({
-          id: response.data.article._id,
-          image: this.image
-        })
-      }
-
       this.$router.push({ name: 'ManageArticles' })
       this.loading = false
     },

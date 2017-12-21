@@ -71,7 +71,7 @@ export default {
       this.loading = true
     },
     getDate: function (date) {
-      return moment(date).format('DD-MM-YYYY')
+      return moment(date).format('DD.MM.YYYY')
     }
   },
   metaInfo: {

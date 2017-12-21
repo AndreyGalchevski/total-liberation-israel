@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="article in articles">
+              <tr v-for="article in articles" :key="article._id">
                 <td>{{ article.title }}</td>
                 <td>{{ article.author }}</td>
                 <td>{{ getDate(article.date) }}</td>
@@ -43,13 +43,11 @@
 </template>
 
 <script>
-import ArticlesService from '@/services/ArticlesService'
 var moment = require('moment')
 export default {
   name: 'ManageArticles',
   data () {
     return {
-      articles: [],
       loading: false
     }
   },
@@ -59,19 +57,23 @@ export default {
   methods: {
     async getArticles () {
       this.loading = true
-      const response = await ArticlesService.fetchArticles()
-      this.articles = response.data.articles
+      await this.$store.dispatch('getArticles')
       this.loading = false
     },
     async deleteArticle (id) {
       this.loading = true
-      await ArticlesService.deleteArticle(id)
+      await this.$store.dispatch('deleteArticle', id)
       this.getArticles()
       this.$router.push({ name: 'ManageArticles' })
       this.loading = false
     },
     getDate: function (date) {
-      return moment(date).format('DD-MM-YYYY')
+      return moment(date).format('DD.MM.YYYY')
+    }
+  },
+  computed: {
+    articles () {
+      return this.$store.getters.articles
     }
   },
   metaInfo: {

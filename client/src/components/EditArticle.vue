@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import ArticlesService from '@/services/ArticlesService'
 export default {
   name: 'EditArticle',
   data () {
@@ -54,34 +53,27 @@ export default {
   methods: {
     async getArticle () {
       this.loading = true
-      const response = await ArticlesService.getArticle({
-        id: this.$route.params.id
-      })
-      this.image = response.data.image
-      this.title = response.data.title
-      this.author = response.data.author
-      this.date = response.data.date
-      this.lead = response.data.lead
-      this.content = response.data.content
+      await this.$store.dispatch('getArticle', this.$route.params.id)
+      this.image = this.$store.getters.article.image
+      this.title = this.$store.getters.article.title
+      this.author = this.$store.getters.article.author
+      this.date = this.$store.getters.article.date
+      this.lead = this.$store.getters.article.lead
+      this.content = this.$store.getters.article.content
       this.loading = false
     },
     async updateArticle () {
       this.loading = true
-      const response = await ArticlesService.updateArticle({
+      await this.$store.dispatch('updateArticle', {
         id: this.$route.params.id,
         title: this.title,
         author: this.author,
         date: this.date,
         lead: this.lead,
-        content: this.content
+        content: this.content,
+        image: this.image,
+        newImage: this.newImage
       })
-      if (response.data.success && this.newImage) {
-        await ArticlesService.deleteImage(this.$route.params.id)
-        await ArticlesService.uploadArticleImage({
-          id: this.$route.params.id,
-          image: this.newImage
-        })
-      }
       this.$router.push({ name: 'ManageArticles' })
       this.loading = false
     },

@@ -1,82 +1,116 @@
 <template>
-  <div class="container">
-    <div class="article">
-      <br>
-      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-      <div class="row">
-        <div class=".col-md-6 .offset-md-3 my-card">
-              <h2><b>{{ title }}</b></h2>
-              <br>
-              <h6 class="lead"><b>{{ lead }}</b></h6>
-              <br>
-              <h6 class="text-primary">פורסם ב - {{ getDate(date) }} ע"י {{ author }} </h6>
-              <br>
-              <img class="rounded my-card-img img-fluid" :src = "image" alt="Card image">
-              <br><br>
-              <br>
-              <p c>
-                <a href="#">
-                  <i class="fa fa-envelope-o my-icon" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-whatsapp my-icon" aria-hidden="true"></i>
-                </a>
-              </p>
-              <br>
-              <p class="myContent">{{ content }}</p>
-        </div>
+  <div class="wrapper">
+    <div class="otherArticles">
+      <div v-for="article in articles" :key="article._id" v-if="article._id !== thisArticle._id">
+        <div class="card mb-r">
+          <div class="view overlay hm-white-slight">
+            <img class="img-fluid" :src="article.image" alt="Card image">
+            <router-link :to="'/article/' + article._id">
+              <div class="mask"></div>
+            </router-link>
+          </div>
+            <div class="card-body">
+              <p style="font-size: 15px" class="card-title">{{ article.title }}</p>
+            </div>
+          </div>
       </div>
+    </div>
+    <div class="my-card" v-if="thisArticle">
+      <h2><b>{{ thisArticle.title }}</b></h2>
+      <br>
+      <h6 class="lead"><b>{{ thisArticle.lead }}</b></h6>
+      <br>
+      <h6 class="text-primary">פורסם ב - {{ getDate(thisArticle.date) }} ע"י {{ thisArticle.author }} </h6>
+      <br>
+      <img class="rounded my-card-img img-fluid" :src = "thisArticle.image" alt="Card image">
+      <br><br>
+      <br>
+      <p c>
+        <a href="#">
+          <i class="fa fa-envelope-o my-icon" aria-hidden="true"></i>
+        </a>
+        <a href="#">
+          <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
+        </a>
+        <a href="#">
+          <i class="fa fa-whatsapp my-icon" aria-hidden="true"></i>
+        </a>
+      </p>
+      <br>
+      <p class="myContent">{{ thisArticle.content }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import ArticlesService from '@/services/ArticlesService'
 var moment = require('moment')
 export default {
   name: 'article',
   data () {
     return {
-      title: '',
-      image: '',
-      author: '',
-      date: '',
-      lead: '',
-      content: '',
       loading: false
     }
   },
   mounted () {
     this.getArticle()
+    this.getArticles()
   },
   methods: {
     async getArticle () {
       this.loading = true
-      const response = await ArticlesService.getArticle({
-        id: this.$route.params.id
-      })
-      this.image = response.data.image
-      this.title = response.data.title
-      this.author = response.data.author
-      this.date = response.data.date
-      this.lead = response.data.lead
-      this.content = response.data.content
+      await this.$store.dispatch('getArticle', this.$route.params.id)
       this.loading = false
     },
     getDate: function (date) {
       return moment(date).format('DD.MM.YYYY')
+    },
+    async getArticles () {
+      this.loading = true
+      await this.$store.dispatch('getArticles')
+      this.loading = false
     }
   },
   metaInfo: {
     title: 'מאמר'
+  },
+  computed: {
+    thisArticle () {
+      return this.$store.getters.article
+    },
+    articles () {
+      return this.$store.getters.articles
+    }
   }
 }
 </script>
 
 <style>
+@media all and (max-width: 959px) {
+  .otherArticles {
+    display:none;
+  }
+}
+.wrapper{
+  display:grid;
+  grid-template-columns:1fr 2fr 1fr;
+  /*grid-template-columns:repeat(2, 1fr);*/
+  grid-gap:1em;
+  /* grid-auto-rows:100px; */
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.nested{
+  display:grid;
+  grid-gap:1em;
+}
+
+.wrapper > div{
+  padding:1em;
+}
+
+.nested > div{
+  padding:1em;
+}
 .my-card {
   padding:15px;
 }
