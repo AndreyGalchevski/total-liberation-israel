@@ -131,7 +131,7 @@ export default {
   padding-right: 0px;
 }
 @media (max-width: 992px){
-  .navbar .nav-item .nav-link {
+  .navbar .fixed-bottom .nav-item .nav-link {
       padding-left: 0px;
       padding-right: 0px;
   }
