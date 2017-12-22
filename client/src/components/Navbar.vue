@@ -31,6 +31,16 @@
           <li class="nav-item">
             <router-link class="nav-link grey-text" to="/contact">צור קשר</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link grey-text" to="/login" v-if="!isLoggedIn">
+              התחברות
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link grey-text" v-if="isLoggedIn" @click="logout">
+              יציאה
+            </a> 
+        </li>
         </ul>
         <!--Social links-->
         <ul class="navbar-nav mr-auto">
@@ -59,20 +69,18 @@
     </nav>
     <!--Footer-->
     <nav class="navbar navbar-expand-sm navbar-dark elegant-color fixed-bottom">
-      <ul class="navbar-nav" style="padding-right: 0px">
+      <ul class="navbar-nav" style="padding-right: 0px;">
         <li class="nav-item">
-          <a class="nav-link">&#169; 2017 החזית לשחרור בעלי חיים ישראל</a>
+          <a class="nav-link">
+            &#169; 2017 ALF Israel
+          </a>
         </li>
       </ul>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/login" v-if="!isLoggedIn">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" v-if="isLoggedIn" @click="logout">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>  
+          <a href="https://il.linkedin.com/in/andrey-galchevski-b40999a3" class="nav-link" target="_blank">
+             By Andrey Galchevski
+            <i class="fa fa-code" aria-hidden="true"></i>
           </a> 
         </li>
       </ul>
@@ -117,5 +125,15 @@ export default {
 }
 .fixed-bottom {
   font-size: 12px;
+}
+.navbar .fixed-bottom .nav-item {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media (max-width: 992px){
+  .navbar .nav-item .nav-link {
+      padding-left: 0px;
+      padding-right: 0px;
+  }
 }
 </style>
