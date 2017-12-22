@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import EventsService from '@/services/EventsService'
 export default {
   name: 'NewEvent',
   data () {
@@ -43,20 +42,13 @@ export default {
   methods: {
     async addEvent () {
       this.loading = true
-      const response = await EventsService.addEvent({
+      await this.$store.dispatch('addEvent', {
         title: this.title,
         date: this.date,
         description: this.description,
-        fbPage: this.fbPage
+        fbPage: this.fbPage,
+        image: this.image
       })
-
-      if (response.data.success) {
-        await EventsService.uploadEventImage({
-          id: response.data.event._id,
-          image: this.image
-        })
-      }
-
       this.$router.push({ name: 'ManageEvents' })
       this.loading = false
     },

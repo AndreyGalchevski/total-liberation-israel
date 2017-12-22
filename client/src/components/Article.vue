@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="otherArticles">
+    <div class="otherArticles w-50">
       <div v-for="article in articles" :key="article._id" v-if="article._id !== thisArticle._id">
         <div class="card mb-r">
           <div class="view overlay hm-white-slight">
@@ -15,7 +15,7 @@
           </div>
       </div>
     </div>
-    <div class="my-card" v-if="thisArticle">
+    <div class="mainArticle" v-if="thisArticle">
       <h2><b>{{ thisArticle.title }}</b></h2>
       <br>
       <h6 class="lead"><b>{{ thisArticle.lead }}</b></h6>
@@ -80,43 +80,39 @@ export default {
     articles () {
       return this.$store.getters.articles
     }
+  },
+  destroyed () {
+    this.$store.commit('CLEAR_ARTICLES')
+    this.$store.commit('CLEAR_ARTICLE')
   }
 }
 </script>
 
 <style>
-@media all and (max-width: 959px) {
+@media (max-width: 700px) {
   .otherArticles {
-    display:none;
+    display: none;
+  }
+  .mainArticle {
+    grid-column: span 4;
   }
 }
 .wrapper{
   display:grid;
   grid-template-columns:1fr 2fr 1fr;
-  /*grid-template-columns:repeat(2, 1fr);*/
   grid-gap:1em;
-  /* grid-auto-rows:100px; */
   grid-auto-rows: minmax(100px, auto);
 }
-
-.nested{
-  display:grid;
-  grid-gap:1em;
-}
-
 .wrapper > div{
   padding:1em;
 }
 
-.nested > div{
-  padding:1em;
-}
-.my-card {
-  padding:15px;
-}
-.my-card-img {
+.mainArticle img {
    width: 500px; 
    height: 300px;
+}
+.otherArticles {
+  text-align: center;
 }
 .my-icon {
   font-size: 35px;

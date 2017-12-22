@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="event in events">
+              <tr v-for="event in events" :key="event._id">
                 <td>{{ event.title }}</td>
                 <td>{{ getDate(event.date) }}</td>
                 <td><a :href="event.fbPage">קישור</a></td>
@@ -43,13 +43,11 @@
 </template>
 
 <script>
-import EventsService from '@/services/EventsService'
 var moment = require('moment')
 export default {
   name: 'ManageEvents',
   data () {
     return {
-      events: [],
       loading: false
     }
   },
@@ -59,19 +57,23 @@ export default {
   methods: {
     async getEvents () {
       this.loading = true
-      const response = await EventsService.fetchEvents()
-      this.events = response.data.events
+      await this.$store.dispatch('getEvents')
       this.loading = false
     },
     async deleteEvent (id) {
       this.loading = true
-      await EventsService.deleteEvent(id)
+      await this.$store.dispatch('deleteEvent', id)
       this.getEvents()
       this.$router.push({ name: 'ManageEvents' })
       this.loading = true
     },
     getDate: function (date) {
       return moment(date).format('DD.MM.YYYY')
+    }
+  },
+  computed: {
+    events () {
+      return this.$store.getters.events
     }
   },
   metaInfo: {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {Api} from '@/services/Api'
+import {Api} from './Api'
 
 const LOGIN = 'LOGIN'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -8,6 +8,11 @@ const LOGOUT = 'LOGOUT'
 const GET_ARTICLE_SUCCESS = 'GET_ARTICLE_SUCCESS'
 const GET_ARTICLES_SUCCESS = 'GET_ARTICLES_SUCCESS'
 const CLEAR_ARTICLES = 'CLEAR_ARTICLES'
+const CLEAR_ARTICLE = 'CLEAR_ARTICLE'
+const GET_EVENT_SUCCESS = 'GET_EVENT_SUCCESS'
+const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS'
+const CLEAR_EVENTS = 'CLEAR_EVENTS'
+const CLEAR_EVENT = 'CLEAR_EVENT'
 
 Vue.use(Vuex)
 
@@ -15,7 +20,9 @@ export const store = new Vuex.Store({
   state: {
     isLoggedIn: !!localStorage.getItem('token'),
     article: null,
-    articles: []
+    articles: [],
+    event: null,
+    events: []
   },
   actions: {
     async login (context, params) {
@@ -108,6 +115,81 @@ export const store = new Vuex.Store({
           reject(e)
         }
       })
+    },
+    async getEvent (context, eventId) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          let response = await Api.get(`api/event/${eventId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          if (response.data && response.data._id) {
+            context.commit('GET_EVENT_SUCCESS', response.data)
+          }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async getEvents (context) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.get('api/events')
+          if (response.data.events) {
+            context.commit('GET_EVENTS_SUCCESS', response.data.events)
+          }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async addEvent (context, params) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.post('api/events', params, { headers: { Authorization: localStorage.getItem('token') } })
+
+          if (response.data.success && params.image) {
+            let eventId = response.data.event._id
+            let form = new FormData()
+            form.append('eventImg', params.image)
+            let imageResponse = await Api.patch(`api/events/${eventId}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
+            resolve(imageResponse)
+          } else {
+            resolve(response)
+          }
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async updateEvent (context, params) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.put(`api/events/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
+
+          if (response.data.success && params.newImage) {
+            let imageDeleteResponse = await Api.delete(`api/events/${params.id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
+            resolve(imageDeleteResponse)
+
+            let form = new FormData()
+            form.append('eventImg', params.newImage)
+            let imageUploadResponse = await Api.patch(`api/events/${params.id}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
+            resolve(imageUploadResponse)
+          }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async deleteEvent (context, eventId) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.delete(`api/events/${eventId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
     }
   },
   mutations: {
@@ -129,6 +211,21 @@ export const store = new Vuex.Store({
     },
     [CLEAR_ARTICLES] (state) {
       state.articles = []
+    },
+    [CLEAR_ARTICLE] (state) {
+      state.article = null
+    },
+    [GET_EVENT_SUCCESS] (state, event) {
+      state.event = event
+    },
+    [GET_EVENTS_SUCCESS] (state, events) {
+      state.events = events
+    },
+    [CLEAR_EVENTS] (state) {
+      state.events = []
+    },
+    [CLEAR_EVENT] (state) {
+      state.event = null
     }
   },
   getters: {
@@ -140,6 +237,12 @@ export const store = new Vuex.Store({
     },
     articles: state => {
       return state.articles
+    },
+    event: state => {
+      return state.event
+    },
+    events: state => {
+      return state.events
     }
   }
 })

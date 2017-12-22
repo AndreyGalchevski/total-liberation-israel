@@ -14,7 +14,7 @@
         <input type="text" class="form-control" placeholder="במה נוכל לעזור?" v-model="body" required/>
       </div>
       <input type="submit" class="btn btn-primary" value="שלח"/>
-      <input type="reset" class="btn btn-secondary" value="אפס"/>
+      <input type="reset" class="btn btn-elegant" value="אפס"/>
     </form>
 	</div> 
 </template>

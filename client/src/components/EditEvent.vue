@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import EventsService from '@/services/EventsService'
 export default {
   name: 'EditEvent',
   data () {
@@ -50,32 +49,25 @@ export default {
   methods: {
     async getEvent () {
       this.loading = true
-      const response = await EventsService.getEvent({
-        id: this.$route.params.id
-      })
-      this.image = response.data.image
-      this.title = response.data.title
-      this.date = response.data.date
-      this.description = response.data.description
-      this.fbPage = response.data.fbPage
+      await this.$store.dispatch('getEvent', this.$route.params.id)
+      this.image = this.$store.getters.event.image
+      this.title = this.$store.getters.event.title
+      this.date = this.$store.getters.event.date
+      this.description = this.$store.getters.event.description
+      this.fbPage = this.$store.getters.event.fbPage
       this.loading = false
     },
     async updateEvent () {
       this.loading = true
-      const response = await EventsService.updateEvent({
+      await this.$store.dispatch('updateEvent', {
         id: this.$route.params.id,
         title: this.title,
         date: this.date,
         description: this.description,
-        fbPage: this.fbPage
+        fbPage: this.fbPage,
+        image: this.image,
+        newImage: this.newImage
       })
-      if (response.data.success && this.newImage) {
-        await EventsService.deleteImage(this.$route.params.id)
-        await EventsService.uploadEventImage({
-          id: this.$route.params.id,
-          image: this.newImage
-        })
-      }
       this.$router.push({ name: 'ManageEvents' })
       this.loading = false
     },
