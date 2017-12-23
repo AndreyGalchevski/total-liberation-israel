@@ -14,7 +14,6 @@
               <tr>
                 <td>כותרת</td>
                 <td>תאריך</td>
-                <td>אירוע בפייסבוק</td>
                 <td>פעולה</td>
               </tr>
             </thead>
@@ -22,7 +21,6 @@
               <tr v-for="event in events" :key="event._id">
                 <td>{{ event.title }}</td>
                 <td>{{ getDate(event.date) }}</td>
-                <td><a :href="event.fbPage">קישור</a></td>
                 <td>
                   <router-link v-bind:to="{ name: 'EditEvent', params: { id: event._id } }">עריכה</router-link> |
                   <a href="#" @click="deleteEvent(event._id)">מחיקה</a>

@@ -14,14 +14,12 @@
               <tr>
                 <td>כותרת</td>
                 <td>תאריך</td>
-                <td>שם הכתב</td>
                 <td>פעולה</td>
               </tr>
             </thead>
             <tbody>
               <tr v-for="article in articles" :key="article._id">
                 <td>{{ article.title }}</td>
-                <td>{{ article.author }}</td>
                 <td>{{ getDate(article.date) }}</td>
                 <td>
                   <router-link v-bind:to="{ name: 'EditArticle', params: { id: article._id } }">עריכה</router-link> |
