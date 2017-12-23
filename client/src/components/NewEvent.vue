@@ -41,16 +41,20 @@ export default {
   },
   methods: {
     async addEvent () {
-      this.loading = true
-      await this.$store.dispatch('addEvent', {
-        title: this.title,
-        date: this.date,
-        description: this.description,
-        fbPage: this.fbPage,
-        image: this.image
-      })
-      this.$router.push({ name: 'ManageEvents' })
-      this.loading = false
+      if (!this.title || !this.date || !this.description || !this.fbPage || !this.image) {
+        alert('נא למלא את כל השדות')
+      } else {
+        this.loading = true
+        await this.$store.dispatch('addEvent', {
+          title: this.title,
+          date: this.date,
+          description: this.description,
+          fbPage: this.fbPage,
+          image: this.image
+        })
+        this.$router.push({ name: 'ManageEvents' })
+        this.loading = false
+      }
     },
 
     changeImage (event) {

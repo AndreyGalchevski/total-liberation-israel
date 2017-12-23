@@ -48,7 +48,8 @@ export default {
   name: 'article',
   data () {
     return {
-      loading: false
+      loading: false,
+      pageTitle: 'מאמר'
     }
   },
   mounted () {
@@ -59,6 +60,7 @@ export default {
     async getArticle () {
       this.loading = true
       await this.$store.dispatch('getArticle', this.$route.params.id)
+      this.pageTitle = this.$store.getters.article.title
       this.loading = false
     },
     getDate: function (date) {
@@ -70,8 +72,10 @@ export default {
       this.loading = false
     }
   },
-  metaInfo: {
-    title: 'מאמר'
+  metaInfo () {
+    return {
+      title: this.pageTitle
+    }
   },
   computed: {
     thisArticle () {

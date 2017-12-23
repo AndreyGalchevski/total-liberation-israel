@@ -5,13 +5,21 @@
     <br>
     <form :action="sendMessage" method="post" enctype="text/plain">
       <div class="form-group">
-        <input type="email" class="form-control" placeholder="כתובת דואר אלקטרוני"  required>
+        <input type="email" class="form-control" placeholder="כתובת דואר אלקטרוני" 
+        oninvalid="this.setCustomValidity('נא להזין כתובת מייל תקינה')"
+        oninput="setCustomValidity('')" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="נושא הפנייה" v-model="subject" required>
+        <input type="text" class="form-control" placeholder="נושא הפנייה" 
+        oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
+        oninput="setCustomValidity('')" 
+        v-model="subject" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="במה נוכל לעזור?" v-model="body" required/>
+        <input type="text" class="form-control" placeholder="במה נוכל לעזור?" 
+        oninvalid="this.setCustomValidity('איך נדע במה לעזור אם לא תגיד/י')"
+        oninput="setCustomValidity('')" 
+        v-model="body" required/>
       </div>
       <input type="submit" class="btn btn-primary" value="שלח"/>
       <input type="reset" class="btn btn-elegant" value="אפס"/>

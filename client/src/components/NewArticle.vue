@@ -45,17 +45,21 @@ export default {
   },
   methods: {
     async addArticle () {
-      this.loading = true
-      await this.$store.dispatch('addArticle', {
-        title: this.title,
-        author: this.author,
-        date: this.date,
-        lead: this.lead,
-        content: this.content,
-        image: this.image
-      })
-      this.$router.push({ name: 'ManageArticles' })
-      this.loading = false
+      if (!this.title || !this.date || !this.author || !this.lead || !this.content || !this.image) {
+        alert('נא למלא את כל השדות')
+      } else {
+        this.loading = true
+        await this.$store.dispatch('addArticle', {
+          title: this.title,
+          author: this.author,
+          date: this.date,
+          lead: this.lead,
+          content: this.content,
+          image: this.image
+        })
+        this.$router.push({ name: 'ManageArticles' })
+        this.loading = false
+      }
     },
 
     changeImage (article) {
