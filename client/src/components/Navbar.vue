@@ -45,17 +45,17 @@
         <!--Social links-->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item social-links-icon">
-            <a href="https://www.facebook.com/Alfront">
+            <a href="https://www.facebook.com/Alfront" target="_blank">
               <i class="fa fa-facebook my-icon grey-text"></i>
             </a>
           </li>          
           <li class="nav-item social-links-icon">
-            <a href="https://www.instagram.com/alf_israel">
+            <a href="https://www.instagram.com/alf_israel" target="_blank">
               <i class="fa fa fa-instagram my-icon grey-text"></i>
             </a>
           </li>
           <li class="nav-item social-links-icon">
-            <a href="https://www.youtube.com/user/GlassWallsIsrael">
+            <a href="https://www.youtube.com/user/GlassWallsIsrael" target="_blank">
               <i class="fa fa-youtube-square my-icon grey-text"></i>
             </a>
           </li>
@@ -106,10 +106,12 @@ export default {
 <style scoped>
 .navbar-brand img {
   height: 80px;
+  
 }
 .navbar {
   padding-top: 0px;
   padding-bottom: 0px;
+  letter-spacing: 0.5px;
 }
 .social-links-icon {
   padding-top: 5px; 
