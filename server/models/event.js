@@ -23,7 +23,10 @@ module.exports.addEvent = function(newEvent) {
 }
 
 module.exports.getAllEvents = function() {
-  return EventModel.find().sort({_id:-1})
+  return EventModel.find({
+    date: {$gte: new Date()}})
+    .sort({_id:-1}
+    )
 }
 
 module.exports.getEventById = function(eventIdToGet) {
