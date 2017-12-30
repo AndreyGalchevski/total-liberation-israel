@@ -27,7 +27,7 @@ export default {
 
 body { 
   padding-top: 85px;
-  padding-bottom: 30px;
+  padding-bottom: 25px;
 }
 
 .fa-spinner {

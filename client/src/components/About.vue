@@ -8,20 +8,13 @@
           מי אנחנו?
         </h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, autem quae eius, dolorum culpa error ipsum c
-          ommodi officiis natus praesentium dolorem quod nobis quaerat! Laborum voluptate minus ipsa dicta sit incidunt! 
-          Dolor dicta facilis enim dolorem voluptatem assumenda magnam suscipit, voluptas nihil inventore porro incidunt 
-          culpa similique earum eius aut!
+          לעריכה מתמטיקה קרן מה. תוכל למנוע למחיקה מה עזה, שמו מה שונה שדרות הנדסת. תיקונים האנציקלופדיה גם עזה, גם עוד ראשי פוליטיקה, בקר גם יידיש קודמות. מה ממונרכיה מאמרשיחהצפה בקר, גם סדר טיפול רקטות העברית.
         </p>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Eum veniam possimus ullam dolor quaerat, nulla quia, maxime ad temporibus sapiente provident voluptas, e
-        ligendi magni voluptatibus! Ea iusto exercitationem ab, dicta architecto aspernatur obcaecati maxime dolorum 
-        quia inventore eligendi dolore quam laboriosam in fugiat velit molestias culpa fugit ipsam. Alias sunt sit officia
-        consectetur ab molestias quos excepturi eveniet nam veniam aperiam debitis minima, quasi reiciendis eos asperiores v
-        oluptas illum quis ipsum magni? Quisquam ex delectus aliquam enim doloremque, excepturi dignissimos explicabo atque 
-        repudiandae voluptates consequatur. Rem, nulla. Sequi atque aliquid, minus obcaecati, id nisi excepturi molestiae, q
-        uisquam reprehenderit ad cumque?
+          אל כלים לחבר הבקשה זאת. שמות איטליה רשימות או בדף, אם מיוחדים והגולשים חפש. תרומה משופרות אדריכלות דת עזה, קולנוע אנתרופולוגיה אל שמו. ב קסאם ואלקטרוניקה רבה, כלכלה שימושי העריכהגירסאות מה לוח. או בלשנות גיאוגרפיה שמו, בקר ב יידיש ערכים ממונרכיה. תורת אחרונים אנציקלופדיה אם רבה, קרן ב מועמדים למתחילים, בדף אל פנאי כדור הבאים. מדע כלכלה משפטית אספרנטו ב, הטבע תרומה למחיקה אנא של, גם המלחמה הקהילה אחד.
+        </p>
+        <p>
+          ויקי צרפתית לטיפול את כתב, העיר שפות מונחים של אנא, מתן אם ראשי יסוד הספרות. על אנא ניווט התפתחות מיתולוגיה, בה זאת ניווט למאמרים שימושיים, אל סדר פנאי בהיסטוריה. אם מלא מיזם לרפובליקה. את המלחמה צרפתית קלאסיים מדע. משפטית הספרות שימושי את חפש. חפש גם רוסית בעברית, שאלות משפטית לויקיפדים כדי ב.
         </p>
         <img class="img-fluid" src="http://res.cloudinary.com/dqvimfd8b/image/upload/v1514481518/alf-israel/about/25488247_1624108884375663_8780548424461025179_o.jpg">
       </div>
@@ -33,6 +26,10 @@
 
 <script>
 export default {
+  name: 'about',
+  metaInfo: {
+    title: 'מי אנחנו'
+  }
 }
 </script>
 
@@ -41,8 +38,8 @@ export default {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.col-sm-6 p {
-  padding-top: 35px;
+h1 {
+  padding-bottom: 30px;
 }
 </style>
 
