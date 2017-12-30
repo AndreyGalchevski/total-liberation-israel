@@ -26,7 +26,7 @@ export default {
 }
 
 body { 
-  padding-top: 90px;
+  padding-top: 85px;
   padding-bottom: 30px;
 }
 

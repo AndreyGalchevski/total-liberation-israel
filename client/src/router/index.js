@@ -13,6 +13,7 @@ import EditArticle from '@/components/EditArticle'
 import Article from '@/components/Article'
 import Login from '@/components/Login'
 import Admin from '@/components/Admin'
+import About from '@/components/About'
 import {store} from '@/store'
 import Meta from 'vue-meta'
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/contact',
       name: 'Contact',
       component: Contact
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
     },
     {
       path: '/admin',

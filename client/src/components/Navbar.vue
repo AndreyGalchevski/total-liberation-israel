@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-sm navbar-dark elegant-color fixed-top">
       <router-link class="navbar-brand" to="/">
-        <img src="../assets/logo/logo.png">
+        <img src="http://res.cloudinary.com/dqvimfd8b/image/upload/v1514480811/alf-israel/logo/logo2.png">
       </router-link>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>                        
@@ -12,6 +12,9 @@
           <!--Tabs-->
           <li class="nav-item">
             <router-link class="nav-link grey-text" to="/">ראשי</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link grey-text" to="/About">מי אנחנו</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link grey-text" to="/events">אירועים קרובים</router-link>
@@ -105,7 +108,7 @@ export default {
 </script>
 <style scoped>
 .navbar-brand img {
-  height: 80px;
+  height: 75px;
   
 }
 .navbar {
@@ -126,11 +129,15 @@ export default {
   font-size: 30px;
 }
 .fixed-bottom {
-  font-size: 12px;
+  font-size: 11px;
 }
 .navbar .fixed-bottom .nav-item {
   padding-left: 0px;
   padding-right: 0px;
+}
+.fixed-bottom .nav-link{
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 @media (max-width: 992px){
   .navbar .fixed-bottom .nav-item .nav-link {
