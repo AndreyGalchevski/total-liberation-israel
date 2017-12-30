@@ -8,6 +8,7 @@ const dbConfig = require('../config/db')
 const passport = require('passport')
 
 const app = express()
+
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
@@ -17,6 +18,11 @@ app.use(passport.session())
 require('../config/passport')(passport)
 
 cloudinary.config(cloudinaryConfig);
+
+app.get('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /admin");
+});
 
 var mongoose = require('mongoose');
 mongoose.connect(dbConfig.url);
