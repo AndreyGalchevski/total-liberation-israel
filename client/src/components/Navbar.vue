@@ -23,13 +23,16 @@
             <router-link class="nav-link grey-text" to="/articles">מאמרים</router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link grey-text" to="/investigations">תחקירים</router-link>
+          </li>
+          <li class="nav-item">
             <a class="nav-link grey-text" href="https://www.glass-walls.com/" target="_blank">קירות שקופים</a>
           </li>
           <li class="nav-item">
             <a class="nav-link grey-text" href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" target="_blank">חנות</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link grey-text" href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/"target="_blank">תרומה</a>
+            <a class="nav-link grey-text" href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" target="_blank">תרומה</a>
           </li>
           <li class="nav-item">
             <router-link class="nav-link grey-text" to="/contact">צור קשר</router-link>

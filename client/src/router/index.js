@@ -14,6 +14,7 @@ import Article from '@/components/Article'
 import Login from '@/components/Login'
 import Admin from '@/components/Admin'
 import About from '@/components/About'
+import Investigations from '@/components/Investigations'
 import {store} from '@/store'
 import Meta from 'vue-meta'
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: About
+    },
+    {
+      path: '/investigations',
+      name: 'Investigations',
+      component: Investigations
     },
     {
       path: '/admin',
