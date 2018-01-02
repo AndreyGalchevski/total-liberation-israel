@@ -13,6 +13,10 @@ const GET_EVENT_SUCCESS = 'GET_EVENT_SUCCESS'
 const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS'
 const CLEAR_EVENTS = 'CLEAR_EVENTS'
 const CLEAR_EVENT = 'CLEAR_EVENT'
+const GET_INVESTIGATION_SUCCESS = 'GET_INVESTIGATION_SUCCESS'
+const GET_INVESTIGATIONS_SUCCESS = 'GET_INVESTIGATIONS_SUCCESS'
+const CLEAR_INVESTIGATIONS = 'CLEAR_INVESTIGATIONS'
+const CLEAR_INVESTIGATION = 'CLEAR_INVESTIGATION'
 
 Vue.use(Vuex)
 
@@ -22,7 +26,9 @@ export const store = new Vuex.Store({
     article: null,
     articles: [],
     event: null,
-    events: []
+    events: [],
+    investigation: null,
+    investigations: []
   },
   actions: {
     async login (context, params) {
@@ -190,6 +196,62 @@ export const store = new Vuex.Store({
           reject(e)
         }
       })
+    },
+    async getInvestigation (context, investigationId) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          let response = await Api.get(`api/investigation/${investigationId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          if (response.data && response.data._id) {
+            context.commit('GET_INVESTIGATION_SUCCESS', response.data)
+          }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async getInvestigations (context) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.get('api/investigations')
+          if (response.data.investigations) {
+            context.commit('GET_INVESTIGATIONS_SUCCESS', response.data.investigations)
+          }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async addInvestigation (context, params) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.post('api/investigations', params, { headers: { Authorization: localStorage.getItem('token') } })
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async updateInvestigation (context, params) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.put(`api/investigations/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    async deleteInvestigation (context, investigationId) {
+      return new Promise(async(resolve, reject) => {
+        try {
+          let response = await Api.delete(`api/investigations/${investigationId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
     }
   },
   mutations: {
@@ -226,6 +288,18 @@ export const store = new Vuex.Store({
     },
     [CLEAR_EVENT] (state) {
       state.event = null
+    },
+    [GET_INVESTIGATION_SUCCESS] (state, investigation) {
+      state.investigation = investigation
+    },
+    [GET_INVESTIGATIONS_SUCCESS] (state, investigations) {
+      state.investigations = investigations
+    },
+    [CLEAR_INVESTIGATIONS] (state) {
+      state.investigations = []
+    },
+    [CLEAR_INVESTIGATION] (state) {
+      state.investigation = null
     }
   },
   getters: {
@@ -243,6 +317,12 @@ export const store = new Vuex.Store({
     },
     events: state => {
       return state.events
+    },
+    investigation: state => {
+      return state.investigation
+    },
+    investigations: state => {
+      return state.investigations
     }
   }
 })

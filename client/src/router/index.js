@@ -10,6 +10,9 @@ import EditEvent from '@/components/EditEvent'
 import ManageArticles from '@/components/ManageArticles'
 import NewArticle from '@/components/NewArticle'
 import EditArticle from '@/components/EditArticle'
+import ManageInvestigations from '@/components/ManageInvestigations'
+import NewInvestigation from '@/components/NewInvestigation'
+import EditInvestigation from '@/components/EditInvestigation'
 import Article from '@/components/Article'
 import Login from '@/components/Login'
 import Admin from '@/components/Admin'
@@ -100,6 +103,21 @@ export default new Router({
           path: 'articles/:id',
           name: 'EditArticle',
           component: EditArticle
+        },
+        {
+          path: 'investigations',
+          name: 'ManageInvestigations',
+          component: ManageInvestigations
+        },
+        {
+          path: 'investigations/new',
+          name: 'NewInvestigation',
+          component: NewInvestigation
+        },
+        {
+          path: 'investigations/:id',
+          name: 'EditInvestigation',
+          component: EditInvestigation
         }
       ]
     },
