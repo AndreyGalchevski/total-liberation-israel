@@ -161,7 +161,8 @@ export default {
         }
       ],
       map: null,
-      markers: []
+      markers: [],
+      infoWindows: []
     }
   },
   mounted: function () {
@@ -169,28 +170,37 @@ export default {
       zoom: 7,
       center: new google.maps.LatLng(31.611, 34.768)
     })
-    const infowindow = new google.maps.InfoWindow({})
+
     this.investigations.forEach((investigation) => {
       const position = new google.maps.LatLng(investigation.latitude, investigation.longitude)
+
       const marker = new google.maps.Marker({
         position: position,
         map: this.map,
         animation: google.maps.Animation.DROP
       })
-      const contentString = '<div id="content">' +
-        '<h5>' +
-        investigation.name +
-        '</h5>' +
-        '<div id="bodyContent">' +
-        '<p><a href="' +
-        investigation.url +
-        '"target="_blank">' +
-        'קישור לחתקיר</a></p>' +
-        '</div>' +
+
+      const contentString =
+        '<div>' +
+          '<h5>' + investigation.name + '</h5>' +
+          '<div>' +
+            '<p><a href="' + investigation.url + '"target="_blank">' + 'קישור לחתקיר</a></p>' +
+          '</div>' +
         '</div>'
-      infowindow.setContent(contentString)
+
+      const infoWindow = new google.maps.InfoWindow({
+        content: contentString
+      })
+      this.infoWindows.push(infoWindow)
+      const thisInfoWindows = this.infoWindows
+
       marker.addListener('click', function () {
-        infowindow.open(this.map, marker)
+        infoWindow.open(this.map, marker)
+        for (var i = 0; i < thisInfoWindows.length; i++) {
+          if (infoWindow !== thisInfoWindows[i]) {
+            thisInfoWindows[i].close()
+          }
+        }
       })
       this.markers.push(marker)
     })
