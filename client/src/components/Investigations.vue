@@ -169,30 +169,28 @@ export default {
       zoom: 7,
       center: new google.maps.LatLng(31.611, 34.768)
     })
-    const thisMarkers = this.markers
-    this.map.addListener('zoom_changed', function () {
-      console.log(this)
-      if (this.getZoom() < 10) {
-        thisMarkers.forEach((marker) => {
-          marker.setLabel(null)
-        })
-      }
-      console.log(this)
-    })
+    const infowindow = new google.maps.InfoWindow({})
     this.investigations.forEach((investigation) => {
       const position = new google.maps.LatLng(investigation.latitude, investigation.longitude)
       const marker = new google.maps.Marker({
         position: position,
         map: this.map,
-        label: {
-          text: investigation.name,
-          fontWeight: 'bold',
-          visible: false
-        },
         animation: google.maps.Animation.DROP
       })
+      const contentString = '<div id="content">' +
+        '<h5>' +
+        investigation.name +
+        '</h5>' +
+        '<div id="bodyContent">' +
+        '<p><a href="' +
+        investigation.url +
+        '"target="_blank">' +
+        'קישור לחתקיר</a></p>' +
+        '</div>' +
+        '</div>'
+      infowindow.setContent(contentString)
       marker.addListener('click', function () {
-        window.open(investigation.url)
+        infowindow.open(this.map, marker)
       })
       this.markers.push(marker)
     })
