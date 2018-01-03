@@ -13,13 +13,16 @@ export default {
     return {
       mapName: this.name + '-map',
       map: null,
-      investigations: Object.assign({}, this.$store.getters.investigations),
       markers: [],
       infoWindows: []
     }
   },
+  computed: {
+    investigations () {
+      return this.$store.getters.investigations
+    }
+  },
   mounted () {
-    this.getInvestigations()
     this.initMap()
   },
   methods: {
@@ -28,13 +31,14 @@ export default {
       await this.$store.dispatch('getInvestigations')
       this.loading = false
     },
-    initMap () {
+    async initMap () {
+      await this.getInvestigations()
       this.map = new google.maps.Map(document.getElementById(this.mapName), {
         zoom: 7,
         center: new google.maps.LatLng(31.611, 34.768)
       })
       for (var i = 0; i < this.investigations.length; i++) {
-        const currentInvestigation = investigations[i]
+        const currentInvestigation = this.investigations[i]
         const position = new google.maps.LatLng(currentInvestigation.latitude, currentInvestigation.longitude)
         const marker = new google.maps.Marker({
           position: position,
