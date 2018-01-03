@@ -33,9 +33,17 @@ export default {
     },
     async initMap () {
       await this.getInvestigations()
+
       this.map = new google.maps.Map(document.getElementById(this.mapName), {
         zoom: 7,
         center: new google.maps.LatLng(31.611, 34.768)
+      })
+
+      var thisMap = this.map
+      google.maps.event.addDomListener(window, 'resize', function () {
+        var center = thisMap.getCenter()
+        google.maps.event.trigger(thisMap, 'resize')
+        thisMap.setCenter(center)
       })
       for (var i = 0; i < this.investigations.length; i++) {
         const currentInvestigation = this.investigations[i]
@@ -86,11 +94,8 @@ export default {
   padding-top: 25px;
 }
 .google-map {
-  width: 800px;
-  height: 600px;
-  margin: 0 auto;
+  width:100%;
+  min-height:600px;
   background: gray;
 }
 </style>
-
-
