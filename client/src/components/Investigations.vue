@@ -58,7 +58,11 @@ export default {
           '<div>' +
             '<h5>' + currentInvestigation.name + '</h5>' +
             '<div>' +
-              '<p><a href="' + currentInvestigation.url + '"target="_blank">' + 'קישור לחתקיר</a></p>' +
+              '<p>' +
+                '<a href="' + currentInvestigation.url + '"target="_blank">' +
+                  '<i class="fa fa-camera" aria-hidden="true" style="font-size: 20px"></i>' +
+                '</a>' +
+              '</p>' +
             '</div>' +
           '</div>'
 

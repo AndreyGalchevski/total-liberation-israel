@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-dark elegant-color fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark elegant-color fixed-top scrolling-navbar">
       <router-link class="navbar-brand" to="/">
         <img src="http://res.cloudinary.com/dqvimfd8b/image/upload/v1514480811/alf-israel/logo/logo2.png">
       </router-link>
@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
           <!--Tabs-->
-          <li class="nav-item">
+          <li class="nav-item active">
             <router-link class="nav-link grey-text" to="/">ראשי</router-link>
           </li>
           <li class="nav-item">
