@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style>
-@media (max-width: 700px) {
+@media (max-width: 992px) {
   .otherArticles {
     display: none;
   }
