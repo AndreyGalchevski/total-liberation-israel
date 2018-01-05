@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark elegant-color fixed-top scrolling-navbar">
+    <nav class="navbar navbar-expand-xl navbar-dark elegant-color fixed-top scrolling-navbar">
       <router-link class="navbar-brand" to="/">
         <img src="http://res.cloudinary.com/dqvimfd8b/image/upload/v1514480811/alf-israel/logo/logo2.png">
       </router-link>
