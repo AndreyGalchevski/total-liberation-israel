@@ -10,19 +10,19 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
           <!--Tabs-->
-          <li class="nav-item active">
+          <li :class="getNavItemClasses('Home')">
             <router-link class="nav-link grey-text" to="/">ראשי</router-link>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('About')">
             <router-link class="nav-link grey-text" to="/About">מי אנחנו</router-link>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('Events')">
             <router-link class="nav-link grey-text" to="/events">אירועים קרובים</router-link>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('Acticles')">
             <router-link class="nav-link grey-text" to="/articles">מאמרים</router-link>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('Investigations')">
             <router-link class="nav-link grey-text" to="/investigations">תחקירים</router-link>
           </li>
           <li class="nav-item">
@@ -34,15 +34,15 @@
           <li class="nav-item">
             <a class="nav-link grey-text" href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" target="_blank">תרומה</a>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('Contact')">
             <router-link class="nav-link grey-text" to="/contact">צור קשר</router-link>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('Login')">
             <router-link class="nav-link grey-text" to="/login" v-if="!isLoggedIn">
               התחברות
             </router-link>
           </li>
-          <li class="nav-item">
+          <li :class="getNavItemClasses('Login')">
             <a href="#" class="nav-link grey-text" v-if="isLoggedIn" @click="logout">
               יציאה
             </a> 
@@ -119,6 +119,18 @@ export default {
   methods: {
     logout () {
       this.$store.dispatch('logout')
+    },
+    getNavItemClasses (routeName) {
+      var classes = {
+        'nav-item': true,
+        'active': false
+      }
+
+      if (this.$route.name === routeName) {
+        classes.active = true
+      }
+
+      return classes
     }
   },
   computed: {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <router-view :key="$route.params.id"/>
+    <router-view class="scroll" :key="$route.params.id"/>
   </div>
 </template>
 
@@ -23,11 +23,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   direction: rtl;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 body { 
   padding-top: 85px;
   padding-bottom: 25px;
+  height: 100%;
+}
+
+.scroll {
+  height: 100%;
+  overflow-y: auto;
 }
 
 .fa-spinner {

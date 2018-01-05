@@ -3,12 +3,7 @@
     <br>
     <h2>צור קשר</h2>
     <br>
-    <form :action="sendMessage" method="post" enctype="text/plain">
-      <div class="form-group">
-        <input type="email" class="form-control" placeholder="כתובת דואר אלקטרוני" 
-        oninvalid="this.setCustomValidity('נא להזין כתובת מייל תקינה')"
-        oninput="setCustomValidity('')" required>
-      </div>
+    <div class="form">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="נושא הפנייה" 
         oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
@@ -21,9 +16,12 @@
         oninput="setCustomValidity('')" 
         v-model="body" required/>
       </div>
-      <input type="submit" class="btn btn-primary" value="שלח"/>
-      <input type="reset" class="btn btn-elegant" value="אפס"/>
-    </form>
+      <a :href="sendEmail" @click="redirect">
+        <div class="btn btn-primary">
+          שלח
+        </div>
+      </a>
+    </div>
 	</div> 
 </template>
 
@@ -36,11 +34,16 @@ export default {
       body: ''
     }
   },
+  methods: {
+    redirect () {
+      this.$router.push({name: 'Home'})
+    }
+  },
   computed: {
-    sendMessage: function () {
+    sendEmail: function () {
       var unicodedSubject = this.subject.replace(/\?/g, '%3F')
       var unicodedBody = this.body.replace(/\?/g, '%3F')
-      return 'mailto:glasswallsisrael@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
+      return 'mailto:andreygalchevski@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
     }
   },
   metaInfo: {

@@ -1,23 +1,25 @@
 <template>
-  <div class="container">
-    <br>
-    <double-bounce v-show="loading" :background="backgroundColor" :size="size" ></double-bounce>
-    <div class="row">
-      <div class="col-md-4 card-deck" v-for="event in events" :key="event._id">
-        <div class="card mb-r">
-          <div class="view overlay hm-white-slight">
-            <img class="card-img-top" :src="event.image" alt="Card image">
-            <a :href="event.fbPage" class="card-link">
-              <div class="mask"></div>
-            </a>
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">{{ event.title }}</h4>
-            <p class="card-text text-primary">{{ getDate(event.date) }}</p>
-            <p class="card-text">{{ event.description }}</p>
-          </div>
-          <div class="card-footer">
-            <a :href="event.fbPage" class="card-link">לדף האירוע ב- <i class="fa fa-facebook-official"></i></a>
+  <div class="events">
+    <div class="container">
+      <br>
+      <double-bounce v-show="loading" :background="backgroundColor" :size="size" ></double-bounce>
+      <div class="row">
+        <div class="col-md-4 card-deck" v-for="event in events" :key="event._id">
+          <div class="card mb-r">
+            <div class="view overlay hm-white-slight">
+              <img class="card-img-top" :src="event.image" alt="Card image">
+              <a :href="event.fbPage" class="card-link">
+                <div class="mask"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">{{ event.title }}</h4>
+              <p class="card-text text-primary">{{ getDate(event.date) }}</p>
+              <p class="card-text">{{ event.description }}</p>
+            </div>
+            <div class="card-footer">
+              <a :href="event.fbPage" class="card-link">לדף האירוע ב- <i class="fa fa-facebook-official"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -68,6 +70,9 @@ export default {
 </script>
 
 <style>
+.events {
+  width: 100%;
+}
 .card-footer {
   background-color: #ffffff;
 }
