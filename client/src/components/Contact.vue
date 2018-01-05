@@ -1,28 +1,25 @@
-<template>
-  <div class="container">
-    <br>
-    <h2>צור קשר</h2>
-    <br>
-    <div class="form">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="נושא הפנייה" 
-        oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
-        oninput="setCustomValidity('')" 
-        v-model="subject" required>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="במה נוכל לעזור?" 
-        oninvalid="this.setCustomValidity('איך נדע במה לעזור אם לא תגיד/י')"
-        oninput="setCustomValidity('')" 
-        v-model="body" required/>
-      </div>
-      <a :href="sendEmail" @click="redirect">
-        <div class="btn btn-primary">
-          שלח
-        </div>
-      </a>
-    </div>
-	</div> 
+<template lang="pug">
+  div(class='container')
+    br
+    h2 צור קשר
+    br
+    div(class='form')
+      div(class='form-group')
+        input(
+          type='text' class='form-control' placeholder='נושא הפנייה'
+          oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
+          oninput="setCustomValidity('')" 
+          v-model="subject" required
+        )
+      div(class='form-group')
+        input(
+          type='text' class='form-control' placeholder='במה נוכל לעזור?'
+          oninvalid="this.setCustomValidity('איך נדע במה לעזור אם לא תגיד/י')"
+          oninput="setCustomValidity('')" 
+          v-model="body" required
+        )
+      a(:href="sendEmail" @click="redirect")
+        div(class='btn btn-primary') שלח
 </template>
 
 <script>

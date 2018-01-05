@@ -1,7 +1,6 @@
-<template>
-  <div class="container">  
-    <div class="google-map" :id="mapName"></div>
-  </div>
+<template lang="pug">
+  div(class="container")  
+    div(class="google-map" :id="mapName")
 </template>
 
 <script>

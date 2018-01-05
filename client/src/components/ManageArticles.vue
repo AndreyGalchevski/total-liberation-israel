@@ -1,43 +1,31 @@
-<template>
-  <div class="container">
-    <div class="articles">
-      <br>
-      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-      <div v-if="articles.length > 0">
-        <div>
-          <router-link v-bind:to="{ name: 'NewArticle' }" class="btn btn-danger">מאמר חדש</router-link>
-        </div>
-        <br>
-        <div class="table-responsive">
-          <table class="table table">
-            <thead class="bg-light">
-              <tr>
-                <td>כותרת</td>
-                <td>תאריך</td>
-                <td>פעולה</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="article in articles" :key="article._id">
-                <td>{{ article.title }}</td>
-                <td>{{ getDate(article.date) }}</td>
-                <td>
-                  <router-link v-bind:to="{ name: 'EditArticle', params: { id: article._id } }">עריכה</router-link> |
-                  <a href="#" @click="deleteArticle(article._id)">מחיקה</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div v-else>
-        <br>
-        <h4>אין מאמרים להצגה</h4>
-        <br>
-        <router-link v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary">הוספת מאמר</router-link>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div(class="articles")
+    div(class="container")
+      br
+      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+      div(v-if="articles.length > 0")
+        div
+          router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") מאמר חדש
+        br
+        div(class="table-responsive")
+          table(class="table table")
+            thead(class="bg-light")
+              tr
+                td כותרת
+                td תאריך
+                td פעולה
+            tbody
+              tr(v-for="article in articles" :key="article._id")
+                td {{ article.title }}
+                td {{ getDate(article.date) }}
+                td
+                  router-link(v-bind:to="{ name: 'EditArticle', params: { id: article._id } }") עריכה | 
+                  a(href="#" @click="deleteArticle(article._id)") מחיקה
+      div(v-else)
+        br
+        h4 אין מאמרים להצגה
+        br
+        router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") הוספת מאמר
 </template>
 
 <script>
@@ -81,4 +69,7 @@ export default {
 </script>
 
 <style scoped>
+.articles {
+  width: 100%;
+}
 </style>

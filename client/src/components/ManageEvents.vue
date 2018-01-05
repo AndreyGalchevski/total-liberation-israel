@@ -1,43 +1,31 @@
-<template>
-  <div class="container">
-    <div class="events">
-      <br>
-      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-      <div v-if="events.length > 0">
-        <div>
-          <router-link v-bind:to="{ name: 'NewEvent' }" class="btn btn-danger">אירוע חדש</router-link>
-        </div>
-        <br>
-        <div class="table-responsive">
-          <table class="table table">
-            <thead class="bg-light">
-              <tr>
-                <td>כותרת</td>
-                <td>תאריך</td>
-                <td>פעולה</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="event in events" :key="event._id">
-                <td>{{ event.title }}</td>
-                <td>{{ getDate(event.date) }}</td>
-                <td>
-                  <router-link v-bind:to="{ name: 'EditEvent', params: { id: event._id } }">עריכה</router-link> |
-                  <a href="#" @click="deleteEvent(event._id)">מחיקה</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div v-else>
-        <br>
-        <h4>אין אירועים להצגה</h4>
-        <br>
-        <router-link v-bind:to="{ name: 'NewEvent' }" class="btn btn-primary">הוספת אירוע</router-link>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div(class="events")
+    div(class="container")
+      br
+      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+      div(v-if="events.length > 0")
+        div
+          router-link(v-bind:to="{ name: 'NewEvent' }" class="btn btn-default") אירוע חדש
+        br
+        div(class="table-responsive")
+          table(class="table table")
+            thead(class="bg-light")
+              tr
+                td כותרת
+                td תאריך
+                td פעולה
+            tbody
+              tr(v-for="event in events" :key="event._id")
+                td {{ event.title }}
+                td {{ getDate(event.date) }}
+                td
+                  router-link(v-bind:to="{ name: 'EditEvent', params: { id: event._id } }") עריכה | 
+                  a(href="#" @click="deleteEvent(event._id)") מחיקה
+      div(v-else)
+        br
+        h4 אין אירועים להצגה
+        br
+        router-link(v-bind:to="{ name: 'NewEvent' }" class="btn btn-primary") הוספת אירוע
 </template>
 
 <script>
@@ -81,4 +69,7 @@ export default {
 </script>
 
 <style scoped>
+.events {
+  width: 100%;
+}
 </style>

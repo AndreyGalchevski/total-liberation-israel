@@ -1,26 +1,19 @@
-<template>
-  <div class="container">
-    <br>
-    <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-    <h1>תחקיר חדש</h1>
-    <div class="form">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="שם" v-model="name"/>
-      </div>
-      <div class="form-group">
-        <input type="number" class="form-control" placeholder="קו רוחב" v-model="latitude">
-      </div>
-      <div class="form-group">
-        <input type="number" class="form-control" placeholder="קו גובה" v-model="longitude">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="קישור" v-model="url"/>
-      </div>
-      <div>
-        <button class="btn btn-primary" @click="addInvestigation">הוספה</button>
-      </div>
-    </div>
-</div>
+<template lang="pug">
+  div(class="container")
+    br
+    i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+    h1 תחקיר חדש
+    div(class="form")
+      div(class="form-group")
+        input(type="text" class="form-control" placeholder="שם" v-model="name")
+      div(class="form-group")
+        input(type="number" class="form-control" placeholder="קו רוחב" v-model="latitude")
+      div(class="form-group")
+        input(type="number" class="form-control" placeholder="קו גובה" v-model="longitude")
+      div(class="form-group")
+        input(type="text" class="form-control" placeholder="קישור" v-model="url")
+      div
+        button(class="btn btn-primary" @click="addInvestigation") הוספה
 </template>
 
 <script>

@@ -1,41 +1,29 @@
-<template>
-  <div class="container">
-    <div class="investigations">
-      <br>
-      <i v-show="loading" class="fa fa-spinner fa-spin text-secondary"></i>
-      <div v-if="investigations.length > 0">
-        <div>
-          <router-link v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-danger">תחקיר חדש</router-link>
-        </div>
-        <br>
-        <div class="table-responsive">
-          <table class="table table">
-            <thead class="bg-light">
-              <tr>
-                <td>שם</td>
-                <td>פעולה</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="investigation in investigations" :key="investigation._id">
-                <td>{{ investigation.name }}</td>
-                <td>
-                  <router-link v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }">עריכה</router-link> |
-                  <a href="#" @click="deleteInvestigation(investigation._id)">מחיקה</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div v-else>
-        <br>
-        <h4>אין תחקירים להצגה</h4>
-        <br>
-        <router-link v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-primary">הוספת תחקיר</router-link>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div(class="investigations")
+    div(class="container")
+      br
+      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+      div(v-if="investigations.length > 0")
+        div
+          router-link(v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-secondary") תחקיר חדש
+        br
+        div(class="table-responsive")
+          table(class="table table")
+            thead(class="bg-light")
+              tr
+                td שם
+                td פעולה
+            tbody
+              tr(v-for="investigation in investigations" :key="investigation._id")
+                td {{ investigation.name }}
+                td
+                  router-link(v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }") עריכה | 
+                  a(href="#" @click="deleteInvestigation(investigation._id)") מחיקה
+      div(v-else)
+        br
+        h4 אין תחקירים להצגה
+        br
+        router-link(v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-primary") הוספת תחקיר
 </template>
 
 <script>
@@ -75,4 +63,7 @@ export default {
 </script>
 
 <style scoped>
+.investigations {
+  width: 100%;
+}
 </style>

@@ -1,22 +1,15 @@
-<template>
-  <div class="container">
-    <form @submit.prevent="login({ username, password })">
-    <br>
-    <h2>התחברות</h2>
-    <br>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="שם משתמש" v-model="username">
-    </div>
-
-    <div class="form-group">
-        <input type="password" class="form-control" placeholder="סיסמה" v-model="password">
-    </div>
-
-    <div class="text-center">
-        <button type="submit" class="btn btn-default">כניסה</button>
-    </div>
-    </form>
-  </div>
+<template lang="pug">
+  div(class="container")
+    form(@submit.prevent="login({ username, password })")
+      br
+      h2 התחברות
+      br
+      div(class="form-group")
+          input(type="text" class="form-control" placeholder="שם משתמש" v-model="username")
+      div(class="form-group")
+          input(type="password" class="form-control" placeholder="סיסמה" v-model="password")
+      div(class="text-center")
+          button(type="submit" class="btn btn-default") כניסה
 </template>
 
 <script>

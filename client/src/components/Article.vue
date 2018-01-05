@@ -1,45 +1,27 @@
-<template>
-  <div class="wrapper">
-    <div class="otherArticles w-50">
-      <div v-for="article in articles" :key="article._id" v-if="article._id !== thisArticle._id">
-        <div class="card mb-r">
-          <div class="view overlay hm-white-slight">
-            <img class="img-fluid" :src="article.image" alt="Card image">
-            <router-link :to="'/article/' + article._id">
-              <div class="mask"></div>
-            </router-link>
-          </div>
-            <div class="card-body">
-              <p style="font-size: 15px" class="card-title">{{ article.title }}</p>
-            </div>
-          </div>
-      </div>
-    </div>
-    <div class="mainArticle" v-if="thisArticle">
-      <h2><b>{{ thisArticle.title }}</b></h2>
-      <br>
-      <h6 class="lead"><b>{{ thisArticle.lead }}</b></h6>
-      <br>
-      <h6 class="text-primary">פורסם ב - {{ getDate(thisArticle.date) }} ע"י {{ thisArticle.author }} </h6>
-      <br>
-      <img class="rounded my-card-img img-fluid" :src = "thisArticle.image" alt="Card image">
-      <br><br>
-      <br>
-      <p c>
-        <a href="#">
+<template lang="pug">
+  div(class="wrapper")
+    div(class="other-articles w-50")
+      div(v-for="article in articles" :key="article._id" v-if="article._id !== thisArticle._id")
+        div(class="card mb-r")
+          div(class="view overlay hm-white-slight")
+            img(class="img-fluid" :src="article.image" alt="Card image")
+            router-link(:to="'/article/' + article._id")
+              div(class="mask")
+            div(class="card-body")
+              p(style="font-size: 15px" class="card-title") {{ article.title }}
+    div(class="main-article" v-if="thisArticle")
+      h1(class="title") {{ thisArticle.title }}
+      h6(class="lead") {{ thisArticle.lead }}
+      h6(class="date text-primary") פורסם ב - {{ getDate(thisArticle.date) }} ע"י {{ thisArticle.author }}
+      img(class="rounded main-image img-fluid" :src = "thisArticle.image" alt="Card image")
+      p(class="share-buttons")
+        a(href="#")
           <i class="fa fa-envelope-o my-icon" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <i class="fa fa-facebook-square my-icon" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <i class="fa fa-whatsapp my-icon" aria-hidden="true"></i>
-        </a>
-      </p>
-      <br>
-      <p class="myContent">{{ thisArticle.content }}</p>
-    </div>
-  </div>
+        a(href="#")
+          i(class="fa fa-facebook-square my-icon" aria-hidden="true")
+        a(href="#")
+          i(class="fa fa-whatsapp my-icon" aria-hidden="true")
+      p(class="my-content") {{ thisArticle.content }}
 </template>
 
 <script>
@@ -94,10 +76,10 @@ export default {
 
 <style>
 @media (max-width: 1200px) {
-  .otherArticles {
+  .other-articles {
     display: none;
   }
-  .mainArticle {
+  .main-article {
     grid-column: span 4;
   }
 }
@@ -110,12 +92,11 @@ export default {
 .wrapper > div{
   padding:1em;
 }
-
-.mainArticle img {
+.main-article img {
    width: 500px; 
    height: 300px;
 }
-.otherArticles {
+.other-articles {
   text-align: center;
 }
 .my-icon {
@@ -132,9 +113,21 @@ export default {
 .fa-whatsapp {
   color: #25d366;
 }
-.myContent {
+.my-content {
   text-align: right;
   font-size: 17px;
   white-space:pre-wrap;
+}
+.title, .lead, .date, .main-image, .share-buttons {
+  padding-bottom: 20px;
+}
+.title {
+  padding-top: 10px;
+}
+.lead {
+  font-weight: lighter;
+}
+.share-buttons {
+  padding-top: 10px;
 }
 </style>

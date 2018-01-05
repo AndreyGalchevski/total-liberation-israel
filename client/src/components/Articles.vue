@@ -1,29 +1,20 @@
-<template>
-  <div class="articles">
-    <div class="container">
-      <br> 
-      <double-bounce v-show="loading" :background="backgroundColor" :size="size" ></double-bounce>
-      <div class="row">
-        <div class="col-md-6 card-deck" v-for="article in articles" :key="article._id">
-          <div class="card mb-r">
-            <div class="view overlay hm-white-slight">
-              <img class="img-fluid" :src="article.image" alt="Card image">
-              <router-link :to="'/article/' + article._id">
-                <div class="mask"></div>
-              </router-link>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">{{ article.title }}</h4>
-              <p class="card-text">{{ article.lead }}</p>
-            </div>
-            <div class="card-footer">
-              <router-link class="btn btn-primary" :to="'/article/' + article._id">קרא עוד</router-link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div(class="articles")
+    div(class="container")
+      br
+      double-bounce(v-show="loading" :background="backgroundColor" :size="size")
+      div(class="row")
+        div(class="col-md-6 card-deck" v-for="article in articles" :key="article._id")
+          div(class="card mb-r")
+            div(class="view overlay hm-white-slight")
+              img(class="img-fluid" :src="article.image" alt="Card image")
+              router-link(:to="'/article/' + article._id")
+                div(class="mask")
+            div(class="card-body")
+              h4(class="card-title") {{ article.title }}
+              p(class="card-text") {{ article.lead }}
+            div(class="card-footer")
+              router-link(class="btn btn-primary" :to="'/article/' + article._id") קרא עוד
 </template>
 
 <script>
