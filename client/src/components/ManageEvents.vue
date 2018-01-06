@@ -58,6 +58,9 @@ export default {
       return this.$store.getters.events
     }
   },
+  destroyed () {
+    this.$store.commit('CLEAR_EVENTS')
+  },
   metaInfo: {
     title: 'ניהול אירועים'
   }

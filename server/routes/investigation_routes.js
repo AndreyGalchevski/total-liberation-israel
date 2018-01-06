@@ -3,7 +3,7 @@ const passport = require('passport')
 
 module.exports = function(app, db) {
   // Fetch all investigations
-  app.get('/api/investigations', async (req, res) => {
+  app.get('/api/investigation', async (req, res) => {
     try {
       let investigations = await InvestigationModel.getAllInvestigations()
       res.send({investigations: investigations})
@@ -13,7 +13,7 @@ module.exports = function(app, db) {
   })
   
   // Create new investigation
-  app.post('/api/investigations', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.post('/api/investigation', passport.authenticate('jwt', {session: false}), async (req, res) => {
     var newInvestigation = {
       name: req.body.name,
       latitude: req.body.latitude,
@@ -43,7 +43,7 @@ module.exports = function(app, db) {
   })
   
   // Update an investigation
-  app.put('/api/investigations/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.put('/api/investigation/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let investigation = await InvestigationModel.getInvestigationById(req.params.id)
       investigation.name = req.body.name
@@ -58,7 +58,7 @@ module.exports = function(app, db) {
   })
 
   // Delete an investigation
-  app.delete('/api/investigations/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.delete('/api/investigation/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let investigation = await InvestigationModel.deleteInvestigation({_id: req.params.id})
       res.send({ success: true })

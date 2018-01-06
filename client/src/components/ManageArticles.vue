@@ -58,6 +58,9 @@ export default {
       return this.$store.getters.articles
     }
   },
+  destroyed () {
+    this.$store.commit('CLEAR_ARTICLES')
+  },
   metaInfo: {
     title: 'ניהול מאמרים'
   }

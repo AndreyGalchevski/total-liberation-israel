@@ -7,7 +7,7 @@ const passport = require('passport')
 
 module.exports = function(app, db) {
   // Fetch all events
-  app.get('/api/events', async (req, res) => {
+  app.get('/api/event', async (req, res) => {
     try {
       let events = await EventModel.getAllEvents()
       res.send({events: events})
@@ -17,7 +17,7 @@ module.exports = function(app, db) {
   })
   
   // Create new event
-  app.post('/api/events', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.post('/api/event', passport.authenticate('jwt', {session: false}), async (req, res) => {
     var newEvent = {
       title: req.body.title,
       date: req.body.date,
@@ -37,7 +37,7 @@ module.exports = function(app, db) {
   })
   
   // Upload a picture
-  app.patch('/api/events/:id/image', upload.fields([{ name: 'eventImg', maxCount: 1 }]), passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.patch('/api/event/:id/image', upload.fields([{ name: 'eventImg', maxCount: 1 }]), passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let result = await cloudinary.v2.uploader.upload(req.files.eventImg[0].path, {
         folder: 'alf-israel/events'
@@ -68,7 +68,7 @@ module.exports = function(app, db) {
   })
   
   // Update an event
-  app.put('/api/events/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.put('/api/event/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let event = await EventModel.getEventById(req.params.id)
       event.title = req.body.title
@@ -83,7 +83,7 @@ module.exports = function(app, db) {
   })
 
     // Delete a picture
-  app.delete('/api/events/:id/image', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.delete('/api/event/:id/image', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let event = await EventModel.getEventById(req.params.id)
       let public_id = 'alf-israel/events/' + event.image.substr(-24, 20)
@@ -96,7 +96,7 @@ module.exports = function(app, db) {
   })
 
   // Delete an event
-  app.delete('/api/events/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  app.delete('/api/event/:id', passport.authenticate('jwt', {session: false}), async (req, res) => {
     try {
       let event = await EventModel.deleteEvent({_id: req.params.id})
       let public_id = 'alf-israel/events/' + event.image.substr(-24, 20)

@@ -52,6 +52,9 @@ export default {
       return this.$store.getters.investigations
     }
   },
+  destroyed () {
+    this.$store.commit('CLEAR_INVESTIGATIONS')
+  },
   metaInfo: {
     title: 'ניהול תחקירים'
   }

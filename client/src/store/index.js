@@ -63,7 +63,7 @@ export const store = new Vuex.Store({
     async getArticles (context) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.get('api/articles')
+          let response = await Api.get('api/article')
           if (response.data.articles) {
             context.commit('GET_ARTICLES_SUCCESS', response.data.articles)
           }
@@ -76,13 +76,13 @@ export const store = new Vuex.Store({
     async addArticle (context, params) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.post('api/articles', params, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.post('api/article', params, { headers: { Authorization: localStorage.getItem('token') } })
 
           if (response.data.success && params.image) {
             let articleId = response.data.article._id
             let form = new FormData()
             form.append('articleImg', params.image)
-            let imageResponse = await Api.patch(`api/articles/${articleId}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
+            let imageResponse = await Api.patch(`api/article/${articleId}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
             resolve(imageResponse)
           } else {
             resolve(response)
@@ -95,15 +95,15 @@ export const store = new Vuex.Store({
     async updateArticle (context, params) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.put(`api/articles/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.put(`api/article/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
 
           if (response.data.success && params.newImage) {
-            let imageDeleteResponse = await Api.delete(`api/articles/${params.id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
+            let imageDeleteResponse = await Api.delete(`api/article/${params.id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
             resolve(imageDeleteResponse)
 
             let form = new FormData()
             form.append('articleImg', params.newImage)
-            let imageUploadResponse = await Api.patch(`api/articles/${params.id}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
+            let imageUploadResponse = await Api.patch(`api/article/${params.id}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
             resolve(imageUploadResponse)
           }
           resolve(response)
@@ -115,7 +115,7 @@ export const store = new Vuex.Store({
     async deleteArticle (context, articleId) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.delete(`api/articles/${articleId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.delete(`api/article/${articleId}`, { headers: { Authorization: localStorage.getItem('token') } })
           resolve(response)
         } catch (e) {
           reject(e)
@@ -138,7 +138,7 @@ export const store = new Vuex.Store({
     async getEvents (context) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.get('api/events')
+          let response = await Api.get('api/event')
           if (response.data.events) {
             context.commit('GET_EVENTS_SUCCESS', response.data.events)
           }
@@ -151,13 +151,13 @@ export const store = new Vuex.Store({
     async addEvent (context, params) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.post('api/events', params, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.post('api/event', params, { headers: { Authorization: localStorage.getItem('token') } })
 
           if (response.data.success && params.image) {
             let eventId = response.data.event._id
             let form = new FormData()
             form.append('eventImg', params.image)
-            let imageResponse = await Api.patch(`api/events/${eventId}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
+            let imageResponse = await Api.patch(`api/event/${eventId}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
             resolve(imageResponse)
           } else {
             resolve(response)
@@ -170,15 +170,15 @@ export const store = new Vuex.Store({
     async updateEvent (context, params) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.put(`api/events/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.put(`api/event/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
 
           if (response.data.success && params.newImage) {
-            let imageDeleteResponse = await Api.delete(`api/events/${params.id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
+            let imageDeleteResponse = await Api.delete(`api/event/${params.id}/image`, { headers: { Authorization: localStorage.getItem('token') } })
             resolve(imageDeleteResponse)
 
             let form = new FormData()
             form.append('eventImg', params.newImage)
-            let imageUploadResponse = await Api.patch(`api/events/${params.id}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
+            let imageUploadResponse = await Api.patch(`api/event/${params.id}/image`, form, { headers: { Authorization: localStorage.getItem('token') } })
             resolve(imageUploadResponse)
           }
           resolve(response)
@@ -190,7 +190,7 @@ export const store = new Vuex.Store({
     async deleteEvent (context, eventId) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.delete(`api/events/${eventId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.delete(`api/event/${eventId}`, { headers: { Authorization: localStorage.getItem('token') } })
           resolve(response)
         } catch (e) {
           reject(e)
@@ -213,7 +213,7 @@ export const store = new Vuex.Store({
     async getInvestigations (context) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.get('api/investigations')
+          let response = await Api.get('api/investigation')
           if (response.data.investigations) {
             context.commit('GET_INVESTIGATIONS_SUCCESS', response.data.investigations)
           }
@@ -226,7 +226,7 @@ export const store = new Vuex.Store({
     async addInvestigation (context, params) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.post('api/investigations', params, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.post('api/investigation', params, { headers: { Authorization: localStorage.getItem('token') } })
           resolve(response)
         } catch (e) {
           reject(e)
@@ -236,7 +236,7 @@ export const store = new Vuex.Store({
     async updateInvestigation (context, params) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.put(`api/investigations/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.put(`api/investigation/${params.id}`, params, { headers: { Authorization: localStorage.getItem('token') } })
           resolve(response)
         } catch (e) {
           reject(e)
@@ -246,7 +246,7 @@ export const store = new Vuex.Store({
     async deleteInvestigation (context, investigationId) {
       return new Promise(async(resolve, reject) => {
         try {
-          let response = await Api.delete(`api/investigations/${investigationId}`, { headers: { Authorization: localStorage.getItem('token') } })
+          let response = await Api.delete(`api/investigation/${investigationId}`, { headers: { Authorization: localStorage.getItem('token') } })
           resolve(response)
         } catch (e) {
           reject(e)
