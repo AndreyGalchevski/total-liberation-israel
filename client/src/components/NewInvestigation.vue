@@ -1,6 +1,5 @@
 <template lang="pug">
   div(class="container")
-    br
     i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
     h1 תחקיר חדש
     div(class="form")
@@ -50,8 +49,11 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 textarea {
   height: auto;
+}
+h1 {
+  padding: 20px;
 }
 </style>

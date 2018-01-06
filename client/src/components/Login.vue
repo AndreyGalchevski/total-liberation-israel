@@ -1,9 +1,7 @@
 <template lang="pug">
   div(class="container")
     form(@submit.prevent="login({ username, password })")
-      br
       h2 התחברות
-      br
       div(class="form-group")
           input(type="text" class="form-control" placeholder="שם משתמש" v-model="username")
       div(class="form-group")
@@ -37,5 +35,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+h2 {
+  padding: 20px;
+}
 </style>

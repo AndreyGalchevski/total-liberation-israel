@@ -1,6 +1,5 @@
 <template lang="pug">
   div(class="container")
-    br
     i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
     h1 עריכת אירוע
     div(class="form")
@@ -74,5 +73,8 @@ export default {
 <style>
 textarea {
   height: auto;
+}
+h1 {
+  padding: 20px;
 }
 </style>

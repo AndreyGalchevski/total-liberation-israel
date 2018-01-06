@@ -1,7 +1,6 @@
 <template lang="pug">
   div(class="articles")
     div(class="container")
-      br
       double-bounce(v-show="loading" :background="backgroundColor" :size="size")
       div(class="row")
         div(class="col-md-6 card-deck" v-for="article in articles" :key="article._id")
@@ -59,7 +58,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container {
+  padding-top: 20px;
+}
 .articles {
   width: 100%;
 }

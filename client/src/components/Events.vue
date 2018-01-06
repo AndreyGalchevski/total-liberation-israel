@@ -1,21 +1,20 @@
 <template lang="pug">
   div(class="events")
     div(class="container")
-      br
       double-bounce(v-show="loading" :background="backgroundColor" :size="size")
       div(class="row")
         div(class="col-md-4 card-deck" v-for="event in events" :key="event._id")
           div(class="card mb-r")
             div(class="view overlay hm-white-slight")
               img(class="card-img-top" :src="event.image" alt="Card image")
-              a(:href="event.fbPage" class="card-link")
+              a(:href="event.fbPage" class="card-link" target="_blank")
                 div(class="mask")
             div(class="card-body")
               h4(class="card-title") {{ event.title }}
               p(class="card-text text-primary") {{ getDate(event.date) }}
               p(class="card-text") {{ event.description }}
             div(class="card-footer")
-              a(:href="event.fbPage" class="card-link")
+              a(:href="event.fbPage" class="card-link" target="_blank")
                 i(class="fa fa-facebook-official")
 </template>
 
@@ -61,7 +60,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container {
+  padding-top: 20px;
+}
 .events {
   width: 100%;
 }

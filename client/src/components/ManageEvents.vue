@@ -1,12 +1,10 @@
 <template lang="pug">
   div(class="events")
     div(class="container")
-      br
       i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
       div(v-if="events.length > 0")
-        div
+        div(class="new-event")
           router-link(v-bind:to="{ name: 'NewEvent' }" class="btn btn-default") אירוע חדש
-        br
         div(class="table-responsive")
           table(class="table table")
             thead(class="bg-light")
@@ -22,9 +20,7 @@
                   router-link(v-bind:to="{ name: 'EditEvent', params: { id: event._id } }") עריכה | 
                   a(href="#" @click="deleteEvent(event._id)") מחיקה
       div(v-else)
-        br
         h4 אין אירועים להצגה
-        br
         router-link(v-bind:to="{ name: 'NewEvent' }" class="btn btn-primary") הוספת אירוע
 </template>
 
@@ -71,5 +67,11 @@ export default {
 <style scoped>
 .events {
   width: 100%;
+}
+.new-event {
+  padding-top: 20px;
+}
+.table-responsive {
+  padding: 20px;
 }
 </style>

@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
 .container {
-  padding-top: 25px;
+  padding-top: 20px;
 }
 .google-map {
   width:100%;

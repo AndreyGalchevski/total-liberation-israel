@@ -1,12 +1,10 @@
 <template lang="pug">
   div(class="investigations")
     div(class="container")
-      br
       i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
       div(v-if="investigations.length > 0")
-        div
+        div(class="new-investigation")
           router-link(v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-secondary") תחקיר חדש
-        br
         div(class="table-responsive")
           table(class="table table")
             thead(class="bg-light")
@@ -20,9 +18,7 @@
                   router-link(v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }") עריכה | 
                   a(href="#" @click="deleteInvestigation(investigation._id)") מחיקה
       div(v-else)
-        br
         h4 אין תחקירים להצגה
-        br
         router-link(v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-primary") הוספת תחקיר
 </template>
 
@@ -65,5 +61,11 @@ export default {
 <style scoped>
 .investigations {
   width: 100%;
+}
+.new-investigation {
+  padding-top: 20px;
+}
+.table-responsive {
+  padding: 20px;
 }
 </style>

@@ -1,8 +1,6 @@
 <template lang="pug">
   div(class='container')
-    br
     h2 צור קשר
-    br
     div(class='form')
       div(class='form-group')
         input(
@@ -50,4 +48,7 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  padding: 20px;
+}
 </style>

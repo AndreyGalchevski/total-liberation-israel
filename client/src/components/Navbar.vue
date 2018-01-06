@@ -59,9 +59,9 @@
                 width="100" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true")
     // Footer
     nav(class="navbar navbar-expand-sm navbar-dark elegant-color fixed-bottom")
-      ul(class="navbar-nav" style="padding-right: 0px;")
+      ul(class="navbar-nav copy-rights")
         li(class="nav-item")
-          a(class="nav-link") &#169; 2017 ALF Israel
+          a(class="nav-link") 2018 ALF Israel &#169;
       ul(class="navbar-nav mr-auto")
         li(class="nav-item")
           a(href="https://il.linkedin.com/in/andrey-galchevski-b40999a3" class="nav-link" target="_blank") By Andrey Galchevski
@@ -73,6 +73,7 @@ export default {
   name: 'navbar',
   methods: {
     logout () {
+      this.$router.push({name: 'Home'})
       this.$store.dispatch('logout')
     },
     getNavItemClasses (routeName) {
@@ -98,7 +99,6 @@ export default {
 <style scoped>
 .navbar-brand img {
   height: 75px;
-  
 }
 .navbar {
   padding-top: 0px;
@@ -141,6 +141,9 @@ export default {
 .fixed-bottom .nav-link{
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.copy-rights {
+  padding-right: 0px;
 }
 @media (max-width: 992px){
   .navbar .fixed-bottom .nav-item .nav-link {

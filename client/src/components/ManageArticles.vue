@@ -1,12 +1,10 @@
 <template lang="pug">
   div(class="articles")
     div(class="container")
-      br
       i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
       div(v-if="articles.length > 0")
-        div
+        div(class="new-article")
           router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") מאמר חדש
-        br
         div(class="table-responsive")
           table(class="table table")
             thead(class="bg-light")
@@ -22,9 +20,7 @@
                   router-link(v-bind:to="{ name: 'EditArticle', params: { id: article._id } }") עריכה | 
                   a(href="#" @click="deleteArticle(article._id)") מחיקה
       div(v-else)
-        br
         h4 אין מאמרים להצגה
-        br
         router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") הוספת מאמר
 </template>
 
@@ -71,5 +67,11 @@ export default {
 <style scoped>
 .articles {
   width: 100%;
+}
+.new-article {
+  padding-top: 20px;
+}
+.table-responsive {
+  padding: 20px;
 }
 </style>

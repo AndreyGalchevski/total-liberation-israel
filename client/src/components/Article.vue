@@ -8,7 +8,7 @@
             router-link(:to="'/article/' + article._id")
               div(class="mask")
             div(class="card-body")
-              p(style="font-size: 15px" class="card-title") {{ article.title }}
+              p(class="card-title") {{ article.title }}
     div(class="main-article" v-if="thisArticle")
       h1(class="title") {{ thisArticle.title }}
       h6(class="lead") {{ thisArticle.lead }}
@@ -98,6 +98,9 @@ export default {
 }
 .other-articles {
   text-align: center;
+}
+.other-articles .card-text {
+  font-size: 15px;
 }
 .my-icon {
   font-size: 35px;
