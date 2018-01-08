@@ -29,7 +29,7 @@ export default {
 <style scoped>
 .container {
   font-size: 17px;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 30px;
 }
 h1 {

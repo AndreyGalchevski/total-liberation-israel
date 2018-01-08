@@ -20,7 +20,8 @@
         a(class="fb-xfbml-parse-ignore" target="_blank" 
         :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwarm-tundra-37915.herokuapp.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
           i(class="fa fa-facebook-square my-icon" aria-hidden="true")
-        a(:href="'https://web.whatsapp.com/send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+        // a(:href="'https://web.whatsapp.com/send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+        a(:href="'whatsapp://send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
           i(class="fa fa-whatsapp my-icon" aria-hidden="true")
       p(class="my-content") {{ thisArticle.content }}
 </template>
@@ -124,9 +125,6 @@ export default {
 }
 .title, .lead, .date, .main-image, .share-buttons {
   padding-bottom: 20px;
-}
-.title {
-  padding-top: 10px;
 }
 .lead {
   font-weight: lighter;

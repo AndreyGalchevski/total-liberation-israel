@@ -4,4 +4,7 @@ $( document ).ready(function() {
     cycle: true,
     pause: "null"
   })
-});
+  $('.navbar-nav>li>.hide-collapse').on('click', function(){
+    $('.navbar-collapse').collapse('hide')
+  })
+})

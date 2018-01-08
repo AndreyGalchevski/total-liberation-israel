@@ -38,7 +38,7 @@ export default {
     sendEmail: function () {
       var unicodedSubject = this.subject.replace(/\?/g, '%3F')
       var unicodedBody = this.body.replace(/\?/g, '%3F')
-      return 'mailto:andreygalchevski@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
+      return 'mailto:glasswallsisrael@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
     }
   },
   metaInfo: {

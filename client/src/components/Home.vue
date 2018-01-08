@@ -51,8 +51,8 @@ export default {
 }
 /* Hide the carousel text when the screen is less than 600 pixels wide */
 @media (max-width: 600px) {
-.carousel-caption {
-    display: none; 
+.carousel-indicators {
+    margin-right: 15px;
     }
 }
 .image-1 {
