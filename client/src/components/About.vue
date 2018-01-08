@@ -29,11 +29,11 @@ export default {
 <style scoped>
 .container {
   font-size: 17px;
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 30px;
 }
 h1 {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 </style>
 
