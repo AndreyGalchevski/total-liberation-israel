@@ -15,12 +15,12 @@
       h6(class="date text-primary") פורסם ב - {{ getDate(thisArticle.date) }} ע"י {{ thisArticle.author }}
       img(class="rounded main-image img-fluid" :src = "thisArticle.image" alt="Card image")
       p(class="share-buttons")
-        a(:href="'mailto:?subject=' + thisArticle.title + '&body=http://alf-israel.com/article' + thisArticle._id")
+        a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://warm-tundra-37915.herokuapp.com/article' + thisArticle._id")
           i(class="fa fa-envelope-o my-icon" aria-hidden="true")
         a(class="fb-xfbml-parse-ignore" target="_blank" 
-        :href="'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Falf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
+        :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwarm-tundra-37915.herokuapp.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
           i(class="fa fa-facebook-square my-icon" aria-hidden="true")
-        a(:href="'https://web.whatsapp.com/send?text=http://alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+        a(:href="'https://web.whatsapp.com/send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
           i(class="fa fa-whatsapp my-icon" aria-hidden="true")
       p(class="my-content") {{ thisArticle.content }}
 </template>
