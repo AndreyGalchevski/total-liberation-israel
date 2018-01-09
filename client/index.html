@@ -22,14 +22,33 @@
     <!-- Custom carousel behaviour -->
     <script>
       $( document ).ready(function() {
+
         $('.carousel').carousel({
           interval: 4000,
           cycle: true,
           pause: "null"
         })
+
+        $(".carousel").on("touchstart", function(event){
+          var xClick = event.originalEvent.touches[0].pageX
+          $(this).one("touchmove", function(event){
+            var xMove = event.originalEvent.touches[0].pageX
+            if( Math.floor(xClick - xMove) > 5 ){
+                $(this).carousel('next')
+            }
+            else if( Math.floor(xClick - xMove) < -5 ){
+                $(this).carousel('prev')
+            }
+          })
+          $(".carousel").on("touchend", function(){
+                  $(this).off("touchmove")
+          })
+        })
+
         $('.navbar-nav>li>.hide-collapse').on('click', function(){
           $('.navbar-collapse').collapse('hide')
         })
+
       })
     </script>
     

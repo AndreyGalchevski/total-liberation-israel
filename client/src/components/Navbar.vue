@@ -29,9 +29,7 @@
           li(:class="getNavItemClasses('Contact')")
             router-link(class="nav-link grey-text hide-collapse" to="/contact") צור קשר
           li(:class="getNavItemClasses('Login')")
-            router-link(class="nav-link grey-text hide-collapse" to="/login" v-if="!isLoggedIn") התחברות
-          li(:class="getNavItemClasses('Login')")
-            a(href="#" class="nav-link grey-text hide-collapse" v-if="isLoggedIn" @click="logout") יציאה
+            a(href="#" class="nav-link cyan-text hide-collapse" v-if="isLoggedIn" @click="logout") יציאה
 
         // Social links For Mobile
         div(class="social-links-mobile d-sm-none")
@@ -162,5 +160,12 @@ export default {
       padding-left: 0px;
       padding-right: 0px;
   }
+  .dropdown-item {
+    display: inline;
+  }
+}
+.dropdown-menu {
+  text-align: center;
+  min-width: 100%;
 }
 </style>
