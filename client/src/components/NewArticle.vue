@@ -1,22 +1,23 @@
 <template lang="pug">
-  div(class="container")
-    i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-    h1 מאמר חדש
-    div(class="form")
-      div(class="form-group")
-        input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
-      div(class="form-group")
-        input(type="text" name="title" class="form-control" placeholder="שם הכתב" v-model="author")
-      div(class="form-group")
-        input(type="date" name="תאריך" class="form-control" v-model="date")
-      div(class="form-group")
-        textarea(rows="2" class="form-control myTextArea" placeholder="תקציר" v-model="lead")
-      div(class="form-group")
-        textarea(rows="6" class="form-control myTextArea" placeholder="תוכן" v-model="content")
-      div(class="form-group")
-        input(class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage")
-      div
-        button(class="btn btn-primary" @click="addArticle") הוספה
+  div(class="newArticle")
+    div(class="container")
+      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+      h1 מאמר חדש
+      div(class="form")
+        div(class="form-group")
+          input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
+        div(class="form-group")
+          input(type="text" name="title" class="form-control" placeholder="שם הכתב" v-model="author")
+        div(class="form-group")
+          input(type="date" name="תאריך" class="form-control" v-model="date")
+        div(class="form-group")
+          textarea(rows="2" class="form-control myTextArea" placeholder="תקציר" v-model="lead")
+        div(class="form-group")
+          textarea(rows="6" class="form-control myTextArea" placeholder="תוכן" v-model="content")
+        div(class="form-group")
+          input(class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage")
+        div
+          button(class="btn btn-primary" @click="addArticle") הוספה
 </template>
 
 <script>

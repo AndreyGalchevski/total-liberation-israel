@@ -1,24 +1,25 @@
 <template lang="pug">
-  div(class="container")
-    i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-    h1 עדכון מאמר
-    div(class="form")
-      div(class="form-group")
-        input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
-      div(class="form-group")
-        input(type="text" class="form-control" placeholder="כתב" v-model="author")
-      div(class="form-group")
-        input(type="date" name="תאריך" class="form-control" v-model="date")
-      div(class="form-group")
-        textarea(rows="2" class="form-control" placeholder="תקציר" v-model="lead")
-      div(class="form-group")
-        textarea(rows="6" class="form-control" placeholder="תוכן" v-model="content")
-      div(class="form-group")
-        input(class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage")
-      div(class="form-group")
-        img(class="img-thumbnail" :src = "image" width="300" height="200" alt="Card image")
-      div
-        button(class="btn btn-primary" @click="updateArticle") עכדון
+  div(class="editArticle")
+    div(class="container")
+      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+      h1 עדכון מאמר
+      div(class="form")
+        div(class="form-group")
+          input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
+        div(class="form-group")
+          input(type="text" class="form-control" placeholder="כתב" v-model="author")
+        div(class="form-group")
+          input(type="date" name="תאריך" class="form-control" v-model="date")
+        div(class="form-group")
+          textarea(rows="2" class="form-control" placeholder="תקציר" v-model="lead")
+        div(class="form-group")
+          textarea(rows="6" class="form-control" placeholder="תוכן" v-model="content")
+        div(class="form-group")
+          input(class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage")
+        div(class="form-group")
+          img(class="img-thumbnail" :src = "image" width="300" height="200" alt="Card image")
+        div
+          button(class="btn btn-primary" @click="updateArticle") עכדון
 </template>
 
 <script>

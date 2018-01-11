@@ -12,28 +12,32 @@
     div(class="main-article" v-if="thisArticle")
       h1(class="title") {{ thisArticle.title }}
       h6(class="lead") {{ thisArticle.lead }}
-      h6(class="date text-primary") פורסם ב - {{ getDate(thisArticle.date) }} ע"י {{ thisArticle.author }}
+      h6(class="date text-primary") פורסם ב - {{ getDate(thisArticle.date) }} מאת {{ thisArticle.author }}
       img(class="rounded main-image img-fluid" :src = "thisArticle.image" alt="Card image")
-      div(id="share-buttons")
-        p(class="share-buttons d-sm-none")
-          a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://warm-tundra-37915.herokuapp.com/article' + thisArticle._id")
-            i(class="fa fa-envelope-o my-icon" aria-hidden="true")
-          a(class="fb-xfbml-parse-ignore" target="_blank" 
+      p(class="share-buttons")
+        a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://warm-tundra-37915.herokuapp.com/article' + thisArticle._id")
+          i(class="fa fa-envelope-o top-icon" aria-hidden="true")
+        a(class="fb-xfbml-parse-ignore" target="_blank" 
+        :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwarm-tundra-37915.herokuapp.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
+          i(class="fa fa-facebook-square top-facebook-icon top-icon" aria-hidden="true")
+        a(v-if="this.screenWidth < 700" :href="'whatsapp://send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+          i(class="fa fa-whatsapp top-icon" aria-hidden="true")
+        a(v-else :href="'https://web.whatsapp.com/send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+          i(class="fa fa-whatsapp top-icon" aria-hidden="true")
+      p(class="my-content") {{ thisArticle.content }}
+      div(class="dropdown-share btn-group")
+        button(class="btn btn-outline-primary waves-effect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          i(class="fa fa-share-alt" aria-hidden="true")
+        div(class="dropdown-menu")
+          a(class="dropdown-item" :href="'mailto:?subject=' + thisArticle.title + '&body=https://warm-tundra-37915.herokuapp.com/article' + thisArticle._id")
+            i(class="fa fa-envelope-o bottom-icon" aria-hidden="true")
+          a(class="dropdown-item fb-xfbml-parse-ignore" target="_blank" 
           :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwarm-tundra-37915.herokuapp.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
-            i(class="fa fa-facebook-square my-icon" aria-hidden="true")
-          a(:href="'whatsapp://send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
-            i(class="fa fa-whatsapp my-icon" aria-hidden="true")
-        p(class="share-buttons d-none d-md-block")
-          a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://warm-tundra-37915.herokuapp.com/article' + thisArticle._id")
-            i(class="fa fa-envelope-o my-icon" aria-hidden="true")
-          a(class="fb-xfbml-parse-ignore" target="_blank" 
-          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwarm-tundra-37915.herokuapp.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
-            i(class="fa fa-facebook-square my-icon" aria-hidden="true")
-          a(:href="'https://web.whatsapp.com/send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
-            i(class="fa fa-whatsapp my-icon" aria-hidden="true")
-        p(class="my-content") {{ thisArticle.content }}
-      div
-        a(class="btn btn-primary" href="#share-buttons") שתף
+             i(class="fa fa-facebook-square bottom-icon" aria-hidden="true")
+          a(v-if="this.screenWidth < 700" class="dropdown-item" :href="'whatsapp://send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+            i(class="fa fa-whatsapp bottom-icon" aria-hidden="true")
+          a(v-else class="dropdown-item" :href="'https://web.whatsapp.com/send?text=https://warm-tundra-37915.herokuapp.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+            i(class="fa fa-whatsapp bottom-icon" aria-hidden="true")
 </template>
 
 <script>
@@ -77,6 +81,9 @@ export default {
     },
     articles () {
       return this.$store.getters.articles
+    },
+    screenWidth () {
+      return window.screen.width
     }
   },
   destroyed () {
@@ -114,12 +121,14 @@ export default {
 .other-articles .card-text {
   font-size: 15px;
 }
-.my-icon {
+.top-icon {
   font-size: 35px;
 }
-.fa-facebook-square {
+.top-facebook-icon {
   padding-right: 50px;
   padding-left: 50px;
+}
+.fa-facebook-square {
   color: #3b5998;
 }
 .fa-envelope-o {
@@ -141,5 +150,15 @@ export default {
 }
 .share-buttons {
   padding-top: 10px;
+}
+.dropdown-share {
+  padding-bottom: 20px;  
+}
+.bottom-icon {
+  font-size: 25px;
+}
+.dropdown-menu {
+  text-align: center;
+  min-width: 100%;
 }
 </style>

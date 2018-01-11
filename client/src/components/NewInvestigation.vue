@@ -1,18 +1,19 @@
 <template lang="pug">
-  div(class="container")
-    i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-    h1 תחקיר חדש
-    div(class="form")
-      div(class="form-group")
-        input(type="text" class="form-control" placeholder="שם" v-model="name")
-      div(class="form-group")
-        input(type="number" class="form-control" placeholder="קו רוחב" v-model="latitude")
-      div(class="form-group")
-        input(type="number" class="form-control" placeholder="קו גובה" v-model="longitude")
-      div(class="form-group")
-        input(type="text" class="form-control" placeholder="קישור" v-model="url")
-      div
-        button(class="btn btn-primary" @click="addInvestigation") הוספה
+  div(class="newInvestigation")
+    div(class="container")
+      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+      h1 תחקיר חדש
+      div(class="form")
+        div(class="form-group")
+          input(type="text" class="form-control" placeholder="שם" v-model="name")
+        div(class="form-group")
+          input(type="number" class="form-control" placeholder="קו רוחב" v-model="latitude")
+        div(class="form-group")
+          input(type="number" class="form-control" placeholder="קו גובה" v-model="longitude")
+        div(class="form-group")
+          input(type="text" class="form-control" placeholder="קישור" v-model="url")
+        div
+          button(class="btn btn-primary" @click="addInvestigation") הוספה
 </template>
 
 <script>
