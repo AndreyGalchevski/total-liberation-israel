@@ -18,6 +18,7 @@ import Login from '@/components/Login'
 import Admin from '@/components/Admin'
 import About from '@/components/About'
 import Investigations from '@/components/Investigations'
+import PageNotFound from '@/components/PageNotFound'
 import {store} from '@/store'
 import Meta from 'vue-meta'
 
@@ -125,6 +126,11 @@ export default new Router({
       path: '/login/',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '*',
+      name: 'PageNotFound',
+      component: PageNotFound
     }
   ]
 })
