@@ -8,8 +8,11 @@ const dbConfig = require('../config/db')
 const passport = require('passport')
 const path = require('path')
 const serveStatic = require('serve-static')
+const sslRedirect = require('heroku-ssl-redirect')
 
 const app = express()
+
+app.use(sslRedirect())
 
 app.use(morgan('combined'))
 app.use(bodyParser.json())
