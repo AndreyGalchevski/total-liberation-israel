@@ -12,6 +12,9 @@ import EditEvent from './components/EditEvent'
 import NewEvent from './components/NewEvent'
 import Admin from '@/components/Admin'
 import { store } from './store/index'
+import vueHeadful from 'vue-headful'
+
+Vue.component('vue-headful', vueHeadful)
 
 Vue.config.productionTip = false
 

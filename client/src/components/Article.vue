@@ -1,5 +1,10 @@
 <template lang="pug">
   div(class="wrapper")
+    vue-headful(
+      :title="thisArticle.title"
+      :description="thisArticle.lead"
+      :image="thisArticle.image"
+    )
     div(class="other-articles w-50")
       div(v-for="article in articles" :key="article._id" v-if="article._id !== thisArticle._id")
         div(class="card mb-r")
