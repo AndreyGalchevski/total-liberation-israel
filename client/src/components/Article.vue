@@ -17,8 +17,8 @@
       p(class="share-buttons")
         a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id")
           i(class="fa fa-envelope-o top-icon" aria-hidden="true")
-        a(class="fb-xfbml-parse-ignore" target="_blank" 
-        :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
+        a(class="fb-xfbml-parse-ignore" target="_blank"
+        :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
           i(class="fa fa-facebook-square top-facebook-icon top-icon" aria-hidden="true")
         a(v-if="this.screenWidth < 700" :href="'whatsapp://send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
           i(class="fa fa-whatsapp top-icon" aria-hidden="true")
@@ -32,7 +32,7 @@
           a(class="dropdown-item" :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id")
             i(class="fa fa-envelope-o bottom-icon" aria-hidden="true")
           a(class="dropdown-item fb-xfbml-parse-ignore" target="_blank" 
-          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F&amp;src=sdkpreparse' + thisArticle._id + '&amp;src=sdkpreparse'")
+          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
              i(class="fa fa-facebook-square bottom-icon" aria-hidden="true")
           a(v-if="this.screenWidth < 700" class="dropdown-item" :href="'whatsapp://send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
             i(class="fa fa-whatsapp bottom-icon" aria-hidden="true")
