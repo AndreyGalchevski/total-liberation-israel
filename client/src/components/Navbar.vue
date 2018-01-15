@@ -3,7 +3,7 @@
     // Header navbar
     nav(class="navbar navbar-expand-xl navbar-dark elegant-color fixed-top scrolling-navbar")
       router-link(class="navbar-brand" to="/")
-        img(src="http://res.cloudinary.com/dqvimfd8b/image/upload/v1514480811/alf-israel/logo/logo2.png")
+        img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/v1514480811/alf-israel/logo/logo2.png")
       button(type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar")
         span(class="navbar-toggler-icon")
 

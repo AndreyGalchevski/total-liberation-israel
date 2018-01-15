@@ -22,7 +22,7 @@
             span   ונצרף אתכם לתאי הפעילות האזוריים.
           img(
             class="img-fluid" 
-            src="http://res.cloudinary.com/dqvimfd8b/image/upload/v1515705896/alf-israel/about/about.jpg"
+            src="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515705896/alf-israel/about/about.jpg"
           )
         div(class='col-sm-2')
 </template>
