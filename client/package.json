@@ -18,7 +18,6 @@
     "moment": "^2.19.2",
     "pug": "^2.0.0-rc.4",
     "vue": "^2.5.2",
-    "vue-headful": "0.0.1",
     "vue-loading-spinner": "^1.0.11",
     "vue-meta": "^1.4.0",
     "vue-router": "^3.0.1",
