@@ -2,7 +2,7 @@
   div(class="editArticle")
     div(class="container")
       i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-      h1 עדכון מאמר
+      h1 עדכון כתבה
       div(class="form")
         div(class="form-group")
           input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
@@ -72,7 +72,7 @@ export default {
     }
   },
   metaInfo: {
-    title: 'עריכת מאמר'
+    title: 'עריכת כתבה'
   }
 }
 </script>

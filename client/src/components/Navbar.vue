@@ -17,7 +17,7 @@
           li(:class="getNavItemClasses('Events')")
             router-link(class="nav-link grey-text hide-collapse" to="/events") אירועים קרובים
           li(:class="getNavItemClasses('Acticles')")
-            router-link(class="nav-link grey-text hide-collapse" to="/articles") מאמרים
+            router-link(class="nav-link grey-text hide-collapse" to="/articles") כתבות
           li(:class="getNavItemClasses('Investigations')")
             router-link(class="nav-link grey-text hide-collapse" to="/investigations") תחקירים
           li(class="nav-item dropdown")

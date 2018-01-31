@@ -4,7 +4,7 @@
       i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
       div(v-if="articles.length > 0")
         div(class="new-article")
-          router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") מאמר חדש
+          router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") כתבה חדשה
         div(class="table-responsive")
           table(class="table table")
             thead(class="bg-light")
@@ -20,8 +20,8 @@
                   router-link(v-bind:to="{ name: 'EditArticle', params: { id: article._id } }") עריכה | 
                   a(href="#" @click="deleteArticle(article._id)") מחיקה
       div(v-else)
-        h4 אין מאמרים להצגה
-        router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") הוספת מאמר
+        h4 אין כתבות להצגה
+        router-link(v-bind:to="{ name: 'NewArticle' }" class="btn btn-primary") הוספת כתבה
 </template>
 
 <script>
@@ -62,7 +62,7 @@ export default {
     this.$store.commit('CLEAR_ARTICLES')
   },
   metaInfo: {
-    title: 'ניהול מאמרים'
+    title: 'ניהול כתבות'
   }
 }
 </script>

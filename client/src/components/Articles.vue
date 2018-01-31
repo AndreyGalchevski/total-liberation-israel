@@ -53,7 +53,7 @@ export default {
     this.$store.commit('CLEAR_ARTICLES')
   },
   metaInfo: {
-    title: 'מאמרים'
+    title: 'כתבות'
   }
 }
 </script>

@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       loading: false,
-      pageTitle: 'מאמר'
+      pageTitle: 'כתבה'
     }
   },
   mounted () {
@@ -113,7 +113,6 @@ export default {
 }
 .main-article img {
    width: 500px; 
-   height: 300px;
 }
 .other-articles {
   text-align: center;
