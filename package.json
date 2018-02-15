@@ -1,26 +1,9 @@
 {
-  "name": "vue-ssr-starter-kit",
-  "version": "0.0.0",
-  "description": "A Vue.js project wuth vue 2.0, vue-router and vuex for server side rendering.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/doabit/vue-ssr-starter-kit.git"
-  },
-  "keywords": [
-    "vue",
-    "vuex",
-    "vue-router",
-    "webpack",
-    "starter",
-    "server-side",
-    "boilerplate"
-  ],
-  "author": "doabit <doinsist@gmail.com>",
+  "name": "alf-israel-ssr",
+  "version": "0.0.1",
+  "description": "Official ALF Israel website",
+  "author": "Andrey Galchevski <andreygalchevskit@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/doabit/vue-ssr-starter-kit/issues"
-  },
-  "homepage": "https://github.com/doabit/vue-ssr-starter-kit#readme",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
     "dev": "node server",
