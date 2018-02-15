@@ -76,7 +76,7 @@ export default {
       meta: [
         {property: 'og:title', content: this.pageTitle},
         {property: 'og:description', content: this.$store.getters.article.lead},
-        {property: 'og:img', content: this.$store.getters.article.image}
+        {property: 'og:image', content: this.$store.getters.article.image}
       ],
       title: this.pageTitle
     }
