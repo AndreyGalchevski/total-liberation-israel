@@ -1,48 +1,46 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const morgan = require('morgan')
-const cloudinary = require('cloudinary')
-const cloudinaryConfig = require('../config/cloudinary')
-const dbConfig = require('../config/db')
-const passport = require('passport')
-const path = require('path')
-const serveStatic = require('serve-static')
-const sslRedirect = require('heroku-ssl-redirect')
+import Vue from 'vue'
+import App from './App.vue'
 
-const app = express()
+// ghay stuff
+import router from './router'
+import Navbar from './components/Navbar'
+import Events from './components/Events'
+import Articles from './components/Articles'
+import Contact from './components/Contact'
+import ManageEvents from './components/ManageEvents'
+import EditEvent from './components/EditEvent'
+import NewEvent from './components/NewEvent'
+import Admin from './components/Admin'
+import { store } from './store/index'
 
-app.use(sslRedirect())
+//
 
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
-  
-app.use(passport.initialize())
-app.use(passport.session())
-require('../config/passport')(passport)
+// import createStore from './vuex/store'
+// import createRouter from './router'
+import { sync } from 'vuex-router-sync'
 
-app.use(serveStatic(path.join(__dirname, '../public/')))
-
-cloudinary.config(cloudinaryConfig);
-
-app.get('/robots.txt', function (req, res) {
-  res.type('text/plain');
-  res.send("User-agent: *\nDisallow: /admin");
-});
-
-var mongoose = require('mongoose');
-mongoose.connect(dbConfig.url);
-var db = mongoose.connection;
-require('../routes')(app, db)
-db.on("error", console.error.bind(console, "connection error"));
-db.once("open", function(callback){
-  console.log("Connection Succeeded");
-});
-
-app.get('*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'))
-})
-
-//app.listen(process.env.PORT || 8081)
-app.listen(process.env.PORT || 8080)
+export function createApp () {
+  // const store = createStore()
+  // const router = createRouter()
+  // 同步路由状态(route state)到 store
+  sync(store, router)
+  // 创建应用程序实例，将 router 和 store 注入
+  const app = new Vue({
+    router,
+    store,
+    render: h => h(App),
+    components: {
+      App,
+      Navbar,
+      Events,
+      Articles,
+      Contact,
+      ManageEvents,
+      EditEvent,
+      NewEvent,
+      Admin
+    }
+  })
+  // 暴露 app, router 和 store。
+  return { app, router, store }
+}

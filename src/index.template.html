@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" style="overflow: hidden; height: 100%">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta property="og:url" content="https://www.alf-israel.com" />
+    <meta property="og:type" content="website" />
+    {{{ meta.inject().meta.text() }}}
+    {{{ meta.inject().title.text() }}}
+    <!--Favicon-->
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/faviconNew.ico" type="image/x-icon">
+    
+    <!--Boostrap 4 cdns-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!-- MD Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
+    <!-- Custom carousel behaviour -->
+    <script>
+      $( document ).ready(function() {
+
+        $('.carousel').carousel({
+          interval: 4000,
+          cycle: true,
+          pause: "null"
+        })
+
+        $(".carousel").on("touchstart", function(event){
+          var xClick = event.originalEvent.touches[0].pageX
+          $(this).one("touchmove", function(event){
+            var xMove = event.originalEvent.touches[0].pageX
+            if( Math.floor(xClick - xMove) > 5 ){
+                $(this).carousel('next')
+            }
+            else if( Math.floor(xClick - xMove) < -5 ){
+                $(this).carousel('prev')
+            }
+          })
+          $(".carousel").on("touchend", function(){
+                  $(this).off("touchmove")
+          })
+        })
+
+        $('.navbar-nav>li>.hide-collapse').on('click', function(){
+          $('.navbar-collapse').collapse('hide')
+        })
+
+      })
+    </script>
+    
+    <!--Font Awesome import-->
+    <script src="https://use.fontawesome.com/f8adea8918.js"></script>
+
+    <!--Arimo font import-->
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+    
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c">
+    </script>
+
+    <title>vue-ssr-starter-kit</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="theme-color" content="#f60">
+    <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+  </head>
+  <body>
+    <!--vue-ssr-outlet-->
+  </body>
+</html>

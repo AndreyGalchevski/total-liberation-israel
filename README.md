@@ -1,27 +1,35 @@
-# README #
+# vue-ssr-starter-kit
 
-This README would normally document whatever steps are necessary to get your application up and running.
+> A Vue.js project with vue 2.0, vue-router and vuex starter kit for server side rendering. 
 
-### What is this repository for? ###
+[![Build Status](https://travis-ci.org/doabit/vue-ssr-starter-kit.svg?branch=master)](https://travis-ci.org/doabit/vue-ssr-starter-kit)
 
-* The official ALF Israel website repository
-* 0.0.1
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Node Version Requirement
 
-### How do I get set up? ###
+```bash
+node 6.*
+node 7.*
+```
 
-* git clone https://bitbucket.org/andreygalchevski/alf-israel
-* cd client
-* npm install
-* cd server
-* npm install
+## Build Setup
 
-### Contribution guidelines ###
+``` bash
+npm install
+npm run build
+npm start
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+## Development Setup
 
-### Who do I talk to? ###
+```bash
+npm install
+npm run dev
+```
 
-* created by Andrey Galchevski (andreygalchevski@gmail.com)
+## Reference resources
+
+[vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
