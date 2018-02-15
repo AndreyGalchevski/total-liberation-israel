@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/dist/client-bundle.0e5c151e2894518253cb.js","318639ec06d9715c0cc25f266226b140"],["/dist/client-bundle.954079ec785d7ac73992.js","971d14585d2a269c25a4e7e6f20bd1b2"]];
+var precacheConfig = [["/dist/client-bundle.0e5c151e2894518253cb.js","318639ec06d9715c0cc25f266226b140"],["/dist/client-bundle.b1e66da64b8260e8b2ca.js","879880d3c43f2ccc65b5936b9289e9ea"]];
 var cacheName = 'sw-precache-v3-vue-hn-' + (self.registration ? self.registration.scope : '');
 
 

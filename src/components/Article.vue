@@ -74,6 +74,8 @@ export default {
   metaInfo () {
     let fatma = {
       meta: [
+        {property: 'og:url', content: "'https://www.alf-israel.com/article/' + this.$route.params.id'"},
+        {property: 'og:type', content: 'article'},
         {property: 'og:title', content: this.pageTitle},
         {property: 'og:description', content: this.$store.getters.article.lead},
         {property: 'og:image', content: this.$store.getters.article.image}
