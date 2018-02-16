@@ -20,9 +20,7 @@
         a(class="fb-xfbml-parse-ignore" target="_blank"
         :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
           i(class="fa fa-facebook-square top-facebook-icon top-icon" aria-hidden="true")
-        a(v-if="this.screenWidth < 700" :href="'whatsapp://send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
-          i(class="fa fa-whatsapp top-icon" aria-hidden="true")
-        a(v-else :href="'https://web.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+        a(:href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
           i(class="fa fa-whatsapp top-icon" aria-hidden="true")
       p(class="my-content") {{ thisArticle.content }}
       div(class="dropdown-share btn-group")
@@ -34,9 +32,7 @@
           a(class="dropdown-item fb-xfbml-parse-ignore" target="_blank" 
           :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
              i(class="fa fa-facebook-square bottom-icon" aria-hidden="true")
-          a(v-if="this.screenWidth < 700" class="dropdown-item" :href="'whatsapp://send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
-            i(class="fa fa-whatsapp bottom-icon" aria-hidden="true")
-          a(v-else class="dropdown-item" :href="'https://web.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
+          a(class="dropdown-item" :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
             i(class="fa fa-whatsapp bottom-icon" aria-hidden="true")
 </template>
 
