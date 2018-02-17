@@ -3,7 +3,7 @@
     div(class="container")
       img(v-if="loading" src="../assets/spinner/salma.gif")
       div(v-else class="row")
-        div(class="col-md-4 card-deck" v-for="event in events" :key="event._id")
+        div(class="col-md-6 card-deck" v-for="event in events" :key="event._id")
           div(class="card mb-r")
             div(class="view overlay hm-white-slight")
               img(class="card-img-top" :src="event.image" alt="Card image")

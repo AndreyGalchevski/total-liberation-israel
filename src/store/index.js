@@ -124,19 +124,17 @@ export const store = new Vuex.Store({
       })
     },
     async getEvent (context, eventId) {
-      if (process.BROWSER_BUILD) {
-        return new Promise(async (resolve, reject) => {
-          try {
-            let response = await Api.get(`api/event/${eventId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
-            if (response.data && response.data._id) {
-              context.commit('GET_EVENT_SUCCESS', response.data)
-            }
-            resolve(response)
-          } catch (e) {
-            reject(e)
+      return new Promise(async (resolve, reject) => {
+        try {
+          let response = await Api.get(`api/event/${eventId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+          if (response.data && response.data._id) {
+            context.commit('GET_EVENT_SUCCESS', response.data)
           }
-        })
-      }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
     },
     async getEvents (context) {
       return new Promise(async (resolve, reject) => {
@@ -201,19 +199,17 @@ export const store = new Vuex.Store({
       })
     },
     async getInvestigation (context, investigationId) {
-      if (process.BROWSER_BUILD) {
-        return new Promise(async (resolve, reject) => {
-          try {
-            let response = await Api.get(`api/investigation/${investigationId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
-            if (response.data && response.data._id) {
-              context.commit('GET_INVESTIGATION_SUCCESS', response.data)
-            }
-            resolve(response)
-          } catch (e) {
-            reject(e)
+      return new Promise(async (resolve, reject) => {
+        try {
+          let response = await Api.get(`api/investigation/${investigationId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+          if (response.data && response.data._id) {
+            context.commit('GET_INVESTIGATION_SUCCESS', response.data)
           }
-        })
-      }
+          resolve(response)
+        } catch (e) {
+          reject(e)
+        }
+      })
     },
     async getInvestigations (context) {
       return new Promise(async (resolve, reject) => {

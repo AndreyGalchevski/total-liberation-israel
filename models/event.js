@@ -25,7 +25,7 @@ module.exports.addEvent = function(newEvent) {
 module.exports.getAllEvents = function() {
   return EventModel.find({
     date: {$gte: new Date()}})
-    .sort({_id:-1}
+    .sort({date: 1}
     )
 }
 
