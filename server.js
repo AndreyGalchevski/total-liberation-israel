@@ -1,4 +1,4 @@
-// Some gay imports 
+// Original imports
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const cloudinary = require('cloudinary')
@@ -6,6 +6,7 @@ const cloudinaryConfig = require('./config/cloudinary')
 const dbConfig = require('./config/db')
 const passport = require('passport')
 const sslRedirect = require('heroku-ssl-redirect')
+const sm = require('sitemap')
 //
 
 const fs = require('fs')
@@ -17,7 +18,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 const app = express()
 
-// Some gay uses
+// Original uses
 app.use(sslRedirect())
 
 app.use(bodyParser.json())
@@ -30,13 +31,13 @@ require('./config/passport')(passport)
 cloudinary.config(cloudinaryConfig)
 //
 
-//Some gay db connection
-var mongoose = require('mongoose');
-mongoose.connect(dbConfig.url);
-var db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error"));
+//Original connection
+var mongoose = require('mongoose')
+mongoose.connect(dbConfig.url)
+var db = mongoose.connection
+db.on("error", console.error.bind(console, "connection error"))
 db.once("open", function(callback){
-  console.log("Connection Succeeded");
+  console.log("Connection Succeeded")
 })
 //
 
@@ -72,19 +73,42 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0
 })
 
+//Sitemap config
+sitemap = sm.createSitemap ({
+  hostname: 'https:/alf-israel.com',
+  cacheTime: 600000,        // 600 sec - cache purge period 
+  urls: [
+    { url: 'https://www.alf-israel.com/', priority: 1.00 },
+    { url: 'https://www.alf-israel.com/About', priority: 0.80 },
+    { url: 'https://www.alf-israel.com/events', priority: 0.80 },
+    { url: 'https://www.alf-israel.com/articles', priority: 0.80 },
+    { url: 'https://www.alf-israel.com/investigations', priority: 0.80 },
+    { url: 'https://www.alf-israel.com/contact', priority: 0.80 }
+  ]
+})
 
 app.use('/dist', serve('./dist', true))
-// app.use(favicon(path.resolve(__dirname, 'src/assets/logo.png')))
 app.use('/service-worker.js', serve('./dist/service-worker.js'))
 
-// Some gay robots
+//Sitemap route
+app.get('/sitemap.xml', function(req, res) {
+  sitemap.toXML( function (err, xml) {
+      if (err) {
+        return res.status(500).end()
+      }
+      res.header('Content-Type', 'application/xml')
+      res.send( xml )
+  })
+})
+
+// Original robots
 app.get('/robots.txt', function (req, res) {
-  res.type('text/plain');
-  res.send("User-agent: *\nDisallow: /admin");
+  res.type('text/plain')
+  res.send("User-agent: *\nDisallow: /admin")
 })
 //
 
-// Gayest routes in the observable universe
+// Original routes
 require('./routes')(app, db)
 ///
 
