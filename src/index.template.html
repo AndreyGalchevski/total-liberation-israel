@@ -9,21 +9,34 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#2E2E2E">
     <!--Favicon-->
-    <link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/faviconNew.ico" type="image/x-icon">
-    
-    <!--Boostrap 4 cdns-->
-    <!-- Latest compiled and minified CSS -->
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/faviconNew.ico" 
+      type="image/x-icon">    
+    <!--Bootstrap 4 and MD Bootstrap CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <!-- MD Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
+    <!--Arimo font import-->
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+    <!--SSR Voodoo-->
+    <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" 
+      as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+  </head>
+  <body>
+    <!--vue-ssr-outlet-->
+
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Popper JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <!--Bootstrap 4 JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!--MD Bootstrap JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
-    <!-- Custom carousel behaviour -->
+    <!--Font Awesome JS-->
+    <script src="https://use.fontawesome.com/f8adea8918.js"></script>
+    <!--Custom jQuery magic that I am NOT proud of-->
     <script>
       $( document ).ready(function() {
 
@@ -55,23 +68,7 @@
 
       })
     </script>
-    
-    <!--Font Awesome import-->
-    <script src="https://use.fontawesome.com/f8adea8918.js"></script>
-
-    <!--Arimo font import-->
-    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
-    
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c">
-    </script>
-
-    <% for (var chunk of webpack.chunks) {
-        for (var file of chunk.files) {
-          if (file.match(/\.(js|css)$/)) { %>
-    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
-  </head>
-  <body>
-    <!--vue-ssr-outlet-->
+    <!--Google maps API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c"></script>
   </body>
 </html>

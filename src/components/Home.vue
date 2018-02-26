@@ -33,8 +33,18 @@
 <script>
 export default {
   name: 'home',
-  metaInfo: {
-    title: 'חדשות החזית'
+  metaInfo () {
+    let achmad = {
+      meta: [
+        {property: 'og:url', content: 'https://www.alf-israel.com/'},
+        {property: 'og:type', content: 'website'},
+        {property: 'og:title', content: 'חדשות החזית'},
+        {property: 'og:description', content: 'האתר הרשמי של החזית לשחרור בעלי החיים ישראל'},
+        {property: 'og:image', content: 'http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593801/alf-israel/home/2.jpg'}
+      ],
+      title: 'חדשות החזית'
+    }
+    return achmad
   }
 }
 </script>

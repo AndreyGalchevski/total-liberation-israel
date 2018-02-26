@@ -18,8 +18,9 @@ const isProd = process.env.NODE_ENV === 'production'
 
 const app = express()
 
-// Original uses
-app.use(sslRedirect())
+if (isProd) {
+  app.use(sslRedirect())
+}
 
 app.use(bodyParser.json())
 app.use(cors())
