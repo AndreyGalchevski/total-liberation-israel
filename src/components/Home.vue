@@ -66,30 +66,30 @@ export default {
     }
 }
 .image-1 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/1.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884087/alf-israel/home/1.jpg')
 }
 .image-2 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/2.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/2.jpg')
 }
 .image-3 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/3.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/3.jpg')
 }
 .image-4 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/4.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884085/alf-israel/home/4.jpg')
 }
 .image-5 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/5.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/5.jpg')
 }
 .image-6 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/6.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884086/alf-israel/home/6.jpg')
 }
 .image-7 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/7.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884087/alf-israel/home/7.jpg')
 }
 .image-8 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/8.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884087/alf-israel/home/8.jpg')
 }
 .image-9 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1513593795/alf-israel/home/9.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/9.jpg')
 }
 </style>
