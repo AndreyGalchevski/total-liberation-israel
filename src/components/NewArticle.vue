@@ -1,23 +1,60 @@
 <template lang="pug">
-  div(class="newArticle")
-    div(class="container")
-      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
+  div.newArticle
+    div.container
+      i.fa.fa-spinner.fa-spin.text-secondary(
+        v-show="loading"
+      )
       h1 כתבה חדשה
-      div(class="form")
-        div(class="form-group")
-          input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
-        div(class="form-group")
-          input(type="text" name="title" class="form-control" placeholder="שם הכתב" v-model="author")
-        div(class="form-group")
-          input(type="date" name="תאריך" class="form-control" v-model="date")
-        div(class="form-group")
-          textarea(rows="2" class="form-control myTextArea" placeholder="תקציר" v-model="lead")
-        div(class="form-group")
-          textarea(rows="6" class="form-control myTextArea" placeholder="תוכן" v-model="content")
-        div(class="form-group")
-          input(class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage")
+      div.form
+        div.form-group
+          input(
+              type="text"
+              name="title"
+              class="form-control"
+              placeholder="כותרת"
+              v-model="title"
+            )
+        div.form-group
+          input(
+            type="text"
+            name="title"
+            class="form-control"
+            placeholder="שם הכתב"
+            v-model="author"
+          )
+        div.form-group
+          input(
+            type="date" 
+            name="תאריך" 
+            class="form-control" 
+            v-model="date"
+          )
+        div.form-group
+          textarea.form-control.myTextArea(
+            rows="2" 
+            placeholder="תקציר" 
+            v-model="lead"
+          )
+        div.form-group
+          //- textarea.form-control.myTextArea(
+          //-   rows="6" 
+          //-   placeholder="תוכן" 
+          //-   v-model="content"
+          //- )
+          div(
+            v-model="content"
+            v-quill:quillEditor="quillOptions"
+          )
+        div.form-group
+          input.btn.btn-default(
+            type="file" 
+            accept=".jpg,.png" 
+            @change="changeImage"
+          )
         div
-          button(class="btn btn-primary" @click="addArticle") הוספה
+          button.btn.btn-primary(
+            @click="addArticle"
+          ) הוספה
 </template>
 
 <script>
@@ -29,9 +66,12 @@ export default {
       author: '',
       date: '',
       lead: '',
-      content: '',
+      content: {},
       image: '',
-      loading: false
+      loading: false,
+      quillOptions: {
+        theme: 'snow'
+      }
     }
   },
   methods: {
