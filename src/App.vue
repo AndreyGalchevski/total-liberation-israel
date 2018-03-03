@@ -20,6 +20,10 @@ export default {
 @import '../node_modules/quill/dist/quill.core.css';
 @import '../node_modules/quill/dist/quill.snow.css';
 
+strong {
+  font-weight: bold;
+}
+
 #app {
   font-family: 'Arimo', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

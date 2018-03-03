@@ -6,7 +6,7 @@ var ArticleSchema = new Schema({
   author: String,
   date: Date,
   lead: String,
-  content: String,
+  content: Object,
   image: String
 });
 

@@ -36,13 +36,8 @@
             v-model="lead"
           )
         div.form-group
-          //- textarea.form-control.myTextArea(
-          //-   rows="6" 
-          //-   placeholder="תוכן" 
-          //-   v-model="content"
-          //- )
           div(
-            v-model="content"
+            @change="onEditorChange($event)"
             v-quill:quillEditor="quillOptions"
           )
         div.form-group
@@ -70,7 +65,32 @@ export default {
       image: '',
       loading: false,
       quillOptions: {
-        theme: 'snow'
+        theme: 'snow',
+        formats: [
+          'align',
+          'bold',
+          'background',
+          'color',
+          'italic',
+          'link',
+          'list',
+          'size',
+          'underline',
+          'blockquote',
+          'direction',
+          'video'
+        ],
+        modules: {
+          toolbar: [
+            ['bold', 'italic', 'underline'],
+            ['blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+            ['link', 'video']]
+        },
+        placeholder: ''
       }
     }
   },
@@ -95,10 +115,25 @@ export default {
 
     changeImage (article) {
       this.image = article.target.files[0]
+    },
+
+    onEditorChange (event) {
+      this.editor.format('direction', 'rtl')
+      this.content = event.quill.getContents()
     }
   },
   metaInfo: {
     title: 'כתבה חדשה'
+  },
+  computed: {
+    editor () {
+      return this.quillEditor
+    }
+  },
+  mounted () {
+    this.editor.format('direction', 'rtl')
+    this.editor.format('align', 'right')
+    this.content = this.editor.getContents()
   }
 }
 </script>
