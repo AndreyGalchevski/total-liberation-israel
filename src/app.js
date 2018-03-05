@@ -13,11 +13,6 @@ import Admin from './components/Admin'
 import { store } from './store/index'
 import { sync } from 'vuex-router-sync'
 
-if (process.browser) {
-  const VueQuillEditor = require('vue-quill-editor/dist/ssr')
-  Vue.use(VueQuillEditor)
-}
-
 export function createApp () {
   sync(store, router)
   const app = new Vue({

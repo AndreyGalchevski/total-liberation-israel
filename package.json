@@ -40,6 +40,7 @@
     "transform-runtime": "0.0.0",
     "vue": ">=2.3.4",
     "vue-meta": ">=1.4.3",
+    "vue-no-ssr": "^0.2.2",
     "vue-quill-editor": "^3.0.5",
     "vue-router": "^3.0.1",
     "vue-server-renderer": ">=2.3.4",

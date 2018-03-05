@@ -36,9 +36,10 @@
             v-model="lead"
           )
         div.form-group
-          div(
+          quill-editor(
+            ref="editor"
             @change="onEditorChange($event)"
-            v-quill:quillEditor="quillOptions"
+            :options="quillOptions"
           )
         div.form-group
           input.btn.btn-default(
@@ -53,6 +54,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
+var quillMohamad
+
+if (process.browser) {
+  quillMohamad = require('vue-quill-editor').quillEditor
+}
+
 export default {
   name: 'NewArticle',
   data () {
@@ -72,7 +80,6 @@ export default {
           'background',
           'color',
           'italic',
-          'link',
           'list',
           'size',
           'underline',
@@ -87,8 +94,8 @@ export default {
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
             [{ 'size': ['small', false, 'large', 'huge'] }],
             [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }],
-            ['link', 'video']]
+            [{ 'align': [] }]
+          ]
         },
         placeholder: ''
       }
@@ -118,8 +125,7 @@ export default {
     },
 
     onEditorChange (event) {
-      this.editor.format('direction', 'rtl')
-      this.content = event.quill.getContents()
+      this.content = this.editor.getContents()
     }
   },
   metaInfo: {
@@ -127,13 +133,18 @@ export default {
   },
   computed: {
     editor () {
-      return this.quillEditor
+      return this.$refs.editor.quill
     }
   },
   mounted () {
     this.editor.format('direction', 'rtl')
     this.editor.format('align', 'right')
     this.content = this.editor.getContents()
+  },
+  components: {
+    quillEditor: quillMohamad || new Vue({
+      el: '#quill-editor'
+    })
   }
 }
 </script>
