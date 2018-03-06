@@ -150,8 +150,6 @@ export default {
       this.loading = false
     },
     onEditorReady (event) {
-      console.log(event.editor)
-      // event.editor.setContents(this.thisArticle.content)
       this.$refs.editor.quill.setContents(this.thisArticle.content)
     }
   },
