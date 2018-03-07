@@ -190,7 +190,6 @@ export default {
   },
   destroyed () {
     this.$store.commit('CLEAR_ARTICLES')
-    this.$store.commit('CLEAR_ARTICLE')
   },
   components: {
     quillEditor: quillSalech || new Vue(),
