@@ -189,6 +189,7 @@ export default {
     }
   },
   destroyed () {
+    this.$store.commit('CLEAR_ARTICLE')
     this.$store.commit('CLEAR_ARTICLES')
   },
   components: {
