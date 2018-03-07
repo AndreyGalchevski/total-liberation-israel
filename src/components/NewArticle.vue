@@ -36,14 +36,10 @@
             v-model="lead"
           )
         div.form-group
-          //- textarea.form-control.myTextArea(
-          //-   rows="6" 
-          //-   placeholder="תוכן" 
-          //-   v-model="content"
-          //- )
-          div(
-            v-model="content"
-            v-quill:quillEditor="quillOptions"
+          quill-editor(
+            ref="editor"
+            @change="onEditorChange($event)"
+            :options="quillOptions"
           )
         div.form-group
           input.btn.btn-default(
@@ -58,6 +54,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
+var quillMohamad
+
+if (process.browser) {
+  quillMohamad = require('vue-quill-editor').quillEditor
+}
+
 export default {
   name: 'NewArticle',
   data () {
@@ -70,7 +73,31 @@ export default {
       image: '',
       loading: false,
       quillOptions: {
-        theme: 'snow'
+        theme: 'snow',
+        formats: [
+          'align',
+          'bold',
+          'background',
+          'color',
+          'italic',
+          'list',
+          'size',
+          'underline',
+          'blockquote',
+          'direction',
+          'video'
+        ],
+        modules: {
+          toolbar: [
+            ['bold', 'italic', 'underline'],
+            ['blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }]
+          ]
+        },
+        placeholder: ''
       }
     }
   },
@@ -95,10 +122,29 @@ export default {
 
     changeImage (article) {
       this.image = article.target.files[0]
+    },
+
+    onEditorChange (event) {
+      this.content = this.editor.getContents()
     }
   },
   metaInfo: {
     title: 'כתבה חדשה'
+  },
+  computed: {
+    editor () {
+      return this.$refs.editor.quill
+    }
+  },
+  mounted () {
+    this.editor.format('direction', 'rtl')
+    this.editor.format('align', 'right')
+    this.content = this.editor.getContents()
+  },
+  components: {
+    quillEditor: quillMohamad || new Vue({
+      el: '#quill-editor'
+    })
   }
 }
 </script>

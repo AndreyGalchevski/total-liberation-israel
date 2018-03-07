@@ -1,43 +1,105 @@
 <template lang="pug">
-  div(class="wrapper")
-    div(class="other-articles w-50")
-      div(v-for="article in articles" :key="article._id" v-if="article._id !== thisArticle._id")
-        div(class="card mb-r")
-          div(class="view overlay hm-white-slight")
-            img(class="img-fluid" :src="article.image" alt="Card image")
-            router-link(:to="'/article/' + article._id")
-              div(class="mask")
-            div(class="card-body")
-              p(class="card-title") {{ article.title }}
-    div(class="main-article" v-if="thisArticle")
-      h1(class="title") {{ thisArticle.title }}
-      h6(class="lead") {{ thisArticle.lead }}
-      h6(class="date text-primary") פורסם ב - {{ getDate(thisArticle.date) }} מאת {{ thisArticle.author }}
-      img(class="rounded main-image img-fluid" :src = "thisArticle.image" alt="Card image")
-      p(class="share-buttons")
-        a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id")
-          i(class="fa fa-envelope-o top-icon" aria-hidden="true")
-        a(class="fb-xfbml-parse-ignore" target="_blank"
-        :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
-          i(class="fa fa-facebook-square top-facebook-icon top-icon" aria-hidden="true")
-        a(:href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
-          i(class="fa fa-whatsapp top-icon" aria-hidden="true")
-      p(class="my-content") {{ thisArticle.content }}
-      div(class="dropdown-share btn-group")
-        button(class="btn btn-outline-primary waves-effect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-          i(class="fa fa-share-alt" aria-hidden="true")
-        div(class="dropdown-menu")
-          a(class="dropdown-item" :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id")
-            i(class="fa fa-envelope-o bottom-icon" aria-hidden="true")
-          a(class="dropdown-item fb-xfbml-parse-ignore" target="_blank" 
-          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'")
-             i(class="fa fa-facebook-square bottom-icon" aria-hidden="true")
-          a(class="dropdown-item" :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" data-action="share/whatsapp/share" target="_blank")
-            i(class="fa fa-whatsapp bottom-icon" aria-hidden="true")
+  div.wrapper
+    div.other-articles.w-50
+      div(
+        v-for="article in articles" 
+        :key="article._id" 
+        v-if="article._id !== thisArticle._id"
+      )
+        div.card.mb-r
+          div.view.overlay.hm-white-slight
+            img.img-fluid(
+              :src="article.image" 
+              alt="Card image"
+            )
+            router-link(
+              :to="'/article/' + article._id"
+            )
+              div.mask
+            div.card-body
+              p.card-title {{ article.title }}
+    div.main-article(
+      v-if="thisArticle"
+    )
+      h1.title {{ thisArticle.title }}
+      h6.lead {{ thisArticle.lead }}
+      h6.date.text-primary פורסם ב - {{ getDate(thisArticle.date) }} מאת {{ thisArticle.author }}
+      img.rounded.main-image.img-fluid(
+        :src = "thisArticle.image" 
+        alt="Card image"
+      )
+      p.share-buttons
+        a(
+          :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id"
+        )
+          i.fa.fa-envelope-o.top-icon(
+            aria-hidden="true"
+          )
+        a.fb-xfbml-parse-ignore(
+          target="_blank"
+          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
+        )
+          i.fa.fa-facebook-square.top-facebook-icon.top-icon(
+            aria-hidden="true"
+          )
+        a(
+          :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" 
+          data-action="share/whatsapp/share" 
+          target="_blank"
+        )
+          i.fa.fa-whatsapp.top-icon( 
+            aria-hidden="true"
+          )
+      no-ssr
+        quill-editor(
+          @ready="onEditorReady($event)"
+          :options="quillOptions"
+          ref="editor"
+        )
+      div.dropdown-share.btn-group
+        button.btn.btn-outline-primary.waves-effect(
+          type="button" 
+          data-toggle="dropdown" 
+          aria-haspopup="true" 
+          aria-expanded="false"
+        )
+          i.fa.fa-share-alt(
+            aria-hidden="true"
+          )
+        div.dropdown-menu
+          a.dropdown-item(
+            :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id"
+          )
+            i.fa.fa-envelope-o.bottom-icon(
+              aria-hidden="true"
+            )
+          a.dropdown-item.fb-xfbml-parse-ignore(
+            target="_blank" 
+            :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
+          )
+            i.fa.fa-facebook-square.bottom-icon(
+              aria-hidden="true"
+            )
+          a.dropdown-item(
+            :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" 
+            data-action="share/whatsapp/share" 
+            target="_blank"
+          )
+            i.fa.fa-whatsapp.bottom-icon(
+              aria-hidden="true"
+            )
 </template>
 
 <script>
-var moment = require('moment')
+import Vue from 'vue'
+import NoSSR from 'vue-no-ssr'
+import moment from 'moment'
+
+var quillSalech
+if (process.browser) {
+  quillSalech = require('vue-quill-editor').quillEditor
+}
+
 export default {
   asyncData ({ store, route }) {
     return store.dispatch('getArticle', route.params.id)
@@ -45,7 +107,28 @@ export default {
   name: 'article',
   data () {
     return {
-      loading: false
+      loading: false,
+      quillOptions: {
+        theme: false,
+        readOnly: true,
+        modules: {
+          toolbar: false
+        },
+        placeholder: '',
+        formats: [
+          'align',
+          'bold',
+          'background',
+          'color',
+          'italic',
+          'list',
+          'size',
+          'underline',
+          'blockquote',
+          'direction',
+          'video'
+        ]
+      }
     }
   },
   mounted () {
@@ -65,6 +148,9 @@ export default {
       this.loading = true
       await this.$store.dispatch('getArticles')
       this.loading = false
+    },
+    onEditorReady (event) {
+      this.$refs.editor.quill.setContents(this.thisArticle.content)
     }
   },
   metaInfo () {
@@ -104,12 +190,18 @@ export default {
   },
   destroyed () {
     this.$store.commit('CLEAR_ARTICLES')
-    this.$store.commit('CLEAR_ARTICLE')
+  },
+  components: {
+    quillEditor: quillSalech || new Vue(),
+    'no-ssr': NoSSR
   }
 }
 </script>
 
 <style>
+.ql-editor {
+  height: initial;
+}
 @media (max-width: 1200px) {
   .other-articles {
     display: none;
