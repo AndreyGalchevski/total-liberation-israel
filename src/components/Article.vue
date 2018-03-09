@@ -8,14 +8,14 @@
       )
         div.card.mb-r
           div.view.overlay.hm-white-slight
-            img.img-fluid(
-              :src="article.image" 
-              alt="Card image"
-            )
             router-link(
               :to="'/article/' + article._id"
             )
-              div.mask
+              img.img-fluid(
+                :src="article.image" 
+                alt="Card image"
+              )
+              div.mas
             div.card-body
               router-link(
                 :to="'/article/' + article._id"
@@ -248,7 +248,7 @@ export default {
   font-size: 15px;
 }
 .top-icon {
-  font-size: 35px;
+  font-size: 35px !important;
 }
 .top-facebook-icon {
   padding-right: 50px;
