@@ -21,13 +21,13 @@ export default {
 @import '../node_modules/quill/dist/quill.snow.css';
 
 .ql-editor {
-  direction: initial;
+  direction: initial !important;
   height: 300px;
-  font-size: 17px;
-  font-family: 'Arimo', Helvetica, Arial, sans-serif;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 17px !important;
+  font-family: 'Arimo', Helvetica, Arial, sans-serif !important;
+  line-height: 1.7 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 strong {
