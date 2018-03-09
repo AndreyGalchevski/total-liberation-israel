@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.carousel{
+  overflow-y: hidden;
+}
 .carousel-item {
   height: 100vh;
   min-height: 300px;
