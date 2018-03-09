@@ -3,7 +3,7 @@
     // Header navbar
     nav(class="navbar navbar-expand-xl navbar-dark elegant-color fixed-top scrolling-navbar")
       router-link(class="navbar-brand" to="/")
-        img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/v1514480811/alf-israel/logo/logo2.png")
+        img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/v1520610299/alf-israel/logo/newLogo.png")
       button(type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar")
         span(class="navbar-toggler-icon")
 
@@ -67,8 +67,8 @@
             i(class="fa fa-copyright" aria-hidden="true")
       ul(class="navbar-nav mr-auto")
         li(class="nav-item")
-          a(href="https://il.linkedin.com/in/andrey-galchevski-b40999a3" class="nav-link" target="_blank") By Andrey Galchevski
-            i(class="fa fa-code" aria-hidden="true")
+          a(href="https://il.linkedin.com/in/andrey-galchevski-b40999a3" class="nav-link" target="_blank")
+            img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/c_scale,h_32/v1520506544/alf-israel/logo/andarraylogo.png")
 </template>
 
 <script>
@@ -101,7 +101,7 @@ export default {
 </script>
 <style scoped>
 .navbar-brand img {
-  height: 75px;
+  height: 50px;
 }
 .navbar {
   padding-top: 0px;

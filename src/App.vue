@@ -45,7 +45,7 @@ strong {
 }
 
 body { 
-  padding-top: 85px;
+  padding-top: 60px;
   padding-bottom: 25px;
   height: 100%;
 }
