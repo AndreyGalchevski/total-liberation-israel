@@ -17,9 +17,12 @@
             )
               div.mask
             div.card-body
-              p.card-title {{ article.title }}
+              router-link(
+                :to="'/article/' + article._id"
+              )
+                p.card-title {{ article.title }}
     div.main-article(
-      v-if="thisArticle"
+      v-if="thisArticle.title"
     )
       h1.title {{ thisArticle.title }}
       h6.lead {{ thisArticle.lead }}
@@ -104,7 +107,7 @@ export default {
   asyncData ({ store, route }) {
     return store.dispatch('getArticle', route.params.id)
   },
-  name: 'article',
+  name: 'articleComponent',
   data () {
     return {
       loading: false,
@@ -139,6 +142,7 @@ export default {
     async getArticle () {
       this.loading = true
       await this.$store.dispatch('getArticle', this.$route.params.id)
+      this.$refs.editor.quill.setContents(this.thisArticle.content)
       this.loading = false
     },
     getDate: function (date) {
@@ -159,8 +163,8 @@ export default {
         {property: 'og:url', content: 'https://www.alf-israel.com/article/' + this.$route.params.id},
         {property: 'og:type', content: 'article'},
         {property: 'og:title', content: this.pageTitle},
-        {property: 'og:description', content: this.$store.getters.article.lead},
-        {property: 'og:image', content: this.$store.getters.article.image}
+        {property: 'og:description', content: this.ogDescription},
+        {property: 'og:image', content: this.ogImage}
       ],
       title: this.pageTitle
     }
@@ -168,10 +172,24 @@ export default {
   },
   computed: {
     pageTitle () {
-      if (this.$store.getters.article) {
+      if (this.$store.getters.article.title) {
         return this.$store.getters.article.title
       } else {
         return 'כתבה'
+      }
+    },
+    ogDescription () {
+      if (this.$store.getters.article.lead) {
+        return this.$store.getters.article.lead
+      } else {
+        return ''
+      }
+    },
+    ogImage () {
+      if (this.$store.getters.article.image) {
+        return this.$store.getters.article.image
+      } else {
+        return ''
       }
     },
     thisArticle () {

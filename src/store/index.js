@@ -24,7 +24,16 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     isLoggedIn: process.BROWSER_BUILD ? !!window.localStorage.getItem('token') : null,
-    article: null,
+    article: {
+      title: null,
+      author: null,
+      date: null,
+      lead: null,
+      content: {
+        ops: []
+      },
+      image: null
+    },
     articles: [],
     event: null,
     events: [],
@@ -276,7 +285,16 @@ export const store = new Vuex.Store({
       state.articles = []
     },
     [CLEAR_ARTICLE] (state) {
-      state.article = null
+      state.article = {
+        title: null,
+        auhtor: null,
+        date: null,
+        lead: null,
+        content: {
+          ops: []
+        },
+        image: null
+      }
     },
     [GET_EVENT_SUCCESS] (state, event) {
       state.event = event
