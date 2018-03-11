@@ -26,7 +26,8 @@
     )
       h1.title {{ thisArticle.title }}
       h6.lead {{ thisArticle.lead }}
-      h6.date.text-primary פורסם ב - {{ getDate(thisArticle.date) }} מאת {{ thisArticle.author }}
+      h6.date.text-muted {{ getDate(thisArticle.date) }} |
+        span.text-primary  {{ thisArticle.author }}
       img.rounded.main-image.img-fluid(
         :src = "thisArticle.image" 
         alt="Card image"
@@ -146,7 +147,7 @@ export default {
       this.loading = false
     },
     getDate: function (date) {
-      return moment(date).format('DD.MM.YYYY')
+      return moment(date).locale('he').format('Do בMMMM YYYY')
     },
     async getArticles () {
       this.loading = true
