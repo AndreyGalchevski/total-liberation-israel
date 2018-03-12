@@ -39,23 +39,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
     <!--Font Awesome JS-->
     <script src="https://use.fontawesome.com/f8adea8918.js"></script>
-    <!--Swiper JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script>
-    <!--Custom jQuery magic that I am NOT proud of-->
+
+    <!-- Custom jQuery magic that I am NOT proud of -->
     <script>
       $( document ).ready(function() {
-
-        var mySwiper = new Swiper ('.swiper-container', {
-          loop: true,
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-          autoplay: {
-            delay: 4000,
-          }
-        })
 
         $('.navbar-nav>li>.hide-collapse').on('click', function(){
           $('.navbar-collapse').collapse('hide')

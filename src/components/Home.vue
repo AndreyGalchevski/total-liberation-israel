@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="swiper-container")
+  div(ref="swiperContainer" class="swiper-container")
     div(class="swiper-wrapper")
       div(class="swiper-slide image-1")
       div(class="swiper-slide image-2")
@@ -10,13 +10,19 @@
       div(class="swiper-slide image-7")
       div(class="swiper-slide image-8")
       div(class="swiper-slide image-9")
-    div(class="swiper-button-prev swiper-button-white")
-    div(class="swiper-button-next swiper-button-white")    
+    div(ref="swiperButtonPrev" class="swiper-button-prev swiper-button-white")
+    div(ref="swiperButtonNext" class="swiper-button-next swiper-button-white")    
 </template>
 
 <script>
+import Swiper from 'swiper'
 export default {
   name: 'home',
+  data () {
+    return {
+      slider: null
+    }
+  },
   metaInfo () {
     let achmad = {
       meta: [
@@ -29,6 +35,18 @@ export default {
       title: 'חדשות החזית'
     }
     return achmad
+  },
+  mounted () {
+    this.slider = new Swiper(this.$refs.swiperContainer, {
+      loop: true,
+      navigation: {
+        nextEl: this.$refs.swiperButtonNext,
+        prevEl: this.$refs.swiperButtonPrev
+      },
+      autoplay: {
+        delay: 4000
+      }
+    })
   }
 }
 </script>
