@@ -52,7 +52,8 @@ body {
 
 .scroll {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .fa-spinner {
