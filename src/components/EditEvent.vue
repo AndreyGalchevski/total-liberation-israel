@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   name: 'EditEvent',
   data () {
@@ -49,11 +51,13 @@ export default {
       this.loading = false
     },
     async updateEvent () {
+      let localDate = moment(this.date).startOf('day').toDate()
+
       this.loading = true
       await this.$store.dispatch('updateEvent', {
         id: this.$route.params.id,
         title: this.title,
-        date: this.date,
+        date: localDate,
         description: this.description,
         fbPage: this.fbPage,
         image: this.image,

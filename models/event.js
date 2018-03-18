@@ -1,5 +1,6 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+var mongoose = require("mongoose")
+var Schema = mongoose.Schema
+const moment = require('moment')
 
 var EventSchema = new Schema({
   title: String,
@@ -7,10 +8,10 @@ var EventSchema = new Schema({
   description: String,
   fbPage: String,
   image: String
-});
+})
 
-var EventModel = mongoose.model("Event", EventSchema);
-module.exports = EventModel;
+var EventModel = mongoose.model("Event", EventSchema)
+module.exports = EventModel
 
 module.exports.addEvent = function(newEvent) {
   var new_event = new EventModel({
@@ -23,8 +24,9 @@ module.exports.addEvent = function(newEvent) {
 }
 
 module.exports.getAllEvents = function() {
+  let startOfToday = moment().startOf('day')
   return EventModel.find({
-    date: {$gte: new Date()}})
+    date: {$gte: startOfToday.toDate()}})
     .sort({date: 1}
     )
 }

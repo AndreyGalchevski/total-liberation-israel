@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   name: 'NewEvent',
   data () {
@@ -36,10 +38,11 @@ export default {
       if (!this.title || !this.date || !this.description || !this.fbPage || !this.image) {
         window.alert('נא למלא את כל השדות')
       } else {
+        let localDate = moment(this.date).startOf('day').toDate()
         this.loading = true
         await this.$store.dispatch('addEvent', {
           title: this.title,
-          date: this.date,
+          date: localDate,
           description: this.description,
           fbPage: this.fbPage,
           image: this.image
