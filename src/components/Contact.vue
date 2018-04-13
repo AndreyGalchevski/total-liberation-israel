@@ -51,4 +51,7 @@ export default {
 h2 {
   padding: 20px;
 }
+.scroll {
+  overflow-y: initial;
+}
 </style>

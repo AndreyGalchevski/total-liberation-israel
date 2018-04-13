@@ -34,20 +34,20 @@
       )
       p.share-buttons
         a(
-          :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id"
+          :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.totalliberationisrael.com/article/' + thisArticle._id"
         )
           i.fa.fa-envelope-o.top-icon(
             aria-hidden="true"
           )
         a.fb-xfbml-parse-ignore(
           target="_blank"
-          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
+          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.totalliberationisrael.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
         )
           i.fa.fa-facebook-square.top-facebook-icon.top-icon(
             aria-hidden="true"
           )
         a(
-          :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" 
+          :href="'https://api.whatsapp.com/send?text=https://www.totalliberationisrael.com/article/' + thisArticle._id" 
           data-action="share/whatsapp/share" 
           target="_blank"
         )
@@ -72,20 +72,20 @@
           )
         div.dropdown-menu
           a.dropdown-item(
-            :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id"
+            :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.totalliberationisrael.com/article/' + thisArticle._id"
           )
             i.fa.fa-envelope-o.bottom-icon(
               aria-hidden="true"
             )
           a.dropdown-item.fb-xfbml-parse-ignore(
             target="_blank" 
-            :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
+            :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.totalliberationisrael.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
           )
             i.fa.fa-facebook-square.bottom-icon(
               aria-hidden="true"
             )
           a.dropdown-item(
-            :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" 
+            :href="'https://api.whatsapp.com/send?text=https://www.totalliberationisrael.com/article/' + thisArticle._id" 
             data-action="share/whatsapp/share" 
             target="_blank"
           )
@@ -161,7 +161,7 @@ export default {
   metaInfo () {
     let fatma = {
       meta: [
-        {property: 'og:url', content: 'https://www.alf-israel.com/article/' + this.$route.params.id},
+        {property: 'og:url', content: 'https://www.totalliberationisrael.com/article/' + this.$route.params.id},
         {property: 'og:type', content: 'article'},
         {property: 'og:title', content: this.pageTitle},
         {property: 'og:description', content: this.ogDescription},

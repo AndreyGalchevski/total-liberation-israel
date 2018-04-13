@@ -76,15 +76,15 @@ const serve = (path, cache) => express.static(resolve(path), {
 
 //Sitemap config
 sitemap = sm.createSitemap ({
-  hostname: 'https:/alf-israel.com',
+  hostname: 'https://totalliberationisrael.com',
   cacheTime: 600000,        // 600 sec - cache purge period 
   urls: [
-    { url: 'https://www.alf-israel.com/', priority: 1.00 },
-    { url: 'https://www.alf-israel.com/About', priority: 0.80 },
-    { url: 'https://www.alf-israel.com/events', priority: 0.80 },
-    { url: 'https://www.alf-israel.com/articles', priority: 0.80 },
-    { url: 'https://www.alf-israel.com/investigations', priority: 0.80 },
-    { url: 'https://www.alf-israel.com/contact', priority: 0.80 }
+    { url: 'https://www.totalliberationisrael.com/', priority: 1.00 },
+    { url: 'https://www.totalliberationisrael.com/About', priority: 0.80 },
+    { url: 'https://www.totalliberationisrael.com/events', priority: 0.80 },
+    { url: 'https://www.totalliberationisrael.com/articles', priority: 0.80 },
+    { url: 'https://www.totalliberationisrael.com/investigations', priority: 0.80 },
+    { url: 'https://www.totalliberationisrael.com/contact', priority: 0.80 }
   ]
 })
 
