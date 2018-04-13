@@ -15,10 +15,10 @@
 
 <script>
 export default {
-  name: 'pageNotFound',
-  metaInfo: {
-    title: 'העמוד לא קיים'
-  }
+	name: 'pageNotFound',
+	metaInfo: {
+		title: 'העמוד לא קיים'
+	}
 }
 </script>
 

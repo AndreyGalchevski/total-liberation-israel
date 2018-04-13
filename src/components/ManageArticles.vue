@@ -27,43 +27,43 @@
 <script>
 var moment = require('moment')
 export default {
-  name: 'ManageArticles',
-  data () {
-    return {
-      loading: false
-    }
-  },
-  mounted () {
-    this.getArticles()
-  },
-  methods: {
-    async getArticles () {
-      this.loading = true
-      await this.$store.dispatch('getArticles')
-      this.loading = false
-    },
-    async deleteArticle (id) {
-      this.loading = true
-      await this.$store.dispatch('deleteArticle', id)
-      this.getArticles()
-      this.$router.push({ name: 'ManageArticles' })
-      this.loading = false
-    },
-    getDate: function (date) {
-      return moment(date).format('DD.MM.YYYY')
-    }
-  },
-  computed: {
-    articles () {
-      return this.$store.getters.articles
-    }
-  },
-  destroyed () {
-    this.$store.commit('CLEAR_ARTICLES')
-  },
-  metaInfo: {
-    title: 'ניהול כתבות'
-  }
+	name: 'ManageArticles',
+	data () {
+		return {
+			loading: false
+		}
+	},
+	mounted () {
+		this.getArticles()
+	},
+	methods: {
+		async getArticles () {
+			this.loading = true
+			await this.$store.dispatch('getArticles')
+			this.loading = false
+		},
+		async deleteArticle (id) {
+			this.loading = true
+			await this.$store.dispatch('deleteArticle', id)
+			this.getArticles()
+			this.$router.push({ name: 'ManageArticles' })
+			this.loading = false
+		},
+		getDate: function (date) {
+			return moment(date).format('DD.MM.YYYY')
+		}
+	},
+	computed: {
+		articles () {
+			return this.$store.getters.articles
+		}
+	},
+	destroyed () {
+		this.$store.commit('CLEAR_ARTICLES')
+	},
+	metaInfo: {
+		title: 'ניהול כתבות'
+	}
 }
 </script>
 

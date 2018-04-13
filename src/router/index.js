@@ -26,111 +26,111 @@ Vue.use(Router)
 Vue.use(Meta)
 
 export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/events',
-      name: 'Events',
-      component: Events
-    },
-    {
-      path: '/articles',
-      name: 'Acticles',
-      component: Articles
-    },
-    {
-      path: '/article/:id',
-      name: 'Acticle',
-      component: Article
-    },
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About
-    },
-    {
-      path: '/investigations',
-      name: 'Investigations',
-      component: Investigations
-    },
-    {
-      path: '/admin',
-      name: 'Admin',
-      component: Admin,
-      beforeEnter: (to, from, next) => {
-        if (store.getters.isLoggedIn) {
-          next()
-        } else {
-          next({ name: 'Login' })
-        }
-      },
-      children: [
-        {
-          path: 'events',
-          name: 'ManageEvents',
-          component: ManageEvents
-        },
-        {
-          path: 'events/new',
-          name: 'NewEvent',
-          component: NewEvent
-        },
-        {
-          path: 'events/:id',
-          name: 'EditEvent',
-          component: EditEvent
-        },
-        {
-          path: 'articles',
-          name: 'ManageArticles',
-          component: ManageArticles
-        },
-        {
-          path: 'articles/new',
-          name: 'NewArticle',
-          component: NewArticle
-        },
-        {
-          path: 'articles/:id',
-          name: 'EditArticle',
-          component: EditArticle
-        },
-        {
-          path: 'investigations',
-          name: 'ManageInvestigations',
-          component: ManageInvestigations
-        },
-        {
-          path: 'investigations/new',
-          name: 'NewInvestigation',
-          component: NewInvestigation
-        },
-        {
-          path: 'investigations/:id',
-          name: 'EditInvestigation',
-          component: EditInvestigation
-        }
-      ]
-    },
-    {
-      path: '/login/',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '*',
-      name: 'PageNotFound',
-      component: PageNotFound
-    }
-  ]
+	mode: 'history',
+	routes: [
+		{
+			path: '/',
+			name: 'Home',
+			component: Home
+		},
+		{
+			path: '/events',
+			name: 'Events',
+			component: Events
+		},
+		{
+			path: '/articles',
+			name: 'Acticles',
+			component: Articles
+		},
+		{
+			path: '/article/:id',
+			name: 'Acticle',
+			component: Article
+		},
+		{
+			path: '/contact',
+			name: 'Contact',
+			component: Contact
+		},
+		{
+			path: '/about',
+			name: 'About',
+			component: About
+		},
+		{
+			path: '/investigations',
+			name: 'Investigations',
+			component: Investigations
+		},
+		{
+			path: '/admin',
+			name: 'Admin',
+			component: Admin,
+			beforeEnter: (to, from, next) => {
+				if (store.getters.isLoggedIn) {
+					next()
+				} else {
+					next({ name: 'Login' })
+				}
+			},
+			children: [
+				{
+					path: 'events',
+					name: 'ManageEvents',
+					component: ManageEvents
+				},
+				{
+					path: 'events/new',
+					name: 'NewEvent',
+					component: NewEvent
+				},
+				{
+					path: 'events/:id',
+					name: 'EditEvent',
+					component: EditEvent
+				},
+				{
+					path: 'articles',
+					name: 'ManageArticles',
+					component: ManageArticles
+				},
+				{
+					path: 'articles/new',
+					name: 'NewArticle',
+					component: NewArticle
+				},
+				{
+					path: 'articles/:id',
+					name: 'EditArticle',
+					component: EditArticle
+				},
+				{
+					path: 'investigations',
+					name: 'ManageInvestigations',
+					component: ManageInvestigations
+				},
+				{
+					path: 'investigations/new',
+					name: 'NewInvestigation',
+					component: NewInvestigation
+				},
+				{
+					path: 'investigations/:id',
+					name: 'EditInvestigation',
+					component: EditInvestigation
+				}
+			]
+		},
+		{
+			path: '/login/',
+			name: 'Login',
+			component: Login
+		},
+		{
+			path: '*',
+			name: 'PageNotFound',
+			component: PageNotFound
+		}
+	]
 })

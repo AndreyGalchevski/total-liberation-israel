@@ -18,36 +18,36 @@
 
 <script>
 export default {
-  name: 'NewInvestigation',
-  data () {
-    return {
-      name: '',
-      latitude: '',
-      longitude: '',
-      url: '',
-      loading: false
-    }
-  },
-  methods: {
-    async addInvestigation () {
-      if (!this.name || !this.latitude || !this.longitude || !this.url) {
-        window.alert('נא למלא את כל השדות')
-      } else {
-        this.loading = true
-        await this.$store.dispatch('addInvestigation', {
-          name: this.name,
-          latitude: this.latitude,
-          longitude: this.longitude,
-          url: this.url
-        })
-        this.$router.push({ name: 'ManageInvestigations' })
-        this.loading = false
-      }
-    }
-  },
-  metaInfo: {
-    title: 'תחקיר חדש'
-  }
+	name: 'NewInvestigation',
+	data () {
+		return {
+			name: '',
+			latitude: '',
+			longitude: '',
+			url: '',
+			loading: false
+		}
+	},
+	methods: {
+		async addInvestigation () {
+			if (!this.name || !this.latitude || !this.longitude || !this.url) {
+				window.alert('נא למלא את כל השדות')
+			} else {
+				this.loading = true
+				await this.$store.dispatch('addInvestigation', {
+					name: this.name,
+					latitude: this.latitude,
+					longitude: this.longitude,
+					url: this.url
+				})
+				this.$router.push({ name: 'ManageInvestigations' })
+				this.loading = false
+			}
+		}
+	},
+	metaInfo: {
+		title: 'תחקיר חדש'
+	}
 }
 </script>
 <style scoped>

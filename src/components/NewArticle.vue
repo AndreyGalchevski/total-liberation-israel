@@ -58,94 +58,94 @@ import Vue from 'vue'
 var quillMohamad
 
 if (process.browser) {
-  quillMohamad = require('vue-quill-editor').quillEditor
+	quillMohamad = require('vue-quill-editor').quillEditor
 }
 
 export default {
-  name: 'NewArticle',
-  data () {
-    return {
-      title: '',
-      author: '',
-      date: '',
-      lead: '',
-      content: {},
-      image: '',
-      loading: false,
-      quillOptions: {
-        theme: 'snow',
-        formats: [
-          'align',
-          'bold',
-          'background',
-          'color',
-          'italic',
-          'list',
-          'size',
-          'underline',
-          'blockquote',
-          'direction',
-          'video'
-        ],
-        modules: {
-          toolbar: [
-            ['bold', 'italic', 'underline'],
-            ['blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'size': ['small', false, 'large', 'huge'] }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }]
-          ]
-        },
-        placeholder: ''
-      }
-    }
-  },
-  methods: {
-    async addArticle () {
-      if (!this.title || !this.date || !this.author || !this.lead || !this.content || !this.image) {
-        window.alert('נא למלא את כל השדות')
-      } else {
-        this.loading = true
-        await this.$store.dispatch('addArticle', {
-          title: this.title,
-          author: this.author,
-          date: this.date,
-          lead: this.lead,
-          content: this.content,
-          image: this.image
-        })
-        this.$router.push({ name: 'ManageArticles' })
-        this.loading = false
-      }
-    },
+	name: 'NewArticle',
+	data () {
+		return {
+			title: '',
+			author: '',
+			date: '',
+			lead: '',
+			content: {},
+			image: '',
+			loading: false,
+			quillOptions: {
+				theme: 'snow',
+				formats: [
+					'align',
+					'bold',
+					'background',
+					'color',
+					'italic',
+					'list',
+					'size',
+					'underline',
+					'blockquote',
+					'direction',
+					'video'
+				],
+				modules: {
+					toolbar: [
+						['bold', 'italic', 'underline'],
+						['blockquote'],
+						[{ 'list': 'ordered' }, { 'list': 'bullet' }],
+						[{ 'size': ['small', false, 'large', 'huge'] }],
+						[{ 'color': [] }, { 'background': [] }],
+						[{ 'align': [] }]
+					]
+				},
+				placeholder: ''
+			}
+		}
+	},
+	methods: {
+		async addArticle () {
+			if (!this.title || !this.date || !this.author || !this.lead || !this.content || !this.image) {
+				window.alert('נא למלא את כל השדות')
+			} else {
+				this.loading = true
+				await this.$store.dispatch('addArticle', {
+					title: this.title,
+					author: this.author,
+					date: this.date,
+					lead: this.lead,
+					content: this.content,
+					image: this.image
+				})
+				this.$router.push({ name: 'ManageArticles' })
+				this.loading = false
+			}
+		},
 
-    changeImage (article) {
-      this.image = article.target.files[0]
-    },
+		changeImage (article) {
+			this.image = article.target.files[0]
+		},
 
-    onEditorChange (event) {
-      this.content = this.editor.getContents()
-    }
-  },
-  metaInfo: {
-    title: 'כתבה חדשה'
-  },
-  computed: {
-    editor () {
-      return this.$refs.editor.quill
-    }
-  },
-  mounted () {
-    this.editor.format('direction', 'rtl')
-    this.editor.format('align', 'right')
-    this.content = this.editor.getContents()
-  },
-  components: {
-    quillEditor: quillMohamad || new Vue({
-      el: '#quill-editor'
-    })
-  }
+		onEditorChange (event) {
+			this.content = this.editor.getContents()
+		}
+	},
+	metaInfo: {
+		title: 'כתבה חדשה'
+	},
+	computed: {
+		editor () {
+			return this.$refs.editor.quill
+		}
+	},
+	mounted () {
+		this.editor.format('direction', 'rtl')
+		this.editor.format('align', 'right')
+		this.content = this.editor.getContents()
+	},
+	components: {
+		quillEditor: quillMohamad || new Vue({
+			el: '#quill-editor'
+		})
+	}
 }
 </script>
 <style scoped>

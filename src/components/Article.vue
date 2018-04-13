@@ -101,120 +101,120 @@ import moment from 'moment'
 
 var quillSalech
 if (process.browser) {
-  quillSalech = require('vue-quill-editor').quillEditor
+	quillSalech = require('vue-quill-editor').quillEditor
 }
 
 export default {
-  asyncData ({ store, route }) {
-    return store.dispatch('getArticle', route.params.id)
-  },
-  name: 'articleComponent',
-  data () {
-    return {
-      loading: false,
-      quillOptions: {
-        theme: false,
-        readOnly: true,
-        modules: {
-          toolbar: false
-        },
-        placeholder: '',
-        formats: [
-          'align',
-          'bold',
-          'background',
-          'color',
-          'italic',
-          'list',
-          'size',
-          'underline',
-          'blockquote',
-          'direction',
-          'video'
-        ]
-      }
-    }
-  },
-  mounted () {
-    this.getArticle()
-    this.getArticles()
-  },
-  methods: {
-    async getArticle () {
-      this.loading = true
-      await this.$store.dispatch('getArticle', this.$route.params.id)
-      this.$refs.editor.quill.setContents(this.thisArticle.content)
-      this.loading = false
-    },
-    getDate: function (date) {
-      return moment(date).locale('he').format('Do בMMMM YYYY')
-    },
-    async getArticles () {
-      this.loading = true
-      await this.$store.dispatch('getArticles')
-      this.loading = false
-    },
-    onEditorReady (event) {
-      this.$refs.editor.quill.setContents(this.thisArticle.content)
-    }
-  },
-  metaInfo () {
-    let fatma = {
-      meta: [
-        {property: 'og:url', content: 'https://www.totalliberationisrael.com/article/' + this.$route.params.id},
-        {property: 'og:type', content: 'article'},
-        {property: 'og:title', content: this.pageTitle},
-        {property: 'og:description', content: this.ogDescription},
-        {property: 'og:image', content: this.ogImage}
-      ],
-      title: this.pageTitle
-    }
-    return fatma
-  },
-  computed: {
-    pageTitle () {
-      if (this.$store.getters.article.title) {
-        return this.$store.getters.article.title
-      } else {
-        return 'כתבה'
-      }
-    },
-    ogDescription () {
-      if (this.$store.getters.article.lead) {
-        return this.$store.getters.article.lead
-      } else {
-        return ''
-      }
-    },
-    ogImage () {
-      if (this.$store.getters.article.image) {
-        return this.$store.getters.article.image
-      } else {
-        return ''
-      }
-    },
-    thisArticle () {
-      return this.$store.getters.article
-    },
-    articles () {
-      return this.$store.getters.articles
-    },
-    screenWidth () {
-      if (process.BROWSER_BUILD) {
-        return window.screen.width
-      } else {
-        return 1280
-      }
-    }
-  },
-  destroyed () {
-    this.$store.commit('CLEAR_ARTICLE')
-    this.$store.commit('CLEAR_ARTICLES')
-  },
-  components: {
-    quillEditor: quillSalech || new Vue(),
-    'no-ssr': NoSSR
-  }
+	asyncData ({ store, route }) {
+		return store.dispatch('getArticle', route.params.id)
+	},
+	name: 'articleComponent',
+	data () {
+		return {
+			loading: false,
+			quillOptions: {
+				theme: false,
+				readOnly: true,
+				modules: {
+					toolbar: false
+				},
+				placeholder: '',
+				formats: [
+					'align',
+					'bold',
+					'background',
+					'color',
+					'italic',
+					'list',
+					'size',
+					'underline',
+					'blockquote',
+					'direction',
+					'video'
+				]
+			}
+		}
+	},
+	mounted () {
+		this.getArticle()
+		this.getArticles()
+	},
+	methods: {
+		async getArticle () {
+			this.loading = true
+			await this.$store.dispatch('getArticle', this.$route.params.id)
+			this.$refs.editor.quill.setContents(this.thisArticle.content)
+			this.loading = false
+		},
+		getDate: function (date) {
+			return moment(date).locale('he').format('Do בMMMM YYYY')
+		},
+		async getArticles () {
+			this.loading = true
+			await this.$store.dispatch('getArticles')
+			this.loading = false
+		},
+		onEditorReady (event) {
+			this.$refs.editor.quill.setContents(this.thisArticle.content)
+		}
+	},
+	metaInfo () {
+		let fatma = {
+			meta: [
+				{property: 'og:url', content: 'https://www.totalliberationisrael.com/article/' + this.$route.params.id},
+				{property: 'og:type', content: 'article'},
+				{property: 'og:title', content: this.pageTitle},
+				{property: 'og:description', content: this.ogDescription},
+				{property: 'og:image', content: this.ogImage}
+			],
+			title: this.pageTitle
+		}
+		return fatma
+	},
+	computed: {
+		pageTitle () {
+			if (this.$store.getters.article.title) {
+				return this.$store.getters.article.title
+			} else {
+				return 'כתבה'
+			}
+		},
+		ogDescription () {
+			if (this.$store.getters.article.lead) {
+				return this.$store.getters.article.lead
+			} else {
+				return ''
+			}
+		},
+		ogImage () {
+			if (this.$store.getters.article.image) {
+				return this.$store.getters.article.image
+			} else {
+				return ''
+			}
+		},
+		thisArticle () {
+			return this.$store.getters.article
+		},
+		articles () {
+			return this.$store.getters.articles
+		},
+		screenWidth () {
+			if (process.BROWSER_BUILD) {
+				return window.screen.width
+			} else {
+				return 1280
+			}
+		}
+	},
+	destroyed () {
+		this.$store.commit('CLEAR_ARTICLE')
+		this.$store.commit('CLEAR_ARTICLES')
+	},
+	components: {
+		quillEditor: quillSalech || new Vue(),
+		'no-ssr': NoSSR
+	}
 }
 </script>
 

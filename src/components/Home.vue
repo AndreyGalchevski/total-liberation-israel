@@ -13,37 +13,37 @@
 <script>
 import Swiper from 'swiper/dist/js/swiper.js'
 export default {
-  name: 'home',
-  data () {
-    return {
-      slider: null
-    }
-  },
-  metaInfo () {
-    let achmad = {
-      meta: [
-        {property: 'og:url', content: 'https://www.totalliberationisrael.com/'},
-        {property: 'og:type', content: 'website'},
-        {property: 'og:title', content: 'חדשות שחרור מוחלט'},
-        {property: 'og:description', content: 'האתר הרשמי של שחרור מוחלט'},
-        {property: 'og:image', content: 'http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593801/alf-israel/home/1.jpg'}
-      ],
-      title: 'חדשות שחרור מוחלט'
-    }
-    return achmad
-  },
-  mounted () {
-    this.slider = new Swiper(this.$refs.swiperContainer, {
-      loop: true,
-      navigation: {
-        nextEl: this.$refs.swiperButtonNext,
-        prevEl: this.$refs.swiperButtonPrev
-      },
-      autoplay: {
-        delay: 4000
-      }
-    })
-  }
+	name: 'home',
+	data () {
+		return {
+			slider: null
+		}
+	},
+	metaInfo () {
+		let achmad = {
+			meta: [
+				{property: 'og:url', content: 'https://www.totalliberationisrael.com/'},
+				{property: 'og:type', content: 'website'},
+				{property: 'og:title', content: 'חדשות שחרור מוחלט'},
+				{property: 'og:description', content: 'האתר הרשמי של שחרור מוחלט'},
+				{property: 'og:image', content: 'http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593801/alf-israel/home/1.jpg'}
+			],
+			title: 'חדשות שחרור מוחלט'
+		}
+		return achmad
+	},
+	mounted () {
+		this.slider = new Swiper(this.$refs.swiperContainer, {
+			loop: true,
+			navigation: {
+				nextEl: this.$refs.swiperButtonNext,
+				prevEl: this.$refs.swiperButtonPrev
+			},
+			autoplay: {
+				delay: 4000
+			}
+		})
+	}
 }
 </script>
 

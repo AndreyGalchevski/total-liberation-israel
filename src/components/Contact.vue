@@ -22,28 +22,28 @@
 
 <script>
 export default {
-  name: 'contact',
-  data () {
-    return {
-      subject: '',
-      body: ''
-    }
-  },
-  methods: {
-    redirect () {
-      this.$router.push({name: 'Home'})
-    }
-  },
-  computed: {
-    sendEmail: function () {
-      var unicodedSubject = this.subject.replace(/\?/g, '%3F')
-      var unicodedBody = this.body.replace(/\?/g, '%3F')
-      return 'mailto:glasswallsisrael@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
-    }
-  },
-  metaInfo: {
-    title: 'צור קשר'
-  }
+	name: 'contact',
+	data () {
+		return {
+			subject: '',
+			body: ''
+		}
+	},
+	methods: {
+		redirect () {
+			this.$router.push({name: 'Home'})
+		}
+	},
+	computed: {
+		sendEmail: function () {
+			var unicodedSubject = this.subject.replace(/\?/g, '%3F')
+			var unicodedBody = this.body.replace(/\?/g, '%3F')
+			return 'mailto:glasswallsisrael@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
+		}
+	},
+	metaInfo: {
+		title: 'צור קשר'
+	}
 }
 </script>
 

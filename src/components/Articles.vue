@@ -19,41 +19,41 @@
 <script>
 var moment = require('moment')
 export default {
-  asyncData ({ store, route }) {
-    return store.dispatch('getArticles')
-  },
-  name: 'articles',
-  data () {
-    return {
-      loading: false,
-      backgroundColor: '#0099ff',
-      size: '100px'
-    }
-  },
-  mounted () {
-    this.getArticles()
-  },
-  methods: {
-    async getArticles () {
-      this.loading = true
-      await this.$store.dispatch('getArticles')
-      this.loading = false
-    },
-    getDate: function (date) {
-      return moment(date).format('DD.MM.YYYY')
-    }
-  },
-  computed: {
-    articles () {
-      return this.$store.getters.articles
-    }
-  },
-  destroyed () {
-    this.$store.commit('CLEAR_ARTICLES')
-  },
-  metaInfo: {
-    title: 'כתבות'
-  }
+	asyncData ({ store, route }) {
+		return store.dispatch('getArticles')
+	},
+	name: 'articles',
+	data () {
+		return {
+			loading: false,
+			backgroundColor: '#0099ff',
+			size: '100px'
+		}
+	},
+	mounted () {
+		this.getArticles()
+	},
+	methods: {
+		async getArticles () {
+			this.loading = true
+			await this.$store.dispatch('getArticles')
+			this.loading = false
+		},
+		getDate: function (date) {
+			return moment(date).format('DD.MM.YYYY')
+		}
+	},
+	computed: {
+		articles () {
+			return this.$store.getters.articles
+		}
+	},
+	destroyed () {
+		this.$store.commit('CLEAR_ARTICLES')
+	},
+	metaInfo: {
+		title: 'כתבות'
+	}
 }
 </script>
 

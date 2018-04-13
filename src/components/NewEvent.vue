@@ -22,43 +22,43 @@
 import moment from 'moment'
 
 export default {
-  name: 'NewEvent',
-  data () {
-    return {
-      title: '',
-      date: '',
-      description: '',
-      fbPage: '',
-      image: '',
-      loading: false
-    }
-  },
-  methods: {
-    async addEvent () {
-      if (!this.title || !this.date || !this.description || !this.fbPage || !this.image) {
-        window.alert('נא למלא את כל השדות')
-      } else {
-        let localDate = moment(this.date).startOf('day').toDate()
-        this.loading = true
-        await this.$store.dispatch('addEvent', {
-          title: this.title,
-          date: localDate,
-          description: this.description,
-          fbPage: this.fbPage,
-          image: this.image
-        })
-        this.$router.push({ name: 'ManageEvents' })
-        this.loading = false
-      }
-    },
+	name: 'NewEvent',
+	data () {
+		return {
+			title: '',
+			date: '',
+			description: '',
+			fbPage: '',
+			image: '',
+			loading: false
+		}
+	},
+	methods: {
+		async addEvent () {
+			if (!this.title || !this.date || !this.description || !this.fbPage || !this.image) {
+				window.alert('נא למלא את כל השדות')
+			} else {
+				let localDate = moment(this.date).startOf('day').toDate()
+				this.loading = true
+				await this.$store.dispatch('addEvent', {
+					title: this.title,
+					date: localDate,
+					description: this.description,
+					fbPage: this.fbPage,
+					image: this.image
+				})
+				this.$router.push({ name: 'ManageEvents' })
+				this.loading = false
+			}
+		},
 
-    changeImage (event) {
-      this.image = event.target.files[0]
-    }
-  },
-  metaInfo: {
-    title: 'אירוע חדש'
-  }
+		changeImage (event) {
+			this.image = event.target.files[0]
+		}
+	},
+	metaInfo: {
+		title: 'אירוע חדש'
+	}
 }
 </script>
 <style scoped>

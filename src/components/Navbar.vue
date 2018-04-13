@@ -73,30 +73,30 @@
 
 <script>
 export default {
-  name: 'navbar',
-  methods: {
-    logout () {
-      this.$router.push({name: 'Home'})
-      this.$store.dispatch('logout')
-    },
-    getNavItemClasses (routeName) {
-      var classes = {
-        'nav-item': true,
-        'active': false
-      }
+	name: 'navbar',
+	methods: {
+		logout () {
+			this.$router.push({name: 'Home'})
+			this.$store.dispatch('logout')
+		},
+		getNavItemClasses (routeName) {
+			var classes = {
+				'nav-item': true,
+				'active': false
+			}
 
-      if (this.$route.name === routeName) {
-        classes.active = true
-      }
+			if (this.$route.name === routeName) {
+				classes.active = true
+			}
 
-      return classes
-    }
-  },
-  computed: {
-    isLoggedIn () {
-      return this.$store.getters.isLoggedIn
-    }
-  }
+			return classes
+		}
+	},
+	computed: {
+		isLoggedIn () {
+			return this.$store.getters.isLoggedIn
+		}
+	}
 }
 </script>
 <style scoped>

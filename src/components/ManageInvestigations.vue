@@ -24,40 +24,40 @@
 
 <script>
 export default {
-  name: 'ManageInvestigations',
-  data () {
-    return {
-      loading: false
-    }
-  },
-  mounted () {
-    this.getInvestigations()
-  },
-  methods: {
-    async getInvestigations () {
-      this.loading = true
-      await this.$store.dispatch('getInvestigations')
-      this.loading = false
-    },
-    async deleteInvestigation (id) {
-      this.loading = true
-      await this.$store.dispatch('deleteInvestigation', id)
-      this.getInvestigations()
-      this.$router.push({ name: 'ManageInvestigations' })
-      this.loading = true
-    }
-  },
-  computed: {
-    investigations () {
-      return this.$store.getters.investigations
-    }
-  },
-  destroyed () {
-    this.$store.commit('CLEAR_INVESTIGATIONS')
-  },
-  metaInfo: {
-    title: 'ניהול תחקירים'
-  }
+	name: 'ManageInvestigations',
+	data () {
+		return {
+			loading: false
+		}
+	},
+	mounted () {
+		this.getInvestigations()
+	},
+	methods: {
+		async getInvestigations () {
+			this.loading = true
+			await this.$store.dispatch('getInvestigations')
+			this.loading = false
+		},
+		async deleteInvestigation (id) {
+			this.loading = true
+			await this.$store.dispatch('deleteInvestigation', id)
+			this.getInvestigations()
+			this.$router.push({ name: 'ManageInvestigations' })
+			this.loading = true
+		}
+	},
+	computed: {
+		investigations () {
+			return this.$store.getters.investigations
+		}
+	},
+	destroyed () {
+		this.$store.commit('CLEAR_INVESTIGATIONS')
+	},
+	metaInfo: {
+		title: 'ניהול תחקירים'
+	}
 }
 </script>
 

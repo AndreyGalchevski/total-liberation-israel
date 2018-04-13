@@ -22,10 +22,10 @@
 
 <script>
 export default {
-  name: 'about',
-  metaInfo: {
-    title: 'מי אנחנו'
-  }
+	name: 'about',
+	metaInfo: {
+		title: 'מי אנחנו'
+	}
 }
 </script>
 

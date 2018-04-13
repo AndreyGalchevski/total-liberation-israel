@@ -12,26 +12,26 @@
 
 <script>
 export default {
-  name: 'login',
-  data () {
-    return {
-      username: '',
-      password: ''
-    }
-  },
-  methods: {
-    login () {
-      this.$store.dispatch('login', {
-        username: this.username,
-        password: this.password
-      }).then(() => {
-        this.$router.push('/admin')
-      })
-    }
-  },
-  metaInfo: {
-    title: 'התחברות'
-  }
+	name: 'login',
+	data () {
+		return {
+			username: '',
+			password: ''
+		}
+	},
+	methods: {
+		login () {
+			this.$store.dispatch('login', {
+				username: this.username,
+				password: this.password
+			}).then(() => {
+				this.$router.push('/admin')
+			})
+		}
+	},
+	metaInfo: {
+		title: 'התחברות'
+	}
 }
 </script>
 

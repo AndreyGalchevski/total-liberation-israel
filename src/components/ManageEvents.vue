@@ -27,43 +27,43 @@
 <script>
 var moment = require('moment')
 export default {
-  name: 'ManageEvents',
-  data () {
-    return {
-      loading: false
-    }
-  },
-  mounted () {
-    this.getEvents()
-  },
-  methods: {
-    async getEvents () {
-      this.loading = true
-      await this.$store.dispatch('getEvents')
-      this.loading = false
-    },
-    async deleteEvent (id) {
-      this.loading = true
-      await this.$store.dispatch('deleteEvent', id)
-      this.getEvents()
-      this.$router.push({ name: 'ManageEvents' })
-      this.loading = true
-    },
-    getDate: function (date) {
-      return moment(date).format('DD.MM.YYYY')
-    }
-  },
-  computed: {
-    events () {
-      return this.$store.getters.events
-    }
-  },
-  destroyed () {
-    this.$store.commit('CLEAR_EVENTS')
-  },
-  metaInfo: {
-    title: 'ניהול אירועים'
-  }
+	name: 'ManageEvents',
+	data () {
+		return {
+			loading: false
+		}
+	},
+	mounted () {
+		this.getEvents()
+	},
+	methods: {
+		async getEvents () {
+			this.loading = true
+			await this.$store.dispatch('getEvents')
+			this.loading = false
+		},
+		async deleteEvent (id) {
+			this.loading = true
+			await this.$store.dispatch('deleteEvent', id)
+			this.getEvents()
+			this.$router.push({ name: 'ManageEvents' })
+			this.loading = true
+		},
+		getDate: function (date) {
+			return moment(date).format('DD.MM.YYYY')
+		}
+	},
+	computed: {
+		events () {
+			return this.$store.getters.events
+		}
+	},
+	destroyed () {
+		this.$store.commit('CLEAR_EVENTS')
+	},
+	metaInfo: {
+		title: 'ניהול אירועים'
+	}
 }
 </script>
 
