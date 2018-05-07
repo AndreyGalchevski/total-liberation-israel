@@ -93,13 +93,13 @@
               i.fa.fa-whatsapp.bottom-icon(
                 aria-hidden="true"
               )
-    div(
+    div.additional-articles-container(
       v-if="thisArticle.title"
     )
       hr.myHr
       h4 כתבות נוספות
       hr.myHr    
-      div.container.additional-articles.w-50
+      div.container.additional-articles.w-75
         div.row.align-items-start(
           v-for="article in articles" 
           :key="article._id" 
@@ -259,7 +259,7 @@ export default {
   }
 }
 @media (min-width: 1200px) {
-  .additional-articles {
+  .additional-articles-container {
     display: none;
   }
 }
