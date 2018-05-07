@@ -68,7 +68,8 @@
       ul(class="navbar-nav mr-auto")
         li(class="nav-item")
           a(href="https://il.linkedin.com/in/andrey-galchevski-b40999a3" class="nav-link" target="_blank")
-            img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/c_scale,h_32/v1520506544/alf-israel/logo/andarraylogo.png")
+            img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/c_scale,h_20/v1525702277/alf-israel/logo/logo-s.png")
+            
 </template>
 
 <script>
