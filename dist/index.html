@@ -1,98 +1,85 @@
 <!DOCTYPE html>
 <html lang="he" style="overflow: hidden; height: 100%">
-  <head>
-    {{{ meta.inject().meta.text() }}}
-    {{{ meta.inject().title.text() }}}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="google-site-verification" content="wH2GdwT3IRtT3vsYqyBG8EkDAk6cIB7_wyiTm64cHcY" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#2E2E2E">
-    <!--Favicon-->
-    <link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/faviconNew.ico" 
-      type="image/x-icon">    
-    <!--Bootstrap 4 and MD Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
-    <!--Arimo font import-->
-    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
-    <!--SSR Voodoo-->
-    
-<<<<<<< HEAD
-    <link rel="preload" href="/dist/client-bundle.a2f14cc28dc9b56caf68.js" 
-=======
-    <link rel="preload" href="/dist/client-bundle.e5298c37a6fc01653a15.js" 
->>>>>>> quill
-      as="script">
-    <link rel="preload" href="/dist/client-bundle.4ba0cc935264596b28eb.js" 
-      as="script">
-  </head>
-  <body>
-    <!--vue-ssr-outlet-->
 
-    <!--jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--Popper JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <!--Bootstrap 4 JS-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <!--MD Bootstrap JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
-    <!--Font Awesome JS-->
-    <script src="https://use.fontawesome.com/f8adea8918.js"></script>
-    <!--Custom jQuery magic that I am NOT proud of-->
-    <script>
-      $( document ).ready(function() {
+<head>
+	{{{ meta.inject().meta.text() }}} {{{ meta.inject().title.text() }}}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="google-site-verification" content="TY1CdtAWeyhuwzfpcXQ8WmzQGyzuAiPA6cwxFzBZDKo" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#2E2E2E">
+	<!--Favicon-->
+	<link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/favicon-32x32.png"
+	 type="image/x-icon">
+	<!--Bootstrap 4 and MD Bootstrap CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
+	<!--Arimo font import-->
+	<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+	<!--Swiper CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
+	<!--SSR Voodoo-->
+	
+		<link rel="preload" href="/dist/client-bundle.0f8931605666dd5ac3ca.js" as="script">
+		
+		<link rel="preload" href="/dist/client-bundle.f8d9604e0f0e653a35e0.js" as="script">
+		
+</head>
 
-        $('.carousel').carousel({
-          interval: 4000,
-          cycle: true,
-          pause: "null"
-        })
+<body>
+	<!--vue-ssr-outlet-->
 
-        $(".carousel").on("touchstart", function(event){
-          var xClick = event.originalEvent.touches[0].pageX
-          $(this).one("touchmove", function(event){
-            var xMove = event.originalEvent.touches[0].pageX
-            if( Math.floor(xClick - xMove) > 5 ){
-                $(this).carousel('next')
-            }
-            else if( Math.floor(xClick - xMove) < -5 ){
-                $(this).carousel('prev')
-            }
-          })
-          $(".carousel").on("touchend", function(){
-                  $(this).off("touchmove")
-          })
-        })
+	<!--jQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--Popper JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<!--Bootstrap 4 JS-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<!--MD Bootstrap JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
+	<!--Font Awesome JS-->
+	<script src="https://use.fontawesome.com/f8adea8918.js"></script>
 
-        $('.navbar-nav>li>.hide-collapse').on('click', function(){
-          $('.navbar-collapse').collapse('hide')
-        })
+	<div id="fb-root"></div>
 
-      })
-    </script>
-    <!--Google maps API-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c"></script>
-    <!--JSON-LD markup for google search-->
-    <script type="application/ld+json">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118249584-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-118249584-1');
+	</script>
+
+	<!-- Custom jQuery magic that I am NOT proud of -->
+	<script>
+		$(document).ready(function () {
+
+			$('.navbar-nav>li>.hide-collapse').on('click', function () {
+				$('.navbar-collapse').collapse('hide')
+			})
+
+		})
+	</script>
+	<!--Google maps API-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c"></script>
+	<!--JSON-LD markup for google search-->
+	<script type="application/ld+json">
       {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "description": "האתר הרשמי של החזית לשחרור בעלי החיים ישראל",
-        "url" : "https://www.alf-israel.com/",
-        "name": "חדשות החזית",
-        "logo": "http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593801/alf-israel/home/2.jpg", 			
+        "description": "האתר הרשמי של שחרור מוחלט",
+        "url" : "https://www.totalliberationisrael.com/",
+        "name": "חדשות שחרור מוחלט",
+        "logo": "http://res.cloudinary.com/dqvimfd8b/image/upload/v1523615232/alf-israel/home/1.jpg", 			
         "sameAs" : [ 
-          "https://www.facebook.com/Alfront/",
+          "https://www.facebook.com/totalliberationisrael/",
           "https://www.youtube.com/user/GlassWallsIsrael/",
-          "https://www.instagram.com/alf_israel/"
+          "https://www.instagram.com/total_liberation_israel/"
         ]
       }
     </script>
-<<<<<<< HEAD
-  <script type="text/javascript" src="/dist/client-bundle.4ba0cc935264596b28eb.js"></script><script type="text/javascript" src="/dist/client-bundle.a2f14cc28dc9b56caf68.js"></script></body>
-=======
-  <script type="text/javascript" src="/dist/client-bundle.4ba0cc935264596b28eb.js"></script><script type="text/javascript" src="/dist/client-bundle.e5298c37a6fc01653a15.js"></script></body>
->>>>>>> quill
+<script type="text/javascript" src="/dist/client-bundle.f8d9604e0f0e653a35e0.js"></script><script type="text/javascript" src="/dist/client-bundle.0f8931605666dd5ac3ca.js"></script></body>
+
 </html>
