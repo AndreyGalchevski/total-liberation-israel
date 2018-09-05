@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="he" style="overflow: hidden; height: 100%">
-  <head>
-    {{{ meta.inject().meta.text() }}}
-    {{{ meta.inject().title.text() }}}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="google-site-verification" content="TY1CdtAWeyhuwzfpcXQ8WmzQGyzuAiPA6cwxFzBZDKo" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#2E2E2E">
-    <!--Favicon-->
-    <link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/favicon-32x32.png" 
-      type="image/x-icon">    
-    <!--Bootstrap 4 and MD Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
-    <!--Arimo font import-->
-    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
-    <!--Swiper CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
-    <!--SSR Voodoo-->
-    <% for (var chunk of webpack.chunks) {
+
+<head>
+	{{{ meta.inject().meta.text() }}} {{{ meta.inject().title.text() }}}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="google-site-verification" content="TY1CdtAWeyhuwzfpcXQ8WmzQGyzuAiPA6cwxFzBZDKo" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#2E2E2E">
+	<!--Favicon-->
+	<link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/favicon-32x32.png"
+	 type="image/x-icon">
+	<!--Bootstrap 4 and MD Bootstrap CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
+	<!--Arimo font import-->
+	<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+	<!--Swiper CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
+	<!--SSR Voodoo-->
+	<% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
-    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" 
-      as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
-  </head>
-  <body>
-    <!--vue-ssr-outlet-->
+		<link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
+		<% }}} %>
+</head>
 
-    <!--jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--Popper JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <!--Bootstrap 4 JS-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <!--MD Bootstrap JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
-    <!--Font Awesome JS-->
-    <script src="https://use.fontawesome.com/f8adea8918.js"></script>
+<body>
+	<!--vue-ssr-outlet-->
 
-    <div id="fb-root"></div>
+	<!--jQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--Popper JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<!--Bootstrap 4 JS-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<!--MD Bootstrap JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
+	<!--Font Awesome JS-->
+	<script src="https://use.fontawesome.com/f8adea8918.js"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118249584-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+	<div id="fb-root"></div>
 
-      gtag('config', 'UA-118249584-1');
-    </script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118249584-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-    <!-- Custom jQuery magic that I am NOT proud of -->
-    <script>
-      $( document ).ready(function() {
+		gtag('config', 'UA-118249584-1');
+	</script>
 
-        $('.navbar-nav>li>.hide-collapse').on('click', function(){
-          $('.navbar-collapse').collapse('hide')
-        })
+	<!-- Custom jQuery magic that I am NOT proud of -->
+	<script>
+		$(document).ready(function () {
 
-      })
-    </script>
-    <!--Google maps API-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c"></script>
-    <!--JSON-LD markup for google search-->
-    <script type="application/ld+json">
+			$('.navbar-nav>li>.hide-collapse').on('click', function () {
+				$('.navbar-collapse').collapse('hide')
+			})
+
+		})
+	</script>
+	<!--Google maps API-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvqXv9O9dgNZdpZ_AhT2S84nZlA2vKB0c"></script>
+	<!--JSON-LD markup for google search-->
+	<script type="application/ld+json">
       {
         "@context": "http://schema.org",
         "@type": "Organization",
@@ -80,5 +80,6 @@
         ]
       }
     </script>
-  </body>
+</body>
+
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "alf-israel-ssr",
+  "name": "total-liberation-israel",
   "version": "0.0.1",
   "description": "Official Total Liberation Israel website",
   "author": "Andrey Galchevski <andreygalchevskit@gmail.com>",
@@ -21,6 +21,7 @@
     "cloudinary": "^1.10.0",
     "cors": ">=2.8.4",
     "cross-env": "^5.1.3",
+    "dotenv": "^6.0.0",
     "eslint-plugin-import": "^2.9.0",
     "express": ">=4.14.0",
     "form-data": "^2.3.2",
