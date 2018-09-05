@@ -10,10 +10,10 @@
 
 <script>
 export default {
-  name: 'admin',
-  metaInfo: {
-    title: 'ניהול מידע'
-  }
+	name: 'admin',
+	metaInfo: {
+		title: 'ניהול מידע'
+	}
 }
 </script>
 <style scoped>

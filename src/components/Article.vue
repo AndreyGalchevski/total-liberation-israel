@@ -1,96 +1,125 @@
 <template lang="pug">
-  div.wrapper
-    div.other-articles.w-50
-      div(
-        v-for="article in articles" 
-        :key="article._id" 
-        v-if="article._id !== thisArticle._id"
-      )
-        div.card.mb-r
-          div.view.overlay.hm-white-slight
-            router-link(
-              :to="'/article/' + article._id"
-            )
-              img.img-fluid(
-                :src="article.image" 
-                alt="Card image"
-              )
-              div.mas
-            div.card-body
+  div
+    div.wrapper
+      div.other-articles.w-50
+        div(
+          v-for="article in articles" 
+          :key="article._id" 
+          v-if="article._id !== thisArticle._id"
+        )
+          div.card.mb-r
+            div.view.overlay.hm-white-slight
               router-link(
                 :to="'/article/' + article._id"
               )
-                p.card-title {{ article.title }}
-    div.main-article(
-      v-if="thisArticle.title"
-    )
-      h1.title {{ thisArticle.title }}
-      h6.lead {{ thisArticle.lead }}
-      h6.date.text-primary פורסם ב - {{ getDate(thisArticle.date) }} מאת {{ thisArticle.author }}
-      img.rounded.main-image.img-fluid(
-        :src = "thisArticle.image" 
-        alt="Card image"
+                img.img-fluid(
+                  :src="article.image" 
+                  alt="Card image"
+                )
+                div.mas
+              div.card-body
+                router-link(
+                  :to="'/article/' + article._id"
+                )
+                  p.card-title {{ article.title }}
+      div.main-article(
+        v-if="thisArticle.title"
       )
-      p.share-buttons
-        a(
-          :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id"
+        h1.title {{ thisArticle.title }}
+        h6.lead {{ thisArticle.lead }}
+        h6.date.text-muted {{ getDate(thisArticle.date) }} |
+          span.text-primary  {{ thisArticle.author }}
+        img.rounded.main-image.img-fluid(
+          :src = "thisArticle.image" 
+          alt="Card image"
         )
-          i.fa.fa-envelope-o.top-icon(
-            aria-hidden="true"
+        p.share-buttons
+          a(
+            :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.totalliberationisrael.com/article/' + thisArticle._id"
           )
-        a.fb-xfbml-parse-ignore(
-          target="_blank"
-          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
-        )
-          i.fa.fa-facebook-square.top-facebook-icon.top-icon(
-            aria-hidden="true"
-          )
-        a(
-          :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" 
-          data-action="share/whatsapp/share" 
-          target="_blank"
-        )
-          i.fa.fa-whatsapp.top-icon( 
-            aria-hidden="true"
-          )
-      no-ssr
-        quill-editor(
-          @ready="onEditorReady($event)"
-          :options="quillOptions"
-          ref="editor"
-        )
-      div.dropdown-share.btn-group
-        button.btn.btn-outline-primary.waves-effect(
-          type="button" 
-          data-toggle="dropdown" 
-          aria-haspopup="true" 
-          aria-expanded="false"
-        )
-          i.fa.fa-share-alt(
-            aria-hidden="true"
-          )
-        div.dropdown-menu
-          a.dropdown-item(
-            :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.alf-israel.com/article/' + thisArticle._id"
-          )
-            i.fa.fa-envelope-o.bottom-icon(
+            i.fa.fa-envelope-o.top-icon(
               aria-hidden="true"
             )
-          a.dropdown-item.fb-xfbml-parse-ignore(
-            target="_blank" 
-            :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alf-israel.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
+          a.fb-xfbml-parse-ignore(
+            target="_blank"
+            :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.totalliberationisrael.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
           )
-            i.fa.fa-facebook-square.bottom-icon(
+            i.fa.fa-facebook-square.top-facebook-icon.top-icon(
               aria-hidden="true"
             )
-          a.dropdown-item(
-            :href="'https://api.whatsapp.com/send?text=https://www.alf-israel.com/article/' + thisArticle._id" 
+          a(
+            :href="'https://api.whatsapp.com/send?text=https://www.totalliberationisrael.com/article/' + thisArticle._id" 
             data-action="share/whatsapp/share" 
             target="_blank"
           )
-            i.fa.fa-whatsapp.bottom-icon(
+            i.fa.fa-whatsapp.top-icon( 
               aria-hidden="true"
             )
+        no-ssr
+          quill-editor(
+            @ready="onEditorReady($event)"
+            :options="quillOptions"
+            ref="editor"
+          )
+        div.dropdown-share.btn-group
+          button.btn.btn-outline-primary.waves-effect(
+            type="button" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false"
+          )
+            i.fa.fa-share-alt(
+              aria-hidden="true"
+            )
+          div.dropdown-menu
+            a.dropdown-item(
+              :href="'mailto:?subject=' + thisArticle.title + '&body=https://www.totalliberationisrael.com/article/' + thisArticle._id"
+            )
+              i.fa.fa-envelope-o.bottom-icon(
+                aria-hidden="true"
+              )
+            a.dropdown-item.fb-xfbml-parse-ignore(
+              target="_blank" 
+              :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.totalliberationisrael.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
+            )
+              i.fa.fa-facebook-square.bottom-icon(
+                aria-hidden="true"
+              )
+            a.dropdown-item(
+              :href="'https://api.whatsapp.com/send?text=https://www.totalliberationisrael.com/article/' + thisArticle._id" 
+              data-action="share/whatsapp/share" 
+              target="_blank"
+            )
+              i.fa.fa-whatsapp.bottom-icon(
+                aria-hidden="true"
+              )
+    div.additional-articles-container(
+      v-if="thisArticle.title"
+    )
+      hr.myHr
+      h4 כתבות נוספות
+      hr.myHr    
+      div.container.additional-articles.w-75
+        div.row.align-items-start(
+          v-for="article in articles" 
+          :key="article._id" 
+          v-if="article._id !== thisArticle._id"
+        )
+          div.card.mb-r.col
+            div.view.overlay.hm-white-slight
+              router-link(
+                :to="'/article/' + article._id"
+              )
+                img.img-fluid(
+                  :src="article.image" 
+                  alt="Card image"
+                )
+                div.mas
+              div.card-body
+                router-link(
+                  :to="'/article/' + article._id"
+                )
+                  p.card-title {{ article.title }}
 </template>
 
 <script>
@@ -100,120 +129,120 @@ import moment from 'moment'
 
 var quillSalech
 if (process.browser) {
-  quillSalech = require('vue-quill-editor').quillEditor
+	quillSalech = require('vue-quill-editor').quillEditor
 }
 
 export default {
-  asyncData ({ store, route }) {
-    return store.dispatch('getArticle', route.params.id)
-  },
-  name: 'articleComponent',
-  data () {
-    return {
-      loading: false,
-      quillOptions: {
-        theme: false,
-        readOnly: true,
-        modules: {
-          toolbar: false
-        },
-        placeholder: '',
-        formats: [
-          'align',
-          'bold',
-          'background',
-          'color',
-          'italic',
-          'list',
-          'size',
-          'underline',
-          'blockquote',
-          'direction',
-          'video'
-        ]
-      }
-    }
-  },
-  mounted () {
-    this.getArticle()
-    this.getArticles()
-  },
-  methods: {
-    async getArticle () {
-      this.loading = true
-      await this.$store.dispatch('getArticle', this.$route.params.id)
-      this.$refs.editor.quill.setContents(this.thisArticle.content)
-      this.loading = false
-    },
-    getDate: function (date) {
-      return moment(date).format('DD.MM.YYYY')
-    },
-    async getArticles () {
-      this.loading = true
-      await this.$store.dispatch('getArticles')
-      this.loading = false
-    },
-    onEditorReady (event) {
-      this.$refs.editor.quill.setContents(this.thisArticle.content)
-    }
-  },
-  metaInfo () {
-    let fatma = {
-      meta: [
-        {property: 'og:url', content: 'https://www.alf-israel.com/article/' + this.$route.params.id},
-        {property: 'og:type', content: 'article'},
-        {property: 'og:title', content: this.pageTitle},
-        {property: 'og:description', content: this.ogDescription},
-        {property: 'og:image', content: this.ogImage}
-      ],
-      title: this.pageTitle
-    }
-    return fatma
-  },
-  computed: {
-    pageTitle () {
-      if (this.$store.getters.article.title) {
-        return this.$store.getters.article.title
-      } else {
-        return 'כתבה'
-      }
-    },
-    ogDescription () {
-      if (this.$store.getters.article.lead) {
-        return this.$store.getters.article.lead
-      } else {
-        return ''
-      }
-    },
-    ogImage () {
-      if (this.$store.getters.article.image) {
-        return this.$store.getters.article.image
-      } else {
-        return ''
-      }
-    },
-    thisArticle () {
-      return this.$store.getters.article
-    },
-    articles () {
-      return this.$store.getters.articles
-    },
-    screenWidth () {
-      if (process.BROWSER_BUILD) {
-        return window.screen.width
-      } else {
-        return 1280
-      }
-    }
-  },
-  destroyed () {
-    this.$store.commit('CLEAR_ARTICLE')
-    this.$store.commit('CLEAR_ARTICLES')
-  },
-  components: {
-    quillEditor: quillSalech || new Vue(),
-    'no-ssr': NoSSR
-  }
+	asyncData ({ store, route }) {
+		return store.dispatch('getArticle', route.params.id)
+	},
+	name: 'articleComponent',
+	data () {
+		return {
+			loading: false,
+			quillOptions: {
+				theme: false,
+				readOnly: true,
+				modules: {
+					toolbar: false
+				},
+				placeholder: '',
+				formats: [
+					'align',
+					'bold',
+					'background',
+					'color',
+					'italic',
+					'list',
+					'size',
+					'underline',
+					'blockquote',
+					'direction',
+					'video'
+				]
+			}
+		}
+	},
+	mounted () {
+		this.getArticle()
+		this.getArticles()
+	},
+	methods: {
+		async getArticle () {
+			this.loading = true
+			await this.$store.dispatch('getArticle', this.$route.params.id)
+			this.$refs.editor.quill.setContents(this.thisArticle.content)
+			this.loading = false
+		},
+		getDate: function (date) {
+			return moment(date).locale('he').format('Do בMMMM YYYY')
+		},
+		async getArticles () {
+			this.loading = true
+			await this.$store.dispatch('getArticles')
+			this.loading = false
+		},
+		onEditorReady (event) {
+			this.$refs.editor.quill.setContents(this.thisArticle.content)
+		}
+	},
+	metaInfo () {
+		let fatma = {
+			meta: [
+				{property: 'og:url', content: 'https://www.totalliberationisrael.com/article/' + this.$route.params.id},
+				{property: 'og:type', content: 'article'},
+				{property: 'og:title', content: this.pageTitle},
+				{property: 'og:description', content: this.ogDescription},
+				{property: 'og:image', content: this.ogImage}
+			],
+			title: this.pageTitle
+		}
+		return fatma
+	},
+	computed: {
+		pageTitle () {
+			if (this.$store.getters.article.title) {
+				return this.$store.getters.article.title
+			} else {
+				return 'כתבה'
+			}
+		},
+		ogDescription () {
+			if (this.$store.getters.article.lead) {
+				return this.$store.getters.article.lead
+			} else {
+				return ''
+			}
+		},
+		ogImage () {
+			if (this.$store.getters.article.image) {
+				return this.$store.getters.article.image
+			} else {
+				return ''
+			}
+		},
+		thisArticle () {
+			return this.$store.getters.article
+		},
+		articles () {
+			return this.$store.getters.articles
+		},
+		screenWidth () {
+			if (process.BROWSER_BUILD) {
+				return window.screen.width
+			} else {
+				return 1280
+			}
+		}
+	},
+	destroyed () {
+		this.$store.commit('CLEAR_ARTICLE')
+		this.$store.commit('CLEAR_ARTICLES')
+	},
+	components: {
+		quillEditor: quillSalech || new Vue(),
+		'no-ssr': NoSSR
+	}
 }
 </script>
 
@@ -227,6 +256,11 @@ export default {
   }
   .main-article {
     grid-column: span 4;
+  }
+}
+@media (min-width: 1200px) {
+  .additional-articles-container {
+    display: none;
   }
 }
 .wrapper{
@@ -246,6 +280,9 @@ export default {
 }
 .other-articles .card-text {
   font-size: 15px;
+}
+.container.additional-articles {
+  padding-top: 10px;
 }
 .top-icon {
   font-size: 35px !important;
@@ -286,5 +323,10 @@ export default {
 .dropdown-menu {
   text-align: center;
   min-width: 100%;
+}
+hr.myHr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 </style>

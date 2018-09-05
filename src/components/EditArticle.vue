@@ -68,99 +68,99 @@ import NoSSR from 'vue-no-ssr'
 var quillAmir
 
 if (process.browser) {
-  quillAmir = require('vue-quill-editor').quillEditor
+	quillAmir = require('vue-quill-editor').quillEditor
 }
 export default {
-  name: 'EditArticle',
-  data () {
-    return {
-      image: '',
-      title: '',
-      author: '',
-      date: '',
-      lead: '',
-      content: {},
-      newImage: '',
-      loading: false,
-      quillOptions: {
-        theme: 'snow',
-        formats: [
-          'align',
-          'bold',
-          'background',
-          'color',
-          'italic',
-          'list',
-          'size',
-          'underline',
-          'blockquote',
-          'direction',
-          'video'
-        ],
-        modules: {
-          toolbar: [
-            ['bold', 'italic', 'underline'],
-            ['blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'size': ['small', false, 'large', 'huge'] }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }]
-          ]
-        },
-        placeholder: ''
-      }
-    }
-  },
-  mounted () {
-    this.getArticle()
-  },
-  methods: {
-    async getArticle () {
-      this.loading = true
-      await this.$store.dispatch('getArticle', this.$route.params.id)
-      this.image = this.$store.getters.article.image
-      this.title = this.$store.getters.article.title
-      this.author = this.$store.getters.article.author
-      this.date = this.$store.getters.article.date
-      this.lead = this.$store.getters.article.lead
-      this.content = this.$store.getters.article.content
-      this.$refs.editor.quill.setContents(this.content)
-      this.loading = false
-    },
-    async updateArticle () {
-      this.loading = true
-      await this.$store.dispatch('updateArticle', {
-        id: this.$route.params.id,
-        title: this.title,
-        author: this.author,
-        date: this.date,
-        lead: this.lead,
-        content: this.content,
-        image: this.image,
-        newImage: this.newImage
-      })
-      this.$router.push({ name: 'ManageArticles' })
-      this.loading = false
-    },
-    changeImage (event) {
-      this.newImage = event.target.files[0]
-    },
-    onEditorChange (event) {
-      this.content = this.editor.getContents()
-    }
-  },
-  computed: {
-    editor () {
-      return this.$refs.editor.quill
-    }
-  },
-  components: {
-    quillEditor: quillAmir || new Vue(),
-    'no-ssr': NoSSR
-  },
-  metaInfo: {
-    title: 'עריכת כתבה'
-  }
+	name: 'EditArticle',
+	data () {
+		return {
+			image: '',
+			title: '',
+			author: '',
+			date: '',
+			lead: '',
+			content: {},
+			newImage: '',
+			loading: false,
+			quillOptions: {
+				theme: 'snow',
+				formats: [
+					'align',
+					'bold',
+					'background',
+					'color',
+					'italic',
+					'list',
+					'size',
+					'underline',
+					'blockquote',
+					'direction',
+					'video'
+				],
+				modules: {
+					toolbar: [
+						['bold', 'italic', 'underline'],
+						['blockquote'],
+						[{ 'list': 'ordered' }, { 'list': 'bullet' }],
+						[{ 'size': ['small', false, 'large', 'huge'] }],
+						[{ 'color': [] }, { 'background': [] }],
+						[{ 'align': [] }]
+					]
+				},
+				placeholder: ''
+			}
+		}
+	},
+	mounted () {
+		this.getArticle()
+	},
+	methods: {
+		async getArticle () {
+			this.loading = true
+			await this.$store.dispatch('getArticle', this.$route.params.id)
+			this.image = this.$store.getters.article.image
+			this.title = this.$store.getters.article.title
+			this.author = this.$store.getters.article.author
+			this.date = this.$store.getters.article.date
+			this.lead = this.$store.getters.article.lead
+			this.content = this.$store.getters.article.content
+			this.$refs.editor.quill.setContents(this.content)
+			this.loading = false
+		},
+		async updateArticle () {
+			this.loading = true
+			await this.$store.dispatch('updateArticle', {
+				id: this.$route.params.id,
+				title: this.title,
+				author: this.author,
+				date: this.date,
+				lead: this.lead,
+				content: this.content,
+				image: this.image,
+				newImage: this.newImage
+			})
+			this.$router.push({ name: 'ManageArticles' })
+			this.loading = false
+		},
+		changeImage (event) {
+			this.newImage = event.target.files[0]
+		},
+		onEditorChange (event) {
+			this.content = this.editor.getContents()
+		}
+	},
+	computed: {
+		editor () {
+			return this.$refs.editor.quill
+		}
+	},
+	components: {
+		quillEditor: quillAmir || new Vue(),
+		'no-ssr': NoSSR
+	},
+	metaInfo: {
+		title: 'עריכת כתבה'
+	}
 }
 </script>
 <style>

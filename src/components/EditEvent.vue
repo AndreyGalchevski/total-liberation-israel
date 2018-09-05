@@ -21,54 +21,58 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
-  name: 'EditEvent',
-  data () {
-    return {
-      image: '',
-      title: '',
-      date: '',
-      description: '',
-      fbPage: '',
-      newImage: '',
-      loading: false
-    }
-  },
-  mounted () {
-    this.getEvent()
-  },
-  methods: {
-    async getEvent () {
-      this.loading = true
-      await this.$store.dispatch('getEvent', this.$route.params.id)
-      this.image = this.$store.getters.event.image
-      this.title = this.$store.getters.event.title
-      this.date = this.$store.getters.event.date
-      this.description = this.$store.getters.event.description
-      this.fbPage = this.$store.getters.event.fbPage
-      this.loading = false
-    },
-    async updateEvent () {
-      this.loading = true
-      await this.$store.dispatch('updateEvent', {
-        id: this.$route.params.id,
-        title: this.title,
-        date: this.date,
-        description: this.description,
-        fbPage: this.fbPage,
-        image: this.image,
-        newImage: this.newImage
-      })
-      this.$router.push({ name: 'ManageEvents' })
-      this.loading = false
-    },
-    changeImage (event) {
-      this.newImage = event.target.files[0]
-    }
-  },
-  metaInfo: {
-    title: 'עריכת אירוע'
-  }
+	name: 'EditEvent',
+	data () {
+		return {
+			image: '',
+			title: '',
+			date: '',
+			description: '',
+			fbPage: '',
+			newImage: '',
+			loading: false
+		}
+	},
+	mounted () {
+		this.getEvent()
+	},
+	methods: {
+		async getEvent () {
+			this.loading = true
+			await this.$store.dispatch('getEvent', this.$route.params.id)
+			this.image = this.$store.getters.event.image
+			this.title = this.$store.getters.event.title
+			this.date = this.$store.getters.event.date
+			this.description = this.$store.getters.event.description
+			this.fbPage = this.$store.getters.event.fbPage
+			this.loading = false
+		},
+		async updateEvent () {
+			let localDate = moment(this.date).startOf('day').toDate()
+
+			this.loading = true
+			await this.$store.dispatch('updateEvent', {
+				id: this.$route.params.id,
+				title: this.title,
+				date: localDate,
+				description: this.description,
+				fbPage: this.fbPage,
+				image: this.image,
+				newImage: this.newImage
+			})
+			this.$router.push({ name: 'ManageEvents' })
+			this.loading = false
+		},
+		changeImage (event) {
+			this.newImage = event.target.files[0]
+		}
+	},
+	metaInfo: {
+		title: 'עריכת אירוע'
+	}
 }
 </script>
 <style>

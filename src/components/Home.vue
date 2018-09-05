@@ -1,59 +1,71 @@
 <template lang="pug">
-  div(id="myCarousel" class="carousel slide" data-ride="carousel")
-    // Indicators
-    ul(class="carousel-indicators")
-      li(data-target="#myCarousel" data-slide-to="0" class="active")
-      li(data-target="#myCarousel" data-slide-to="1")
-      li(data-target="#myCarousel" data-slide-to="2")
-      li(data-target="#myCarousel" data-slide-to="3")
-      li(data-target="#myCarousel" data-slide-to="4")
-      li(data-target="#myCarousel" data-slide-to="5")
-      li(data-target="#myCarousel" data-slide-to="6")
-      li(data-target="#myCarousel" data-slide-to="7")
-      li(data-target="#myCarousel" data-slide-to="8")
-    </ul>
-    // Wrapper for slides
-    div(class="carousel-inner" role="listbox")
-      div(class="carousel-item active image-1")
-      div(class="carousel-item image-2")
-      div(class="carousel-item image-3")
-      div(class="carousel-item image-4")
-      div(class="carousel-item image-5")
-      div(class="carousel-item image-6")
-      div(class="carousel-item image-7")
-      div(class="carousel-item image-8")
-      div(class="carousel-item image-9")
-    // Left and right controls
-    a(class="carousel-control-prev" href="#myCarousel" data-slide="next")
-      span(class="carousel-control-prev-icon")
-    a(class="carousel-control-next" href="#myCarousel" data-slide="prev")
-      span(class="carousel-control-next-icon")
+  div(ref="swiperContainer" class="swiper-container")
+    div(class="swiper-wrapper")
+      div(class="swiper-slide image-1")
+      div(class="swiper-slide image-2")
+      div(class="swiper-slide image-3")
+      div(class="swiper-slide image-4")
+      div(class="swiper-slide image-5")
+    div(ref="swiperButtonPrev" class="swiper-button-prev swiper-button-white")
+    div(ref="swiperButtonNext" class="swiper-button-next swiper-button-white")    
 </template>
 
 <script>
+import Swiper from 'swiper/dist/js/swiper.js'
 export default {
-  name: 'home',
-  metaInfo () {
-    let achmad = {
-      meta: [
-        {property: 'og:url', content: 'https://www.alf-israel.com/'},
-        {property: 'og:type', content: 'website'},
-        {property: 'og:title', content: 'חדשות החזית'},
-        {property: 'og:description', content: 'האתר הרשמי של החזית לשחרור בעלי החיים ישראל'},
-        {property: 'og:image', content: 'http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593801/alf-israel/home/2.jpg'}
-      ],
-      title: 'חדשות החזית'
-    }
-    return achmad
-  }
+	name: 'home',
+	data () {
+		return {
+			slider: null
+		}
+	},
+	metaInfo () {
+		let achmad = {
+			meta: [
+				{property: 'og:url', content: 'https://www.totalliberationisrael.com/'},
+				{property: 'og:type', content: 'website'},
+				{property: 'og:title', content: 'חדשות שחרור מוחלט'},
+				{property: 'og:description', content: 'האתר הרשמי של שחרור מוחלט'},
+				{property: 'og:image', content: 'http://res.cloudinary.com/dqvimfd8b/image/upload/v1513593801/alf-israel/home/1.jpg'}
+			],
+			title: 'חדשות שחרור מוחלט'
+		}
+		return achmad
+	},
+	mounted () {
+		this.slider = new Swiper(this.$refs.swiperContainer, {
+			loop: true,
+			navigation: {
+				nextEl: this.$refs.swiperButtonNext,
+				prevEl: this.$refs.swiperButtonPrev
+			},
+			autoplay: {
+				delay: 4000
+			}
+		})
+	}
 }
 </script>
 
 <style scoped>
-.carousel{
-  overflow-y: hidden;
+html, body {
+  position: relative;
+  height: 100%;
 }
-.carousel-item {
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+}
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;  
+}
+.swiper-slide {
   height: 100vh;
   min-height: 300px;
   background: no-repeat center center scroll;
@@ -62,37 +74,19 @@ export default {
   -o-background-size: cover;
   background-size: cover;
 }
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media (max-width: 600px) {
-.carousel-indicators {
-    margin-right: 15px;
-    }
-}
 .image-1 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884087/alf-israel/home/1.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1523615232/alf-israel/home/1.jpg')
 }
 .image-2 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/2.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1523615229/alf-israel/home/2.jpg')
 }
 .image-3 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/3.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1523615219/alf-israel/home/3.jpg')
 }
 .image-4 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884085/alf-israel/home/4.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1523615233/alf-israel/home/4.jpg')
 }
 .image-5 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/5.jpg')
-}
-.image-6 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884086/alf-israel/home/6.jpg')
-}
-.image-7 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884087/alf-israel/home/7.jpg')
-}
-.image-8 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884087/alf-israel/home/8.jpg')
-}
-.image-9 {
-  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1519884088/alf-israel/home/9.jpg')
+  background-image: url('https://res.cloudinary.com/dqvimfd8b/image/upload/v1523615228/alf-israel/home/5.jpg')
 }
 </style>
