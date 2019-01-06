@@ -22,17 +22,20 @@ div.events(:style="divStyles")
 				p.
 					לא נמצאו אירועים קרובים.
 					בינתיים אתם מוזמנים לבקר בעמוד הפייסבוק שלנו
-			div
-				fb-page-preview(:loading="loading")
+			no-ssr
+				div
+					fb-page-preview(:loading="loading")
 </template>
 
 <script>
 import fbPagePreview from './FbPagePreview'
+import NoSSR from 'vue-no-ssr'
 import moment from 'moment'
 
 export default {
 	name: 'events',
 	components: {
+		'no-ssr': NoSSR,
 		fbPagePreview
 	},
 	data () {
