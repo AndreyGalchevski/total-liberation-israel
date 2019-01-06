@@ -1,31 +1,31 @@
 <template lang="pug">
-  div(class="events")
-    div(class="container")
-      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-      div(v-if="events.length > 0")
-        div(class="new-event")
-          router-link(v-bind:to="{ name: 'NewEvent' }" class="btn btn-default") אירוע חדש
-        div(class="table-responsive")
-          table(class="table table")
-            thead(class="bg-light")
-              tr
-                td כותרת
-                td תאריך
-                td פעולה
-            tbody
-              tr(v-for="event in events" :key="event._id")
-                td {{ event.title }}
-                td {{ getDate(event.date) }}
-                td
-                  router-link(v-bind:to="{ name: 'EditEvent', params: { id: event._id } }") עריכה | 
-                  a(href="#" @click="deleteEvent(event._id)") מחיקה
-      div(v-else)
-        h4 אין אירועים להצגה
-        router-link(v-bind:to="{ name: 'NewEvent' }" class="btn btn-primary") הוספת אירוע
+div.events
+	div.container
+		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
+		div(v-if="events.length > 0")
+			div.new-event
+				router-link.btn.btn-default(v-bind:to="{ name: 'NewEvent' }") אירוע חדש
+			div.table-responsive
+				table.table.table
+					thead.bg-light
+						tr
+							td כותרת
+							td תאריך
+							td פעולה
+					tbody
+						tr(v-for="event in events" :key="event._id")
+							td {{ event.title }}
+							td {{ formatDate(event.date) }}
+							td
+								router-link(v-bind:to="{ name: 'EditEvent', params: { id: event._id } }") עריכה | 
+								a(href="#" @click="deleteEvent(event._id)") מחיקה
+		div(v-else)
+			h4 אין אירועים להצגה
+			router-link.btn.btn-primary(v-bind:to="{ name: 'NewEvent' }") הוספת אירוע
 </template>
 
 <script>
-var moment = require('moment')
+import moment from 'moment'
 export default {
 	name: 'ManageEvents',
 	data () {
@@ -49,7 +49,7 @@ export default {
 			this.$router.push({ name: 'ManageEvents' })
 			this.loading = true
 		},
-		getDate: function (date) {
+		formatDate (date) {
 			return moment(date).format('DD.MM.YYYY')
 		}
 	},
@@ -69,12 +69,12 @@ export default {
 
 <style scoped>
 .events {
-  width: 100%;
+	width: 100%;
 }
 .new-event {
-  padding-top: 20px;
+	padding-top: 20px;
 }
 .table-responsive {
-  padding: 20px;
+	padding: 20px;
 }
 </style>

@@ -1,23 +1,50 @@
 <template lang="pug">
-  div(class="editEvent")
-    div(class="container")
-      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-      h1 עריכת אירוע
-      div(class="form")
-        div(class="form-group")
-          input(type="text" name="title" class="form-control" placeholder="כותרת" v-model="title")
-        div(class="form-group")
-          input(type="date" name="תאריך" class="form-control" v-model="date")
-        div(class="form-group")
-          textarea(rows="6" class="form-control" placeholder="תיאור" v-model="description")
-        div(class="form-group")
-          input(type="text" class="form-control" placeholder="אירוע בפייסבוק" v-model="fbPage")
-        div(class="form-group")
-          input(class="btn btn-default" type="file" accept=".jpg,.png" @change="changeImage")
-        div(class="form-group")
-          img(class="img-thumbnail" :src = "image" width="300" height="200" alt="Card image")
-        div
-          button(class="btn btn-primary" @click="updateEvent") עכדון
+div.editEvent
+	div.container
+		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
+		h1 עריכת אירוע
+		div.form
+			div.form-group
+				input.form-control(
+					type="text" 
+					name="title" 
+					placeholder="כותרת" 
+					v-model="title"
+				)
+			div.form-group
+				input.form-control(
+					type="date" 
+					name="תאריך" 
+					v-model="date"
+				)
+			div.form-group
+				textarea.form-control(
+					rows="6" 
+					placeholder="תיאור" 
+					v-model="description"
+				)
+			div.form-group
+				input.form-control(
+					type="text" 
+					placeholder="אירוע בפייסבוק" 
+					v-model="fbPage"
+				)
+			div.form-group
+				input.btn.btn-default(
+					type="file" 
+					accept=".jpg,.png" 
+					@change="changeImage"
+				)
+			div.form-group
+				img.img-thumbnail(
+					v-show="!isNew" 
+					:src = "image" 
+					width="300" 
+					height="200" 
+					alt="Card image"
+				)
+			div
+				button.btn.btn-primary(@click="saveEvent") שמירה
 </template>
 
 <script>
@@ -25,49 +52,65 @@ import moment from 'moment'
 
 export default {
 	name: 'EditEvent',
+	props: ['isNew'],
 	data () {
 		return {
-			image: '',
 			title: '',
 			date: '',
 			description: '',
 			fbPage: '',
+			image: '',
 			newImage: '',
 			loading: false
 		}
 	},
 	mounted () {
-		this.getEvent()
+		if (!this.isNew) {
+			this.getEvent()
+		}
 	},
 	methods: {
 		async getEvent () {
 			this.loading = true
 			await this.$store.dispatch('getEvent', this.$route.params.id)
-			this.image = this.$store.getters.event.image
-			this.title = this.$store.getters.event.title
-			this.date = this.$store.getters.event.date
-			this.description = this.$store.getters.event.description
-			this.fbPage = this.$store.getters.event.fbPage
+			const { title, date, description, fbPage, image } = this.$store.getters.event
+			this.image = image
+			this.title = title
+			this.date = this.formatDate(date)
+			this.description = description
+			this.fbPage = fbPage
 			this.loading = false
 		},
-		async updateEvent () {
-			let localDate = moment(this.date).startOf('day').toDate()
+		async saveEvent () {
+			if (!this.title || !this.date || !this.description || !this.fbPage) {
+				window.alert('נא למלא את כל השדות')
+			} else {
+				this.loading = true
+				const localDate = moment(this.date).startOf('day').toDate()
+				const { title, description, fbPage, image } = this
+				const eventData = { title, description, fbPage, image, date: localDate }
 
-			this.loading = true
-			await this.$store.dispatch('updateEvent', {
-				id: this.$route.params.id,
-				title: this.title,
-				date: localDate,
-				description: this.description,
-				fbPage: this.fbPage,
-				image: this.image,
-				newImage: this.newImage
-			})
-			this.$router.push({ name: 'ManageEvents' })
-			this.loading = false
+				if (this.isNew) {
+					await this.$store.dispatch('addEvent', eventData)
+				} else {
+					eventData.id = this.$route.params.id
+					eventData.newImage = this.newImage
+					await this.$store.dispatch('updateEvent', eventData)
+				}
+
+				this.$router.push({ name: 'ManageEvents' })
+				this.loading = false
+			}
 		},
 		changeImage (event) {
-			this.newImage = event.target.files[0]
+			if (this.isNew) {
+				this.image = event.target.files[0]
+			} else {
+				this.newImage = event.target.files[0]
+			}
+		},
+		formatDate (date) {
+			return moment(date).format('YYYY-MM-DD')
 		}
 	},
 	metaInfo: {
@@ -77,9 +120,9 @@ export default {
 </script>
 <style>
 textarea {
-  height: auto;
+	height: auto;
 }
 h1 {
-  padding: 20px;
+	padding: 20px;
 }
 </style>

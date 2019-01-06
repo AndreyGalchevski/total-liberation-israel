@@ -1,13 +1,21 @@
 <template lang="pug">
-  div(class="container")
-    form(@submit.prevent="login({ username, password })")
-      h2 התחברות
-      div(class="form-group")
-          input(type="text" class="form-control" placeholder="שם משתמש" v-model="username")
-      div(class="form-group")
-          input(type="password" class="form-control" placeholder="סיסמה" v-model="password")
-      div(class="text-center")
-          button(type="submit" class="btn btn-default") כניסה
+div.container
+	form(@submit.prevent="login({ username, password })")
+		h2 התחברות
+		div.form-group
+				input.form-control(
+					type="text" 
+					placeholder="שם משתמש" 
+					v-model="username"
+				)
+		div(class="form-group")
+				input.form-control(
+					type="password" 
+					placeholder="סיסמה" 
+					v-model="password"
+				)
+		div(class="text-center")
+				button.btn.btn-default(type="submit") כניסה
 </template>
 
 <script>
@@ -37,6 +45,6 @@ export default {
 
 <style scoped>
 h2 {
-  padding: 20px;
+	padding: 20px;
 }
 </style>

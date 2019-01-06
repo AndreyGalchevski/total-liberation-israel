@@ -1,26 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home'
-import Events from '../components/Events'
-import Articles from '../components/Articles'
-import Contact from '../components/Contact'
-import ManageEvents from '../components/ManageEvents'
-import NewEvent from '../components/NewEvent'
-import EditEvent from '../components/EditEvent'
-import ManageArticles from '../components/ManageArticles'
-import NewArticle from '../components/NewArticle'
-import EditArticle from '../components/EditArticle'
-import ManageInvestigations from '../components/ManageInvestigations'
-import NewInvestigation from '../components/NewInvestigation'
-import EditInvestigation from '../components/EditInvestigation'
-import Article from '../components/Article'
-import Login from '../components/Login'
-import Admin from '../components/Admin'
-import About from '../components/About'
-import Investigations from '../components/Investigations'
-import PageNotFound from '../components/PageNotFound'
-import {store} from '../store'
 import Meta from 'vue-meta'
+import Home from './components/Home'
+import Events from './components/Events'
+import Articles from './components/Articles'
+import Contact from './components/Contact'
+import ManageEvents from './components/ManageEvents'
+import EditEvent from './components/EditEvent'
+import ManageArticles from './components/ManageArticles'
+import EditArticle from './components/EditArticle'
+import ManageInvestigations from './components/ManageInvestigations'
+import EditInvestigation from './components/EditInvestigation'
+import Article from './components/Article'
+import Login from './components/Login'
+import Admin from './components/Admin'
+import About from './components/About'
+import Investigations from './components/Investigations'
+import PageNotFound from './components/PageNotFound'
+import store from './store'
 
 Vue.use(Router)
 Vue.use(Meta)
@@ -83,11 +80,13 @@ export default new Router({
 				{
 					path: 'events/new',
 					name: 'NewEvent',
-					component: NewEvent
+					props: { isNew: true },
+					component: EditEvent
 				},
 				{
 					path: 'events/:id',
 					name: 'EditEvent',
+					props: { isNew: false },
 					component: EditEvent
 				},
 				{
@@ -98,11 +97,13 @@ export default new Router({
 				{
 					path: 'articles/new',
 					name: 'NewArticle',
-					component: NewArticle
+					props: { isNew: true },
+					component: EditArticle
 				},
 				{
 					path: 'articles/:id',
 					name: 'EditArticle',
+					props: { isNew: false },
 					component: EditArticle
 				},
 				{
@@ -113,11 +114,13 @@ export default new Router({
 				{
 					path: 'investigations/new',
 					name: 'NewInvestigation',
-					component: NewInvestigation
+					props: { isNew: true },
+					component: EditInvestigation
 				},
 				{
 					path: 'investigations/:id',
 					name: 'EditInvestigation',
+					props: { isNew: false },
 					component: EditInvestigation
 				}
 			]

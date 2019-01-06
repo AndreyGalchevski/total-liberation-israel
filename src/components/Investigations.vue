@@ -1,7 +1,7 @@
 <template lang="pug">
-  div(class="investigations")
-    div(class="container")  
-      div(class="google-map" :id="mapName")
+div.investigations
+	div.container
+		div.google-map(:id="mapName")
 </template>
 
 <script>
@@ -39,13 +39,13 @@ export default {
 				center: new google.maps.LatLng(31.611, 34.768)
 			})
 
-			var thisMap = this.map
+			let thisMap = this.map
 			google.maps.event.addDomListener(window, 'resize', function () {
-				var center = thisMap.getCenter()
+				let center = thisMap.getCenter()
 				google.maps.event.trigger(thisMap, 'resize')
 				thisMap.setCenter(center)
 			})
-			for (var i = 0; i < this.investigations.length; i++) {
+			for (let i = 0; i < this.investigations.length; i++) {
 				const currentInvestigation = this.investigations[i]
 				const position = new google.maps.LatLng(currentInvestigation.latitude, currentInvestigation.longitude)
 				const marker = new google.maps.Marker({
@@ -55,16 +55,16 @@ export default {
 				})
 
 				const contentString =
-          '<div>' +
-            '<h5>' + currentInvestigation.name + '</h5>' +
-            '<div>' +
-              '<p>' +
-                '<a href="' + currentInvestigation.url + '"target="_blank">' +
-                  '<i class="fa fa-camera" aria-hidden="true" style="font-size: 20px"></i>' +
-                '</a>' +
-              '</p>' +
-            '</div>' +
-          '</div>'
+					'<div>' +
+						'<h5>' + currentInvestigation.name + '</h5>' +
+						'<div>' +
+							'<p>' +
+								'<a href="' + currentInvestigation.url + '"target="_blank">' +
+									'<i class="fa fa-camera" aria-hidden="true" style="font-size: 20px"></i>' +
+								'</a>' +
+							'</p>' +
+						'</div>' +
+					'</div>'
 
 				const infoWindow = new google.maps.InfoWindow({
 					content: contentString
@@ -74,7 +74,7 @@ export default {
 
 				marker.addListener('click', function () {
 					infoWindow.open(this.map, marker)
-					for (var i = 0; i < thisInfoWindows.length; i++) {
+					for (let i = 0; i < thisInfoWindows.length; i++) {
 						if (infoWindow !== thisInfoWindows[i]) {
 							thisInfoWindows[i].close()
 						}
@@ -95,11 +95,11 @@ export default {
 
 <style scoped>
 .container {
-  padding-top: 20px;
+	padding-top: 20px;
 }
 .google-map {
-  width:100%;
-  min-height:600px;
-  background: gray;
+	width:100%;
+	min-height:600px;
+	background: gray;
 }
 </style>

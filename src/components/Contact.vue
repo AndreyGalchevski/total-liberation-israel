@@ -1,23 +1,27 @@
 <template lang="pug">
-  div(class='container')
-    h2 צור קשר
-    div(class='form')
-      div(class='form-group')
-        input(
-          type='text' class='form-control' placeholder='נושא הפנייה'
-          oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
-          oninput="setCustomValidity('')" 
-          v-model="subject" required
-        )
-      div(class='form-group')
-        input(
-          type='text' class='form-control' placeholder='במה נוכל לעזור?'
-          oninvalid="this.setCustomValidity('איך נדע במה לעזור אם לא תגיד/י')"
-          oninput="setCustomValidity('')" 
-          v-model="body" required
-        )
-      a(:href="sendEmail" @click="redirect")
-        div(class='btn btn-primary') שלח
+div.container
+	h2 צור קשר
+	div.form
+		div.form-group
+			input.form-control(
+				type='text' 
+				placeholder='נושא הפנייה'
+				oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
+				oninput="setCustomValidity('')" 
+				v-model="subject"
+				required
+			)
+		div.form-group
+			input.form-control(
+				type='text' 
+				placeholder='במה נוכל לעזור?'
+				oninvalid="this.setCustomValidity('איך נדע במה לעזור אם לא תגיד/י')"
+				oninput="setCustomValidity('')" 
+				v-model="body" 
+				required
+			)
+		a(:href="sendEmail" @click="redirect")
+			div.btn.btn-primary שלח
 </template>
 
 <script>
@@ -35,9 +39,9 @@ export default {
 		}
 	},
 	computed: {
-		sendEmail: function () {
-			var unicodedSubject = this.subject.replace(/\?/g, '%3F')
-			var unicodedBody = this.body.replace(/\?/g, '%3F')
+		sendEmail () {
+			const unicodedSubject = this.subject.replace(/\?/g, '%3F')
+			const unicodedBody = this.body.replace(/\?/g, '%3F')
 			return 'mailto:glasswallsisrael@gmail.com?subject=' + unicodedSubject + '&body=' + unicodedBody
 		}
 	},
@@ -49,9 +53,9 @@ export default {
 
 <style scoped>
 h2 {
-  padding: 20px;
+	padding: 20px;
 }
 .scroll {
-  overflow-y: initial;
+	overflow-y: initial;
 }
 </style>

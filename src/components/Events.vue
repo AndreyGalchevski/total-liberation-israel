@@ -1,48 +1,39 @@
 <template lang="pug">
-	div(class="events" :style="divStyles")
-		div(class="container")
-			div(v-if="events.length > 0")
-				img(v-if="loading" src="../assets/spinner/salma.gif")
-				div(v-else class="row")
-						div(class="col-md-6 card-deck" v-for="event in events" :key="event._id")
-							div(class="card mb-r")
-								div(class="view overlay hm-white-slight")
-									img(class="card-img-top" :src="event.image" alt="Card image")
-									a(:href="event.fbPage" class="card-link" target="_blank")
-										div(class="mask")
-								div(class="card-body")
-									h4(class="card-title") {{ event.title }}
-									p(class="card-text text-primary") {{ getDate(event.date) }}
-									p(class="card-text") {{ event.description }}
-								div(class="card-footer")
-									a(:href="event.fbPage" class="card-link" target="_blank")
-										i(class="fa fa-facebook-official")
-			div(v-else)
-				div(
-					:class="messageClasses"
-				)
-					p.
-						לא נמצאו אירועים קרובים.
-						בינתיים אתם מוזמנים לבקר בעמוד הפייסבוק שלנו
-				no-ssr
-					div
-						fb-page-preview(
-							:loading="loading"
-						)
+div.events(:style="divStyles")
+	div.container
+		div(v-if="events.length > 0")
+			img(v-if="loading" src="../assets/spinner.gif")
+			div.row(v-else)
+					div.col-md-6.card-deck(v-for="event in events" :key="event._id")
+						div.card.mb-r
+							div.view.overlay.hm-white-slight
+								img.card-img-top(:src="event.image" alt="Card image")
+								a.card-link(:href="event.fbPage" target="_blank")
+									div.mask
+							div.card-body
+								h4.card-title {{ event.title }}
+								p.card-text.text-primary {{ formatDate(event.date) }}
+								p.card-text {{ event.description }}
+							div.card-footer
+								a.card-link(:href="event.fbPage" target="_blank")
+									i.fa.fa-facebook-official
+		div(v-else)
+			div(:class="messageClasses")
+				p.
+					לא נמצאו אירועים קרובים.
+					בינתיים אתם מוזמנים לבקר בעמוד הפייסבוק שלנו
+			div
+				fb-page-preview(:loading="loading")
 </template>
 
 <script>
 import fbPagePreview from './FbPagePreview'
-import NoSSR from 'vue-no-ssr'
-var moment = require('moment')
+import moment from 'moment'
+
 export default {
-	asyncData ({ store, route }) {
-		return store.dispatch('getEvents')
-	},
 	name: 'events',
 	components: {
-		fbPagePreview,
-		'no-ssr': NoSSR
+		fbPagePreview
 	},
 	data () {
 		return {
@@ -76,7 +67,7 @@ export default {
 			if (this.events && this.events.length > 0) this.divStyles['overflow-y'] = 'scroll'
 			this.loading = false
 		},
-		getDate: function (date) {
+		formatDate (date) {
 			return moment(date).format('DD.MM.YYYY')
 		}
 	},

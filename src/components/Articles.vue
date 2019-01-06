@@ -1,28 +1,27 @@
 <template lang="pug">
-  div(class="articles")
-    div(class="container")
-      img(v-if="loading" src="../assets/spinner/salma.gif")
-      div(v-else class="row")
-        div(class="col-md-6 card-deck" v-for="article in articles" :key="article._id")
-          div(class="card mb-r")
-            div(class="view overlay hm-white-slight")
-              img(class="img-fluid" :src="article.image" alt="Card image")
-              router-link(:to="'/article/' + article._id")
-                div(class="mask")
-            div(class="card-body")
-              h4(class="card-title") {{ article.title }}
-              p(class="card-text") {{ article.lead }}
-            div(class="card-footer")
-              router-link(class="btn btn-primary" :to="'/article/' + article._id") קרא עוד
+div.articles
+	div.container
+		img(v-if="loading" src="../assets/spinner.gif")
+		div.row(v-else)
+			div.col-md-6.card-deck(v-for="article in articles" :key="article._id")
+				div.card.mb-r
+					div.view.overlay.hm-white-slight
+						img.img-fluid(:src="article.image" alt="Card image")
+						router-link(:to="'/article/' + article._id")
+							div.mask
+					div.card-body
+						h4.card-title {{ article.title }}
+						p.card-text {{ article.lead }}
+					div.card-footer
+						router-link.btn.btn-primary(:to="'/article/' + article._id") קרא עוד
 </template>
 
 <script>
-var moment = require('moment')
 export default {
+	name: 'articles',
 	asyncData ({ store, route }) {
 		return store.dispatch('getArticles')
 	},
-	name: 'articles',
 	data () {
 		return {
 			loading: false,
@@ -38,9 +37,6 @@ export default {
 			this.loading = true
 			await this.$store.dispatch('getArticles')
 			this.loading = false
-		},
-		getDate: function (date) {
-			return moment(date).format('DD.MM.YYYY')
 		}
 	},
 	computed: {
@@ -59,15 +55,15 @@ export default {
 
 <style scoped>
 .container {
-  padding-top: 20px;
+	padding-top: 20px;
 }
 .articles {
-  width: 100%;
+	width: 100%;
 }
 .img-fluid {
-  margin: 0 auto;  
+	margin: 0 auto;  
 }
 .card-footer {
-  background-color: #ffffff;
+	background-color: #ffffff;
 }
 </style>

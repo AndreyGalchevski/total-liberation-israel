@@ -1,8 +1,17 @@
 <template lang="pug">
-div(class="fb-page" data-href="https://www.facebook.com/totalliberationisrael" data-width="500" :data-height="screenHeight" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true")
-	blockquote(cite="https://www.facebook.com/totalliberationisrael" class="fb-xfbml-parse-ignore")
+div.fb-page(
+	data-href="https://www.facebook.com/totalliberationisrael" 
+	data-width="500" 
+	:data-height="screenHeight" 
+	data-tabs="timeline" 
+	data-small-header="true" 
+	data-adapt-container-width="true" 
+	data-hide-cover="false" 
+	data-show-facepile="true"
+)
+	blockquote.fb-xfbml-parse-ignore(cite="https://www.facebook.com/totalliberationisrael")
 		a(href="https://www.facebook.com/totalliberationisrael")
-			img(v-if="loading" src="../assets/spinner/salma.gif")
+			img(v-if="loading" src="../assets/spinner.gif")
 </template>
 
 <script>
@@ -23,12 +32,7 @@ export default {
 	},
 	computed: {
 		screenHeight () {
-			console.log('')
-			if (process.browser) {
-				return window.innerHeight - 80 - 42 - 20
-			} else {
-				return 50
-			}
+			return window.innerHeight - 80 - 42 - 20
 		}
 	}
 }

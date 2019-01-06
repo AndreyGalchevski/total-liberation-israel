@@ -1,25 +1,25 @@
 <template lang="pug">
-  div(class="investigations")
-    div(class="container")
-      i(v-show="loading" class="fa fa-spinner fa-spin text-secondary")
-      div(v-if="investigations.length > 0")
-        div(class="new-investigation")
-          router-link(v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-secondary") תחקיר חדש
-        div(class="table-responsive")
-          table(class="table table")
-            thead(class="bg-light")
-              tr
-                td שם
-                td פעולה
-            tbody
-              tr(v-for="investigation in investigations" :key="investigation._id")
-                td {{ investigation.name }}
-                td
-                  router-link(v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }") עריכה | 
-                  a(href="#" @click="deleteInvestigation(investigation._id)") מחיקה
-      div(v-else)
-        h4 אין תחקירים להצגה
-        router-link(v-bind:to="{ name: 'NewInvestigation' }" class="btn btn-primary") הוספת תחקיר
+div.investigations
+	div.container
+		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
+		div(v-if="investigations.length > 0")
+			div.new-investigation
+				router-link.btn.btn-secondary(v-bind:to="{ name: 'NewInvestigation' }") תחקיר חדש
+			div.table-responsive
+				table.table.table
+					thead.bg-light
+						tr
+							td שם
+							td פעולה
+					tbody
+						tr(v-for="investigation in investigations" :key="investigation._id")
+							td {{ investigation.name }}
+							td
+								router-link(v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }") עריכה | 
+								a(href="#" @click="deleteInvestigation(investigation._id)") מחיקה
+		div(v-else)
+			h4 אין תחקירים להצגה
+			router-link.btn.btn-primary(v-bind:to="{ name: 'NewInvestigation' }") הוספת תחקיר
 </template>
 
 <script>
@@ -63,12 +63,12 @@ export default {
 
 <style scoped>
 .investigations {
-  width: 100%;
+	width: 100%;
 }
 .new-investigation {
-  padding-top: 20px;
+	padding-top: 20px;
 }
 .table-responsive {
-  padding: 20px;
+	padding: 20px;
 }
 </style>
