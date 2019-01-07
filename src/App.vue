@@ -45,8 +45,8 @@ strong {
 }
 
 body { 
-  padding-top: 60px;
-  padding-bottom: 25px;
+  /* padding-top: 60px;
+  padding-bottom: 25px; */
   height: 100%;
 }
 
