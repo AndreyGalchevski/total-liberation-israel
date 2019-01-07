@@ -27,13 +27,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-    	let elems = document.querySelectorAll('.sidenav');
-    	let instances = M.Sidenav.init(elems, { alignment: 'right' });
-		});
-		document.addEventListener('DOMContentLoaded', function() {
-    	let elems = document.querySelectorAll('.dropdown-trigger');
-    	let instances = M.Dropdown.init(elems, {});
-  	});
+		let dropdownElements = document.querySelectorAll('.dropdown-trigger');
+		M.Dropdown.init(dropdownElements, { alignmewnt: 'center' });
+    	let sideNavElements = document.querySelectorAll('.sidenav');
+		M.Sidenav.init(sideNavElements, { edge: 'right' });
+	});
 	</script>
 	<script src="https://use.fontawesome.com/f8adea8918.js"></script>
 

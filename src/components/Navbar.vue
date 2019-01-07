@@ -27,8 +27,25 @@ div
 						router-link(to="/investigations") תחקירים
 					li.dropdown-trigger(
 						href="#" 
-						data-target="dropdown-menu"
+						data-target="navbar-dropdown-menu"
 					) קירות שקופים
+						// Navbar Dropdown menu
+					ul.dropdown-content.grey.darken-4(id="navbar-dropdown-menu")
+						li
+							a(
+								href="https://www.glass-walls.com/" 
+								target="_blank"
+							) עמוד רשמי
+						li
+							a(
+								href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" 
+								target="_blank"
+							) חנות
+						li
+							a(
+								href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" 
+								target="_blank"
+							) תרומה
 					li(:class="getNavItemClasses('Contact')")
 						router-link(to="/contact") צור קשר
 					li(:class="getNavItemClasses('Login')")
@@ -67,20 +84,6 @@ div
 							frameborder="0" 
 							allowTransparency="true"
 						)
-	// Dropdown menu
-	ul.dropdown-content.grey.darken-4(id="dropdown-menu")
-		a(
-			href="https://www.glass-walls.com/" 
-			target="_blank"
-		) עמוד רשמי
-		a(
-			href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" 
-			target="_blank"
-		) חנות
-		a(
-			href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" 
-			target="_blank"
-		) תרומה
 	// Social links For Mobile
 	ul.sidenav.grey.darken-4(id="sidenav")
 		li(:class="getNavItemClasses('Home')")
@@ -95,8 +98,25 @@ div
 			router-link.grey-text.lighten-5.sidenav-close(to="/investigations") תחקירים
 		li.dropdown-trigger.grey-text.lighten-5(
 			href="#" 
-			data-target="dropdown-menu"
+			data-target="sidenav-dropdown-menu"
 		) קירות שקופים
+		// Sidenav Dropdown menu
+		ul.dropdown-content.grey.darken-4(id="sidenav-dropdown-menu")
+			li
+				a(
+					href="https://www.glass-walls.com/" 
+					target="_blank"
+				) עמוד רשמי
+			li
+				a(
+					href="https://www.glass-walls.com/%D7%97%D7%A0%D7%95%D7%AA/" 
+					target="_blank"
+				) חנות
+			li
+				a(
+					href="https://www.glass-walls.com/%D7%AA%D7%A8%D7%95%D7%9E%D7%94/" 
+					target="_blank"
+				) תרומה
 		li(:class="getNavItemClasses('Contact')")
 			router-link.grey-text.lighten-5(to="/contact") צור קשר
 		li(:class="getNavItemClasses('Login')")
@@ -197,8 +217,8 @@ export default {
 	width: 100px;
 }
 .social-link-desktop {
-	padding-left: 10px; 
-	padding-right: 10px;
+	padding-left: 5px; 
+	padding-right: 5px;
 }
 .fb-share-btn-desktop {
 	padding-top: 7px;
@@ -212,7 +232,7 @@ export default {
 }
 .social-links-mobile {
 	position: absolute;
-	right: 27%;
+	right: 28%;
 	bottom: 10%;
 }
 /* .fixed-bottom {
