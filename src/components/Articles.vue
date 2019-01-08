@@ -3,17 +3,16 @@ div.articles
 	div.container
 		img(v-if="loading" src="../assets/spinner.gif")
 		div.row(v-else)
-			div.col-md-6.card-deck(v-for="article in articles" :key="article._id")
-				div.card.mb-r
-					div.view.overlay.hm-white-slight
-						img.img-fluid(:src="article.image" alt="Card image")
+			div.col.m6(v-for="article in articles" :key="article._id")
+				div.card.hoverable
+					div.card-image
 						router-link(:to="'/article/' + article._id")
-							div.mask
-					div.card-body
-						h4.card-title {{ article.title }}
-						p.card-text {{ article.lead }}
-					div.card-footer
-						router-link.btn.btn-primary(:to="'/article/' + article._id") קרא עוד
+							img.img-fluid(:src="article.image" alt="Card image")
+					div.card-content
+						span.card-title {{ article.title }}
+						p {{ article.lead }}
+					div.card-action
+						router-link(:to="'/article/' + article._id") קרא עוד
 </template>
 
 <script>
@@ -57,13 +56,7 @@ export default {
 .container {
 	padding-top: 20px;
 }
-.articles {
-	width: 100%;
-}
-.img-fluid {
-	margin: 0 auto;  
-}
-.card-footer {
-	background-color: #ffffff;
+.card-content p {
+	color: #757575;
 }
 </style>
