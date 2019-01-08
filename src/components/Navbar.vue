@@ -118,7 +118,7 @@ div
 					target="_blank"
 				) תרומה
 		li(:class="getNavItemClasses('Contact')")
-			router-link(to="/contact") צור קשר
+			router-link.sidenav-close(to="/contact") צור קשר
 		li(:class="getNavItemClasses('Login')")
 			a(
 				href="#" 

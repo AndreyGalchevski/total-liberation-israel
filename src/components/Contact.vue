@@ -1,27 +1,30 @@
 <template lang="pug">
 div.container
-	h2 צור קשר
-	div.form
-		div.form-group
-			input.form-control(
-				type='text' 
-				placeholder='נושא הפנייה'
-				oninvalid="this.setCustomValidity('נא להזין נושא הפנייה')"
-				oninput="setCustomValidity('')" 
-				v-model="subject"
-				required
-			)
-		div.form-group
-			input.form-control(
-				type='text' 
-				placeholder='במה נוכל לעזור?'
-				oninvalid="this.setCustomValidity('איך נדע במה לעזור אם לא תגיד/י')"
-				oninput="setCustomValidity('')" 
-				v-model="body" 
-				required
-			)
-		a(:href="sendEmail" @click="redirect")
-			div.btn.btn-primary שלח
+	h3 צור קשר
+	div.row
+		div.col.m3
+		div.col.s12.m6
+			div.input-field
+				input(
+					id="subject" 
+					type='text' 
+					v-model="subject"
+					required
+				)
+				label(for="subject") נושא הפנייה
+			div.input-field
+				input(
+					id="body"
+					type='text' 
+					v-model="body" 
+					required
+				)
+				label(for="body") במה נוכל לעזור?
+	a.waves-effect.waves-light.btn(
+		:href="sendEmail" 
+		@click="redirect"
+	) שלח
+		i.material-icons.left send
 </template>
 
 <script>

@@ -11,12 +11,16 @@ div.fb-page(
 )
 	blockquote.fb-xfbml-parse-ignore(cite="https://www.facebook.com/totalliberationisrael")
 		a(href="https://www.facebook.com/totalliberationisrael")
-			img(v-if="loading" src="../assets/spinner.gif")
+			loader(v-if="loading")
 </template>
 
 <script>
+import Loader from './Loader'
 export default {
 	name: 'fb-page-preview',
+	components: {
+		Loader
+	},
 	created () {
 		(function (d, s, id) {
 			var js

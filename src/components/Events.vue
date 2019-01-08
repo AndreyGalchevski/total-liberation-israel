@@ -2,20 +2,19 @@
 div.events(:style="divStyles")
 	div.container
 		div(v-if="events.length > 0")
-			img(v-if="loading" src="../assets/spinner.gif")
+			loader(v-if="loading")
 			div.row(v-else)
-					div.col-md-6.card-deck(v-for="event in events" :key="event._id")
-						div.card.mb-r
-							div.view.overlay.hm-white-slight
-								img.card-img-top(:src="event.image" alt="Card image")
+					div.col.s12.m6(v-for="event in events" :key="event._id")
+						div.card.hoverable
+							div.card-image
 								a.card-link(:href="event.fbPage" target="_blank")
-									div.mask
-							div.card-body
-								h4.card-title {{ event.title }}
-								p.card-text.text-primary {{ formatDate(event.date) }}
-								p.card-text {{ event.description }}
-							div.card-footer
-								a.card-link(:href="event.fbPage" target="_blank")
+									img(:src="event.image" alt="Card image")
+							div.card-content
+								span.card-title {{ event.title }}
+								p.event-date {{ formatDate(event.date) }}
+								p {{ event.description }}
+							div.card-action
+								a(:href="event.fbPage" target="_blank")
 									i.fa.fa-facebook-official
 		div(v-else)
 			div(:class="messageClasses")
@@ -28,6 +27,7 @@ div.events(:style="divStyles")
 </template>
 
 <script>
+import Loader from './Loader'
 import fbPagePreview from './FbPagePreview'
 import NoSSR from 'vue-no-ssr'
 import moment from 'moment'
@@ -35,8 +35,12 @@ import moment from 'moment'
 export default {
 	name: 'events',
 	components: {
+		Loader,
 		'no-ssr': NoSSR,
 		fbPagePreview
+	},
+	asyncData ({ store, route }) {
+		return store.dispatch('getEvents')
 	},
 	data () {
 		return {
@@ -71,7 +75,7 @@ export default {
 			this.loading = false
 		},
 		formatDate (date) {
-			return moment(date).format('DD.MM.YYYY')
+			return moment(date).locale('he').format('Do בMMMM YYYY')
 		}
 	},
 	computed: {
@@ -95,11 +99,9 @@ export default {
 .events {
 	width: 100%;
 }
-.card-footer {
-	background-color: #ffffff;
-}
 .fa-facebook-official {
 	font-size: 30px;
+	color: #3b5998;
 }
 
 .fade-out {
@@ -109,6 +111,10 @@ export default {
 
 .hidden-div {
 	display: none;
+}
+
+.event-date {
+	color: #2962ff;
 }
 
 @keyframes FADE_OUT {

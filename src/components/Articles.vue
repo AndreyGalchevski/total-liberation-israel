@@ -1,13 +1,13 @@
 <template lang="pug">
 div.articles
 	div.container
-		img(v-if="loading" src="../assets/spinner.gif")
+		loader(v-if="loading")
 		div.row(v-else)
-			div.col.m6(v-for="article in articles" :key="article._id")
+			div.col.s12.m6(v-for="article in articles" :key="article._id")
 				div.card.hoverable
 					div.card-image
 						router-link(:to="'/article/' + article._id")
-							img.img-fluid(:src="article.image" alt="Card image")
+							img(:src="article.image" alt="Card image")
 					div.card-content
 						span.card-title {{ article.title }}
 						p {{ article.lead }}
@@ -16,8 +16,12 @@ div.articles
 </template>
 
 <script>
+import Loader from './Loader'
 export default {
 	name: 'articles',
+	components: {
+		Loader
+	},
 	asyncData ({ store, route }) {
 		return store.dispatch('getArticles')
 	},

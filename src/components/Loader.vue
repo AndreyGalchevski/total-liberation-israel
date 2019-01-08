@@ -1,0 +1,10 @@
+<template lang="pug">
+div.preloader-wrapper.big.active
+	div.spinner-layer.spinner-blue
+		div.circle-clipper.left
+			div.circle
+		div.gap-patch
+			div.circle
+		div.circle-clipper.right
+			div.circle
+</template>
