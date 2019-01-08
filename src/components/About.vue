@@ -27,16 +27,11 @@ export default {
 
 <style scoped>
 img {
-	/* font-size: 17px; */
-	/* padding-top: 15px; */
 	padding-bottom: 80px;
 }
 p {
 	text-align: right;
 }
-/* h1 {
-	padding-bottom: 20px;
-} */
 </style>
 
 

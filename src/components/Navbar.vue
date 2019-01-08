@@ -87,16 +87,16 @@ div
 	// Social links For Mobile
 	ul.sidenav.grey.darken-4(id="sidenav")
 		li(:class="getNavItemClasses('Home')")
-			router-link.grey-text.lighten-5.sidenav-close(to="/") ראשי
+			router-link.sidenav-close(to="/") ראשי
 		li(:class="getNavItemClasses('About')")
-			router-link.grey-text.lighten-5.sidenav-close(to="/About") מי אנחנו
+			router-link.sidenav-close(to="/About") מי אנחנו
 		li(:class="getNavItemClasses('Events')")
-			router-link.grey-text.lighten-5.sidenav-close(to="/events") אירועים קרובים
+			router-link.sidenav-close(to="/events") אירועים קרובים
 		li(:class="getNavItemClasses('Acticles')")
-			router-link.grey-text.lighten-5.sidenav-close(to="/articles") כתבות
+			router-link.sidenav-close(to="/articles") כתבות
 		li(:class="getNavItemClasses('Investigations')")
-			router-link.grey-text.lighten-5.sidenav-close(to="/investigations") תחקירים
-		li.dropdown-trigger.grey-text.lighten-5(
+			router-link.sidenav-close(to="/investigations") תחקירים
+		li.dropdown-trigger(
 			href="#" 
 			data-target="sidenav-dropdown-menu"
 		) קירות שקופים
@@ -118,7 +118,7 @@ div
 					target="_blank"
 				) תרומה
 		li(:class="getNavItemClasses('Contact')")
-			router-link.grey-text.lighten-5(to="/contact") צור קשר
+			router-link(to="/contact") צור קשר
 		li(:class="getNavItemClasses('Login')")
 			a(
 				href="#" 
@@ -206,8 +206,11 @@ export default {
 }
 </script>
 <style scoped>
-.active {
+.active, nav ul a:hover {
 	background-color: #424242;
+}
+.dropdown-content li a, .sidenav li a, .dropdown-trigger {
+  color: #fafafa;
 }
 .brand-logo img {
 	height: 3.8rem;
@@ -235,12 +238,7 @@ export default {
 	right: 28%;
 	bottom: 10%;
 }
-.dropdown-content li a {
-  color: #fafafa;
-}
-nav ul a:hover {
-    background-color: #424242;
-}
+
 /* .fixed-bottom {
 	font-size: 11px;
 }
