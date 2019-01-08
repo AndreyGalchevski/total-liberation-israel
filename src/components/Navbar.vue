@@ -235,6 +235,12 @@ export default {
 	right: 28%;
 	bottom: 10%;
 }
+.dropdown-content li a {
+  color: #fafafa;
+}
+nav ul a:hover {
+    background-color: #424242;
+}
 /* .fixed-bottom {
 	font-size: 11px;
 }
