@@ -61,19 +61,19 @@ div
 							href="https://www.facebook.com/totalliberationisrael" 
 							target="_blank"
 						)
-							i.fa.fa-facebook.my-icon.grey-text
+							i.fab.fa-facebook-square.my-icon.grey-text
 					li.social-link-desktop
 						a(
 							href="https://www.instagram.com/total_liberation_israel" 
 							target="_blank"
 						)
-							i.fa.fa.fa-instagram.my-icon.grey-text
+							i.fab.fa-instagram.my-icon.grey-text
 					li.social-link-desktop
 						a(
 							href="https://www.youtube.com/user/GlassWallsIsrael" 
 							target="_blank"
 						)
-							i.fa.fa-youtube-square.my-icon.grey-text
+							i.fab.fa-youtube.my-icon.grey-text
 					li.fb-share-btn-desktop
 						iframe(
 							src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Ftotalliberationisrael&width=50&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId"
@@ -134,21 +134,21 @@ div
 							target="_blank"
 						)
 							div.center-align
-								i.fa.fa-facebook.my-icon.grey-text
+								i.fab.fa-facebook-square.my-icon.grey-text
 					li
 						a(
 							href="https://www.instagram.com/total_liberation_israel" 
 							target="_blank"
 						)
 							div.center-align
-								i.fa.fa.fa-instagram.my-icon.grey-text
+								i.fab.fa-instagram.my-icon.grey-text
 					li
 						a(
 							href="https://www.youtube.com/user/GlassWallsIsrael" 
 							target="_blank"
 						)
 							div.center-align
-								i.fa.fa-youtube-square.my-icon.grey-text
+								i.fab.fa-youtube.my-icon.grey-text
 					li
 						div.fb-share-btn-mobile
 							iframe(
