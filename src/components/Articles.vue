@@ -4,7 +4,7 @@ div.articles
 		loader(v-if="loading")
 		div.row(v-else)
 			div.col.s12.m6(v-for="article in articles" :key="article._id")
-				div.card.hoverable
+				div.card.hoverable.waves-effect
 					div.card-image
 						router-link(:to="'/article/' + article._id")
 							img(:src="article.image" alt="Card image")

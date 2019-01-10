@@ -7,65 +7,42 @@ div
 				:key="article._id" 
 				v-if="article._id !== thisArticle._id"
 			)
-				div.card.mb-r
-					div.view.overlay.hm-white-slight
+				div.card.hoverable
+					div.card-image
 						router-link(:to="'/article/' + article._id")
 							img.img-fluid(:src="article.image" alt="Card image")
-							div.mas
-						div.card-body
-							router-link(:to="'/article/' + article._id")
-								p.card-title {{ article.title }}
+					div.card-content
+						router-link(:to="'/article/' + article._id")
+							p.card-title {{ article.title }}
 		div.main-article(v-if="thisArticle.title")
-			h1.title {{ thisArticle.title }}
-			h6.lead {{ thisArticle.lead }}
-			h6.date.text-muted {{ formatDate(thisArticle.date) }} |
-				span.text-primary  {{ thisArticle.author }}
-			img.rounded.main-image.img-fluid(:src="thisArticle.image" alt="Card image")
+			h3.title {{ thisArticle.title }}
+			h5.lead {{ thisArticle.lead }}
+			h6.date {{ formatDate(thisArticle.date) }} |
+				span.author  {{ thisArticle.author }}
+			img.rounded.main-image.responsive-img(:src="thisArticle.image" alt="Card image")
 			p.share-buttons
 				a(:href="'mailto:?subject=' + thisArticle.title + '&body=https://www.totalliberationisrael.com/article/' + thisArticle._id")
-					i.fa.fa-envelope-o.top-icon(aria-hidden="true")
+					i.far.fa-envelope.top-icon
 				a.fb-xfbml-parse-ignore(
 					target="_blank"
 					:href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.totalliberationisrael.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
 				)
-					i.fa.fa-facebook-square.top-facebook-icon.top-icon(aria-hidden="true")
+					i.fab.fa-facebook-f.top-icon.top-facebook-icon
 				a(
 					:href="'https://api.whatsapp.com/send?text=https://www.totalliberationisrael.com/article/' + thisArticle._id" 
 					data-action="share/whatsapp/share" 
 					target="_blank"
 				)
-					i.fa.fa-whatsapp.top-icon(aria-hidden="true")
+					i.fab.fa-whatsapp.top-icon
 			no-ssr
 				quill-editor(
 					@ready="onEditorReady($event)"
 					:options="quillOptions"
 					ref="editor"
 				)
-			div.dropdown-share.btn-group
-				button.btn.btn-outline-primary.waves-effect(
-					type="button" 
-					data-toggle="dropdown" 
-					aria-haspopup="true" 
-					aria-expanded="false"
-				)
-					i.fa.fa-share-alt(aria-hidden="true")
-				div.dropdown-menu
-					a.dropdown-item(:href="'mailto:?subject=' + thisArticle.title + '&body=https://www.totalliberationisrael.com/article/' + thisArticle._id")
-						i.fa.fa-envelope-o.bottom-icon(aria-hidden="true")
-					a.dropdown-item.fb-xfbml-parse-ignore(
-						target="_blank" 
-						:href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.totalliberationisrael.com%2Farticle%2F' + thisArticle._id + '&amp;src=sdkpreparse'"
-					)
-						i.fa.fa-facebook-square.bottom-icon(aria-hidden="true")
-					a.dropdown-item(
-						:href="'https://api.whatsapp.com/send?text=https://www.totalliberationisrael.com/article/' + thisArticle._id" 
-						data-action="share/whatsapp/share" 
-						target="_blank"
-					)
-						i.fa.fa-whatsapp.bottom-icon(aria-hidden="true")
 	div.additional-articles-container(v-if="thisArticle.title")
 		hr.myHr
-		h4 כתבות נוספות
+		h5 כתבות נוספות
 		hr.myHr    
 		div.container.additional-articles.w-75
 			div.row.align-items-start(
@@ -73,14 +50,13 @@ div
 				:key="article._id" 
 				v-if="article._id !== thisArticle._id"
 			)
-				div.card.mb-r.col
-					div.view.overlay.hm-white-slight
+				div.card.hoverable
+					div.card-image
 						router-link(:to="'/article/' + article._id")
 							img.img-fluid(:src="article.image" alt="Card image")
-							div.mas
-						div.card-body
-							router-link(:to="'/article/' + article._id")
-								p.card-title {{ article.title }}
+					div.card-content
+						router-link(:to="'/article/' + article._id")
+							p.card-title {{ article.title }}
 </template>
 
 <script>
@@ -217,65 +193,63 @@ export default {
 	}
 }
 .wrapper{
-	display:grid;
-	grid-template-columns:1fr 2fr 1fr;
-	grid-gap:1em;
-	grid-auto-rows: minmax(100px, auto);
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-gap: 1em;
+	grid-auto-rows: minmax(200px, auto);
 }
 .wrapper > div{
-	padding:1em;
+	padding-right: 1em;
+	padding-left: 1em;
 }
 .main-article img {
 	max-height: 300px;
 }
+.main-article {
+	padding-bottom: 50px;
+}
 .other-articles {
 	text-align: center;
 }
-.other-articles .card-text {
-	font-size: 15px;
+.other-articles .card {
+	height: 13em;
+	width: 14em;
+}
+.other-articles .card .card-title {
+	font-size: 16px;
+}
+.other-articles .card .card-content {
+	padding-top: 0.5em;
 }
 .container.additional-articles {
 	padding-top: 10px;
+	padding-bottom: 40px;
 }
 .top-icon {
 	font-size: 35px !important;
 }
-.top-facebook-icon {
+.fa-facebook-f {
+	color: #3b5998;
 	padding-right: 50px;
 	padding-left: 50px;
 }
-.fa-facebook-square {
-	color: #3b5998;
-}
-.fa-envelope-o {
+.fa-envelope {
 	color: #ff3333;
 }
 .fa-whatsapp {
 	color: #25d366;
 }
-.my-content {
-	text-align: right;
-	font-size: 17px;
-	white-space:pre-wrap;
-}
 .title, .lead, .date, .main-image, .share-buttons {
 	padding-bottom: 20px;
 }
-.lead {
-	font-weight: lighter;
+.date {
+	color: #9e9e9e;
+}
+.author {
+	color: #2962ff;
 }
 .share-buttons {
 	padding-top: 10px;
-}
-.dropdown-share {
-	padding-bottom: 20px;  
-}
-.bottom-icon {
-	font-size: 25px;
-}
-.dropdown-menu {
-	text-align: center;
-	min-width: 100%;
 }
 hr.myHr {
 	border: 0;

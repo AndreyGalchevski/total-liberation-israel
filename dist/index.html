@@ -10,20 +10,29 @@
 	<meta name="theme-color" content="#2E2E2E">
 	<link rel="shortcut icon" href="https://res.cloudinary.com/dqvimfd8b/image/upload/v1515476502/alf-israel/favicon/favicon-32x32.png"
 		type="image/x-icon">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://rawgit.com/atechni/materialize-rtl-support/v1.0.0/dist/css/	materialize.rtl.min.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
 	
-		<link rel="preload" href="/dist/client-bundle.c538a6de3dc45979914b.js" as="script">
+		<link rel="preload" href="/dist/client-bundle.dc9f2a3f58ed68162b85.js" as="script">
 		
-		<link rel="preload" href="/dist/client-bundle.1b4d7104ffaf1d9607e4.js" as="script">
+		<link rel="preload" href="/dist/client-bundle.665e97a2dcbf794f18a6.js" as="script">
 		
 </head>
 
 <body>
 	<!--vue-ssr-outlet-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script>M.AutoInit();</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+		let dropdownElements = document.querySelectorAll('.dropdown-trigger');
+		M.Dropdown.init(dropdownElements, { alignmewnt: 'center' });
+    	let sideNavElements = document.querySelectorAll('.sidenav');
+		M.Sidenav.init(sideNavElements, {});
+	});
+	</script>
 	<script src="https://use.fontawesome.com/f8adea8918.js"></script>
 
 	<div id="fb-root"></div>
@@ -55,6 +64,6 @@
         ]
       }
     </script>
-<script type="text/javascript" src="/dist/client-bundle.1b4d7104ffaf1d9607e4.js"></script><script type="text/javascript" src="/dist/client-bundle.c538a6de3dc45979914b.js"></script></body>
+<script type="text/javascript" src="/dist/client-bundle.665e97a2dcbf794f18a6.js"></script><script type="text/javascript" src="/dist/client-bundle.dc9f2a3f58ed68162b85.js"></script></body>
 
 </html>
