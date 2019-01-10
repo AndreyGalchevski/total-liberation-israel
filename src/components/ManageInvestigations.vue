@@ -4,22 +4,21 @@ div.investigations
 		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
 		div(v-if="investigations.length > 0")
 			div.new-investigation
-				router-link.btn.btn-secondary(v-bind:to="{ name: 'NewInvestigation' }") תחקיר חדש
-			div.table-responsive
-				table.table.table
-					thead.bg-light
-						tr
-							td שם
-							td פעולה
-					tbody
-						tr(v-for="investigation in investigations" :key="investigation._id")
-							td {{ investigation.name }}
-							td
-								router-link(v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }") עריכה | 
-								a(href="#" @click="deleteInvestigation(investigation._id)") מחיקה
+				router-link.btn.pink.lighten-2(v-bind:to="{ name: 'NewInvestigation' }") תחקיר חדש
+			table.striped.centered.responsive-table
+				thead
+					tr
+						th שם
+						th פעולה
+				tbody
+					tr(v-for="investigation in investigations" :key="investigation._id")
+						td {{ investigation.name }}
+						td
+							router-link(v-bind:to="{ name: 'EditInvestigation', params: { id: investigation._id } }") עריכה | 
+							a(href="#" @click="deleteInvestigation(investigation._id)") מחיקה
 		div(v-else)
 			h4 אין תחקירים להצגה
-			router-link.btn.btn-primary(v-bind:to="{ name: 'NewInvestigation' }") הוספת תחקיר
+			router-link.btn.pink.lighten-2(v-bind:to="{ name: 'NewInvestigation' }") הוספת תחקיר
 </template>
 
 <script>
@@ -66,9 +65,9 @@ export default {
 	width: 100%;
 }
 .new-investigation {
-	padding-top: 20px;
+	margin-top: 40px;
 }
-.table-responsive {
-	padding: 20px;
+table {
+	margin-top: 40px;
 }
 </style>

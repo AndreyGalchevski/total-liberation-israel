@@ -2,7 +2,7 @@
 div.editInvestigation
 	div.container
 		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
-		h1 עריכת תחקיר
+		h4 עריכת תחקיר
 		div.form
 			div.form-group
 				input.form-control(

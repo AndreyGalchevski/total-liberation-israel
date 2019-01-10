@@ -58,7 +58,7 @@ export default {
 
 <style scoped>
 .container {
-	padding-top: 20px;
+  margin-bottom: 60px;
 }
 .card-content p {
 	color: #757575;

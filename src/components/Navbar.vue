@@ -160,22 +160,6 @@ div
 								frameborder="0" 
 								allowTransparency="true"
 							)
-
-	// Footer navbar
-	//- footer.page-footer
-	//- 	div.container
-	//- 		ul.copy-rights
-	//- 			li.nav-item
-	//- 				a.nav-link 2018 Total Liberation Israel
-	//- 					i.fa.fa-copyright(aria-hidden="true")
-	//- 		ul
-	//- 			li
-	//- 				a(
-	//- 					href="https://il.linkedin.com/in/andrey-galchevski-b40999a3" 
-	//- 					target="_blank"
-	//- 				)
-	//- 					img(src="https://res.cloudinary.com/dqvimfd8b/image/upload/c_scale,h_20/v1525702277/alf-israel/logo/logo-s.png")
-					
 </template>
 
 <script>
@@ -238,39 +222,4 @@ export default {
 	right: 28%;
 	bottom: 10%;
 }
-
-/* .fixed-bottom {
-	font-size: 11px;
-}
-.navbar .fixed-bottom .nav-item {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-.fixed-bottom .nav-link{
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.copy-rights {
-	padding-right: 0px;
-}
-.fixed-bottom .nav-link .fa {
-	padding-left: 0px;
-} */
-/* .dropdown-menu a:hover {
-		color: #757575 !important;
-		cursor: pointer;
-}
-@media (max-width: 992px){
-	.navbar .nav-item .nav-link {
-			padding-left: 0px;
-			padding-right: 0px;
-	}
-	.dropdown-item {
-		display: inline;
-	}
-}
-.dropdown-menu {
-	text-align: center;
-	min-width: 100%;
-} */
 </style>

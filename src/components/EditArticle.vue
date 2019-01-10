@@ -2,7 +2,7 @@
 div.editArticle
 	div.container
 		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
-		h1 עדכון כתבה
+		h4 עדכון כתבה
 		div.form
 			div.form-group
 				input.form-control(
@@ -44,6 +44,7 @@ div.editArticle
 				)
 			div.form-group
 				img.img-thumbnail(
+          v-show="!isNew" 
 					:src = "image" 
 					width="300" 
 					height="200" 

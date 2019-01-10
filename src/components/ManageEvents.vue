@@ -4,24 +4,23 @@ div.events
 		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
 		div(v-if="events.length > 0")
 			div.new-event
-				router-link.btn.btn-default(v-bind:to="{ name: 'NewEvent' }") אירוע חדש
-			div.table-responsive
-				table.table.table
-					thead.bg-light
-						tr
-							td כותרת
-							td תאריך
-							td פעולה
-					tbody
-						tr(v-for="event in events" :key="event._id")
-							td {{ event.title }}
-							td {{ formatDate(event.date) }}
-							td
-								router-link(v-bind:to="{ name: 'EditEvent', params: { id: event._id } }") עריכה | 
-								a(href="#" @click="deleteEvent(event._id)") מחיקה
+				router-link.btn(v-bind:to="{ name: 'NewEvent' }") אירוע חדש
+			table.striped.centered.responsive-table
+				thead
+					tr
+						th כותרת
+						th תאריך
+						th פעולה
+				tbody
+					tr(v-for="event in events" :key="event._id")
+						td {{ event.title }}
+						td {{ formatDate(event.date) }}
+						td
+							router-link(v-bind:to="{ name: 'EditEvent', params: { id: event._id } }") עריכה | 
+							a(href="#" @click="deleteEvent(event._id)") מחיקה
 		div(v-else)
 			h4 אין אירועים להצגה
-			router-link.btn.btn-primary(v-bind:to="{ name: 'NewEvent' }") הוספת אירוע
+			router-link.btn(v-bind:to="{ name: 'NewEvent' }") הוספת אירוע
 </template>
 
 <script>
@@ -72,9 +71,9 @@ export default {
 	width: 100%;
 }
 .new-event {
-	padding-top: 20px;
+	margin-top: 40px;
 }
-.table-responsive {
-	padding: 20px;
+table {
+	margin-top: 40px;
 }
 </style>

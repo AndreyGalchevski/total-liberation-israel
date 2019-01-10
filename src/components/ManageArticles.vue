@@ -4,24 +4,23 @@ div.articles
 		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
 		div(v-if="articles.length > 0")
 			div.new-article
-				router-link.btn.btn-primary(v-bind:to="{ name: 'NewArticle' }") כתבה חדשה
-			div.table-responsive
-				table.table.table
-					thead.bg-light
-						tr
-							td כותרת
-							td תאריך
-							td פעולה
-					tbody
-						tr(v-for="article in articles" :key="article._id")
-							td {{ article.title }}
-							td {{ formatDate(article.date) }}
-							td
-								router-link(v-bind:to="{ name: 'EditArticle', params: { id: article._id } }") עריכה | 
-								a(href="#" @click="deleteArticle(article._id)") מחיקה
+				router-link.btn.purple.lighten-2(v-bind:to="{ name: 'NewArticle' }") כתבה חדשה
+			table.striped.centered.responsive-table
+				thead
+					tr
+						th כותרת
+						th תאריך
+						th פעולה
+				tbody
+					tr(v-for="article in articles" :key="article._id")
+						td {{ article.title }}
+						td {{ formatDate(article.date) }}
+						td
+							router-link(v-bind:to="{ name: 'EditArticle', params: { id: article._id } }") עריכה | 
+							a(href="#" @click="deleteArticle(article._id)") מחיקה
 		div(v-else)
 			h4 אין כתבות להצגה
-			router-link.btn.btn-primary(v-bind:to="{ name: 'NewArticle' }") הוספת כתבה
+			router-link.btn.purple.lighten-2(v-bind:to="{ name: 'NewArticle' }") הוספת כתבה
 </template>
 
 <script>
@@ -72,9 +71,9 @@ export default {
 	width: 100%;
 }
 .new-article {
-	padding-top: 20px;
+	margin-top: 40px;
 }
-.table-responsive {
-	padding: 20px;
+table {
+	margin-top: 40px;
 }
 </style>

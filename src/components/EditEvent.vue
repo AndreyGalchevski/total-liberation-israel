@@ -2,7 +2,7 @@
 div.editEvent
 	div.container
 		i.fa.fa-spinner.fa-spin.text-secondary(v-show="loading")
-		h1 עריכת אירוע
+		h4 עריכת אירוע
 		div.form
 			div.form-group
 				input.form-control(
@@ -119,10 +119,10 @@ export default {
 }
 </script>
 <style>
+.container {
+  margin-bottom: 100px;
+}
 textarea {
 	height: auto;
-}
-h1 {
-	padding: 20px;
 }
 </style>

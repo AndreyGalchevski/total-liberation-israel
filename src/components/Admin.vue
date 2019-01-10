@@ -1,10 +1,10 @@
 <template lang="pug">
 div.admin
 	div.container
-		h1 ניהול מידע
-		router-link.btn.btn-outline-info.btn-lg(to="/admin/events") ניהול אירועים
-		router-link.btn.btn-outline-primary.btn-lg(to="/admin/articles") ניהול כתבות
-		router-link.btn.btn-outline-secondary.btn-lg(to="/admin/investigations") ניהול תחקירים
+		h3 ניהול מידע
+		router-link.btn(to="/admin/events") ניהול אירועים
+		router-link.btn.purple.lighten-2(to="/admin/articles") ניהול כתבות
+		router-link.btn.pink.lighten-2(to="/admin/investigations") ניהול תחקירים
 		router-view
 </template>
 
@@ -17,10 +17,7 @@ export default {
 }
 </script>
 <style scoped>
-h1 {
-	padding: 20px;
-}
-router-link {
-	padding: 20px;
+a {
+	margin: 20px;
 }
 </style>
