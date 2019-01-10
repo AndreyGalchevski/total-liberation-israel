@@ -4,15 +4,13 @@ div.articles
 		loader(v-if="loading")
 		div.row(v-else)
 			div.col.s12.m6(v-for="article in articles" :key="article._id")
-				div.card.hoverable.waves-effect
+				div.card.hoverable
 					div.card-image
-						router-link(:to="'/article/' + article._id")
-							img(:src="article.image" alt="Card image")
+						img(:src="article.image" alt="Card image")
+						router-link.btn-floating.btn-large.halfway-fab.waves-effect.waves-light.red(:to="'/article/' + article._id") קרא עוד
 					div.card-content
 						span.card-title {{ article.title }}
 						p {{ article.lead }}
-					div.card-action
-						router-link(:to="'/article/' + article._id") קרא עוד
 </template>
 
 <script>
@@ -58,9 +56,21 @@ export default {
 
 <style scoped>
 .container {
-  margin-bottom: 60px;
+	margin-bottom: 60px;
 }
 .card-content p {
 	color: #757575;
 }
+.card {
+	height: 33em;
+}
+/* .card{
+  width: 1200px;
+  min-height: 100px;
+  height: auto;
+  margin: 80px auto 0px auto;
+  background-color: black;
+  padding: 10px 10px; 
+  overflow:auto
+} */
 </style>
