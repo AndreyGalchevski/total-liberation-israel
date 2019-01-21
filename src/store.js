@@ -44,7 +44,7 @@ export default new Vuex.Store({
 		async login (context, params) {
 			try {
 				context.commit(LOGIN)
-				const response = await Api.post('api/users/authenticate', params)
+				const response = await Api.post('users/authenticate', params)
 				if (response.status === 200) {
 					window.localStorage.setItem('token', response.data.token)
 					context.commit(LOGIN_SUCCESS)
@@ -59,7 +59,7 @@ export default new Vuex.Store({
 		},
 		async getArticle (context, articleId) {
 			try {
-				let response = await Api.get(`api/articles/${articleId}`)
+				let response = await Api.get(`articles/${articleId}`)
 				if (response.data && response.data._id) {
 					context.commit('GET_ARTICLE_SUCCESS', response.data)
 				}
@@ -69,7 +69,7 @@ export default new Vuex.Store({
 		},
 		async getArticles (context) {
 			try {
-				let response = await Api.get('api/articles')
+				let response = await Api.get('articles')
 				if (response.data.articles) {
 					context.commit('GET_ARTICLES_SUCCESS', response.data.articles)
 				}
@@ -79,13 +79,13 @@ export default new Vuex.Store({
 		},
 		async addArticle (context, params) {
 			try {
-				let response = await Api.post('api/articles', params, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.post('articles', params, { headers: { Authorization: window.localStorage.getItem('token') } })
 
 				if (response.status === 200 && params.image) {
 					let articleId = response.data.article._id
 					let form = new FormData()
 					form.append('articleImg', params.image)
-					await Api.patch(`api/articles/${articleId}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
+					await Api.patch(`articles/${articleId}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
 				}
 			} catch (e) {
 				throw e
@@ -93,16 +93,16 @@ export default new Vuex.Store({
 		},
 		async updateArticle (context, params) {
 			try {
-				let response = await Api.put(`api/articles/${params.id}`, params, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.put(`articles/${params.id}`, params, { headers: { Authorization: window.localStorage.getItem('token') } })
 
 				if (response.status === 200 && params.newImage) {
 					if (response.data.updatedArticle.image) {
-						await Api.delete(`api/articles/${params.id}/image`, { headers: { Authorization: window.localStorage.getItem('token') } })
+						await Api.delete(`articles/${params.id}/image`, { headers: { Authorization: window.localStorage.getItem('token') } })
 					}
 
 					let form = new FormData()
 					form.append('articleImg', params.newImage)
-					await Api.patch(`api/articles/${params.id}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
+					await Api.patch(`articles/${params.id}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
 				}
 			} catch (e) {
 				throw e
@@ -110,14 +110,14 @@ export default new Vuex.Store({
 		},
 		async deleteArticle (context, articleId) {
 			try {
-				await Api.delete(`api/articles/${articleId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+				await Api.delete(`articles/${articleId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
 			} catch (e) {
 				throw e
 			}
 		},
 		async getEvent (context, eventId) {
 			try {
-				let response = await Api.get(`api/events/${eventId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.get(`events/${eventId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
 				if (response.data && response.data._id) {
 					context.commit('GET_EVENT_SUCCESS', response.data)
 				}
@@ -127,7 +127,7 @@ export default new Vuex.Store({
 		},
 		async getEvents (context) {
 			try {
-				let response = await Api.get('api/events')
+				let response = await Api.get('events')
 				if (response.data.events) {
 					context.commit('GET_EVENTS_SUCCESS', response.data.events)
 				}
@@ -137,13 +137,13 @@ export default new Vuex.Store({
 		},
 		async addEvent (context, params) {
 			try {
-				let response = await Api.post('api/events', params, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.post('events', params, { headers: { Authorization: window.localStorage.getItem('token') } })
 
 				if (response.status === 200 && params.image) {
 					let eventId = response.data.event._id
 					let form = new FormData()
 					form.append('eventImg', params.image)
-					await Api.patch(`api/events/${eventId}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
+					await Api.patch(`events/${eventId}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
 				}
 			} catch (e) {
 				throw e
@@ -151,16 +151,16 @@ export default new Vuex.Store({
 		},
 		async updateEvent (context, params) {
 			try {
-				let response = await Api.put(`api/events/${params.id}`, params, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.put(`events/${params.id}`, params, { headers: { Authorization: window.localStorage.getItem('token') } })
 
 				if (response.status === 200 && params.newImage) {
 					if (response.data.updatedEvent.image) {
-						await Api.delete(`api/events/${params.id}/image`, { headers: { Authorization: window.localStorage.getItem('token') } })
+						await Api.delete(`events/${params.id}/image`, { headers: { Authorization: window.localStorage.getItem('token') } })
 					}
 
 					let form = new FormData()
 					form.append('eventImg', params.newImage)
-					await Api.patch(`api/events/${params.id}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
+					await Api.patch(`events/${params.id}/image`, form, { headers: { Authorization: window.localStorage.getItem('token') } })
 				}
 			} catch (e) {
 				throw e
@@ -168,7 +168,7 @@ export default new Vuex.Store({
 		},
 		async deleteEvent (context, eventId) {
 			try {
-				let response = await Api.delete(`api/events/${eventId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.delete(`events/${eventId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
 				return response
 			} catch (e) {
 				throw e
@@ -176,7 +176,7 @@ export default new Vuex.Store({
 		},
 		async getInvestigation (context, investigationId) {
 			try {
-				let response = await Api.get(`api/investigations/${investigationId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+				let response = await Api.get(`investigations/${investigationId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
 				if (response.data && response.data._id) {
 					context.commit('GET_INVESTIGATION_SUCCESS', response.data)
 				}
@@ -186,7 +186,7 @@ export default new Vuex.Store({
 		},
 		async getInvestigations (context) {
 			try {
-				let response = await Api.get('api/investigations')
+				let response = await Api.get('investigations')
 				if (response.data.investigations) {
 					context.commit('GET_INVESTIGATIONS_SUCCESS', response.data.investigations)
 				}
@@ -196,21 +196,21 @@ export default new Vuex.Store({
 		},
 		async addInvestigation (context, params) {
 			try {
-				await Api.post('api/investigations', params, { headers: { Authorization: window.localStorage.getItem('token') } })
+				await Api.post('investigations', params, { headers: { Authorization: window.localStorage.getItem('token') } })
 			} catch (e) {
 				throw e
 			}
 		},
 		async updateInvestigation (context, params) {
 			try {
-				await Api.put(`api/investigations/${params.id}`, params, { headers: { Authorization: window.localStorage.getItem('token') } })
+				await Api.put(`investigations/${params.id}`, params, { headers: { Authorization: window.localStorage.getItem('token') } })
 			} catch (e) {
 				throw e
 			}
 		},
 		async deleteInvestigation (context, investigationId) {
 			try {
-				await Api.delete(`api/investigations/${investigationId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
+				await Api.delete(`investigations/${investigationId}`, { headers: { Authorization: window.localStorage.getItem('token') } })
 			} catch (e) {
 				throw e
 			}
