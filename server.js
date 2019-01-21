@@ -22,9 +22,11 @@ if (isProd) {
 }
 
 function createRenderer (bundle, template) {
+	const LruCache = require('lru-cache')
+
 	return require('vue-server-renderer').createBundleRenderer(bundle, {
 		template,
-		cache: require('lru-cache')({
+		cache: new LruCache({
 			max: 1000,
 			maxAge: 1000 * 60 * 15
 		})
