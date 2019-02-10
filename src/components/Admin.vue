@@ -17,6 +17,9 @@ export default {
 }
 </script>
 <style scoped>
+.admin {
+  padding-bottom: 100px;
+}
 a {
 	margin: 20px;
 }
