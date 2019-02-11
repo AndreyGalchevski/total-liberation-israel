@@ -2,8 +2,8 @@
 div.articles
 	div.container
 		loader(v-if="loading")
-		div.row(v-else)
-			div.col.s12.m6(v-for="article in articles" :key="article._id")
+		div.masonry(v-else)
+			div.item(v-for="article in articles" :key="article._id")
 				div.card.hoverable
 					div.card-image
 						img(:src="article.image" alt="Card image")
@@ -61,16 +61,44 @@ export default {
 .card-content p {
 	color: #757575;
 }
-.card {
-	height: 33em;
+
+html {
+  box-sizing: border-box;
 }
-/* .card{
-  width: 1200px;
-  min-height: 100px;
-  height: auto;
-  margin: 80px auto 0px auto;
-  background-color: black;
-  padding: 10px 10px; 
-  overflow:auto
-} */
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.masonry {
+  margin: 1.5em auto;
+  max-width: 900px;
+  column-gap: 1.5em;
+}
+
+.item {
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .masonry {
+    column-count: 1;
+  }
+}
 </style>
